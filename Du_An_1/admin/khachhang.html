@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Admin - Thế giới điện thoại</title>
+    <link rel="shortcut icon" href="../img/favicon.ico" />
+
+    <!-- Load font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+    <!-- Our files -->
+    <link rel="stylesheet" href="../css/admin/style.css">
+    <link rel="stylesheet" href="../css/admin/progress.css">
+
+
+</head>
+
+<body>
+    <header>
+        <h2>SmartPhone Store - Admin</h2>
+    </header>
+
+    <!-- Menu -->
+    <aside class="sidebar">
+        <ul class="nav">
+            <li class="nav-title">MENU</li>
+            <li class="nav-item"><a class="nav-link" href="admin.html"><i class="fa fa-home"></i> Trang Chủ</a></li>
+            <li class="nav-item"><a class="nav-link" href="sanpham.html"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
+            <li class="nav-item"><a class="nav-link" href="donhang.html"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
+            <li class="nav-item"><a class="nav-link active" href="khachhang.html"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
+            <li class="nav-item">
+                <hr>
+            </li>
+            <li class="nav-item">
+                <a href="../index.html" class="nav-link">
+                    <i class="fa fa-arrow-left"></i>
+                    Đăng xuất (về Trang chủ)
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+
+    <div class="main">
+    <!-- Khách hàng -->
+    <div class="khachhang">
+        <table class="table-header">
+            <tr>
+                <!-- Theo độ rộng của table content -->
+                <th title="Sắp xếp" style="width: 5%" >Stt <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 15%" >Họ tên <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 20%" >Email <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 20%" >Tài khoản <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 10%" >Mật khẩu <i class="fa fa-sort"></i></th>
+                <th style="width: 10%">Hành động</th>
+            </tr>
+        </table>
+
+        <div class="table-content">
+        </div>
+
+        <div class="table-footer">
+            <select name="kieuTimKhachHang">
+                <option value="ten">Tìm theo họ tên</option>
+                <option value="email">Tìm theo email</option>
+                <option value="taikhoan">Tìm theo tài khoản</option>
+            </select>
+            <input type="text" placeholder="Tìm kiếm..." >
+            <button ><i class="fa fa-plus-square"></i> Thêm người dùng</button>
+        </div>
+    </div> <!-- // khach hang -->
+    </div>
+</body>
+</html>
