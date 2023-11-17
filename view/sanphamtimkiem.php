@@ -9,7 +9,7 @@
             Không có sản phẩm nào
         </div> <!-- End Khong co san pham -->
         <?php
-        foreach ($allsp as $sp) {
+        foreach ($tk as $sp) {
             extract($sp);
             $linksp = "index.php?act=chitietsanpham&idsp=" . $id;
             $hinh = $img_path . $img;
@@ -38,6 +38,7 @@
 </li>';
         }
         ?>
+
     </ul><!-- End products -->
 </div>
 <div class="pagination">

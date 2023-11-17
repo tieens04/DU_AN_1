@@ -58,16 +58,16 @@ function insert_sanpham($tensp, $giasp, $hinh, $soluong, $iddm, $danhgia, $manhi
     values('$tensp','$giasp','$hinh','$soluong','$iddm','$danhgia','$manhinh','$hedieuhanh','$camerasau','$cameratruoc','$cpu','$ram','$memory','$pin','$idsale','$idcolor','$giatrikhuyenmai')";
     pdo_execute($sql);
 }
-function loadall_sanpham($kyw = "",$iddm=0)
+function loadall_sanpham($kyw = "", $iddm = 0)
 {
     $sql = "select * from sanpham where 1";
     if ($kyw != "") {
-        $sql .=" and name like '%" . $kyw . "%'";
+        $sql .= " and name like '%" . $kyw . "%'";
     }
     if ($iddm > 0) {
-        $sql .=" and iddm = '" . $iddm . "'";
+        $sql .= " and iddm = '" . $iddm . "'";
     }
-    $sql .=" order by id desc";
+    $sql .= " order by id desc";
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }

@@ -1,3 +1,4 @@
+
 <div class="chitietSanpham" style="margin-bottom: 100px">
     <?php
     extract($onesp);
@@ -27,7 +28,7 @@
         <div class="price_sale">
             <div class="area_price">
                 <strong>
-                    <?= $price ?> đ
+                    <?= $price ?> ₫
                 </strong>
                 <label class="giamgia">
                     <i class="fa fa-bolt"> </i>

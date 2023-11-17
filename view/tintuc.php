@@ -1,4 +1,4 @@
-<section style="min-height: 85vh">
+
     <div class="body-tintuc">
         <div class="tintuc-info">
             <a href="http://doanhnghiepvn.vn/cong-nghe/danh-gia-smartphone-chip-s660-ram-8-gb-gia-6-99-trieu-tai-viet-nam/2018112603315443"
@@ -47,13 +47,3 @@
         </div>
     </div>
 </section>
-<div class="tags">
-                        <strong>Từ khóa: </strong>
-                        <?php
-                        foreach ($dsdm_header as $dm) {
-                            extract($dm);
-                            $linkdm = "index.php?act=dssanpham&iddm=" . $id;
-                            echo '<a href="' . $linkdm . '">' . $name . '</a>';
-                        }
-                        ?>
-                    </div>

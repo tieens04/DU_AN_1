@@ -1,3 +1,5 @@
+
+</section>
 <div class="footer">
     <div class="copy-right">
         <div class="plc">
