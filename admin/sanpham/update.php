@@ -39,11 +39,11 @@ if (is_file($hinhpath)) {
         </tr>
         <tr>
             <td>Số lượng</td>
-            <td><input type="text" name="soluong" placeholder="nhập vào số lượng" value="<?=$soluong?>"></td>
+            <td><input type="text" name="soluong" placeholder="nhập vào số lượng" value="<?=$so_luong?>"></td>
         </tr>
         <tr>
             <td>Đánh giá</td>
-            <td><input type="text" name="danhgia" placeholder="nhập vào lượt đánh giá" value="<?=$danhgia?>"></td>
+            <td><input type="text" name="danhgia" placeholder="nhập vào lượt đánh giá" value="<?=$danh_gia?>"></td>
         </tr>
         <tr>
             <td>Khuyến mãi:</td>
@@ -62,7 +62,7 @@ if (is_file($hinhpath)) {
         </tr>
         <tr>
             <td>Giá trị khuyến mãi</td>
-            <td><input type="text" name="giatrikhuyenmai" placeholder="nhập vào giá trị khuyến mãi" value="<?=$value_sale?>"></td>
+            <td><input type="text" name="giatrikhuyenmai" placeholder="nhập vào giá trị khuyến mãi" value="<?=$gia_tri_khuyen_mai?>"></td>
         </tr>
         <tr>
             <td>Màu:</td>
@@ -81,19 +81,19 @@ if (is_file($hinhpath)) {
         </tr>
         <tr>
             <td>Màn hình</td>
-            <td><input type="text" name="manhinh" placeholder="nhập vào màn hình" value="<?=$screen?>"></td>
+            <td><input type="text" name="manhinh" placeholder="nhập vào màn hình" value="<?=$man_hinh?>"></td>
         </tr>
         <tr>
             <td>Hệ điều hành</td>
-            <td><input type="text" name="hedieuhanh" placeholder="nhập vào hệ điều hành" value="<?=$operating_system?>"></td>
+            <td><input type="text" name="hedieuhanh" placeholder="nhập vào hệ điều hành" value="<?=$he_dieu_hanh?>"></td>
         </tr>
         <tr>
             <td>Camara sau</td>
-            <td><input type="text" name="cameratruoc" placeholder="nhập vào camera sau" value="<?=$rear_camera?>"></td>
+            <td><input type="text" name="cameratruoc" placeholder="nhập vào camera sau" value="<?=$camera_truoc?>"></td>
         </tr>
         <tr>
             <td>Camara trước</td>
-            <td><input type="text" name="camerasau" placeholder="nhập vào camera trước" value="<?=$front_camera?>"></td>
+            <td><input type="text" name="camerasau" placeholder="nhập vào camera trước" value="<?=$camera_sau?>"></td>
         </tr>
         <tr>
             <td>CPU</td>
@@ -109,7 +109,7 @@ if (is_file($hinhpath)) {
         </tr>
         <tr>
             <td>Dung lượng Pin</td>
-            <td><input type="text" name="dungluongpin" placeholder="nhập vào dung lượng pin" value="<?=$battery_capacity?>"></td>
+            <td><input type="text" name="dungluongpin" placeholder="nhập vào dung lượng pin" value="<?=$pin?>"></td>
         </tr>
         <tr>
             <td>Hình</td>

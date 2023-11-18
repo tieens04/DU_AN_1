@@ -216,7 +216,7 @@ if (isset($_GET['act'])) {
                 $soluong = $_POST['soluong'];
                 $danhgia = $_POST['danhgia'];
                 $idsale = $_POST['idsale']; 
-                $idcolor = $_POST['idcolor']; 
+                $idcolor = $_POST['id_color']; 
                 $giatrikhuyenmai = $_POST['giatrikhuyenmai'];
                 $manhinh = $_POST['manhinh'];
                 $hedieuhanh = $_POST['hedieuhanh'];

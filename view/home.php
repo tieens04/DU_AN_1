@@ -25,58 +25,9 @@
     ?>
 
 </div>
-
-
-<div class="flexContain">
-
-    <div class="pricesRangeFilter dropdown">
-        <button class="dropbtn">Giá tiền</button>
-        <div class="dropdown-content">
-
-            <a href="index.html?price=0-2000000">Dưới 2 triệu</a>
-            <a href="index.html?price=2000000-4000000">Từ 2 - 4 triệu</a>
-            <a href="index.html?price=4000000-7000000">Từ 4 - 7 triệu</a>
-            <a href="index.html?price=7000000-13000000">Từ 7 - 13 triệu</a>
-            <a href="index.html?price=13000000-0">Trên 13 triệu</a>
-        </div>
-
-    </div>
-
-    <div class="promosFilter dropdown">
-        <button class="dropbtn">Khuyến mãi</button>
-        <div class="dropdown-content">
-            <a href="index.html?promo=giamgia">Giảm giá</a>
-            <a href="index.html?promo=tragop">Trả góp</a>
-            <a href="index.html?promo=moiramat">Mới ra mắt</a>
-            <a href="index.html?promo=giareonline">Giá rẻ online</a>
-        </div>
-    </div>
-
-    <div class="starFilter dropdown">
-        <button class="dropbtn">Màu</button>
-        <div class="dropdown-content">
-            <a href="index.html?promo=giamgia">Màu xanh</a>
-            <a href="index.html?promo=tragop">Màu đỏ</a>
-            <a href="index.html?promo=moiramat">Màu tím</a>
-        </div>
-    </div>
-
-    <div class="sortFilter dropdown">
-        <button class="dropbtn">Sắp xếp</button>
-        <div class="dropdown-content">
-            <a href="index.html?sort=price-ascending">Giá tăng dần</a>
-            <a href="index.html?sort=price-decrease">Giá giảm dần</a>
-            <a href="index.html?sort=star-ascending">Sao tăng dần</a>
-            <a href="index.html?sort=star-decrease">Sao giảm dần</a>
-            <a href="index.html?sort=rateCount-ascending">Đánh giá tăng dần</a>
-            <a href="index.html?sort=rateCount-decrease">Đánh giá giảm dần</a>
-            <a href="index.html?sort=name-ascending">Tên A-Z</a>
-            <a href="index.html?sort=name-decrease">Tên Z-A</a>
-        </div>
-    </div>
-
-</div> <!-- End khung chọn bộ lọc -->
-
+<?php
+include "view/boloc.php";
+?>
 <div class="choosedFilter flexContain">
     <a id="deleteAllFilter" style="display: none;">
         <h3>Xóa bộ lọc</h3>
@@ -99,7 +50,6 @@
 
     <div class="pagination"></div>
 </div>
-
 <!-- Div hiển thị khung sp hot, khuyến mãi, mới ra mắt ... -->
 <div class="contain-khungSanPham">
     <div class="khungSanPham" style="border-color: #ff9c00">
