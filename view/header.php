@@ -22,8 +22,46 @@
     <link rel="stylesheet" href="view/css/home_products.css">
     <link rel="stylesheet" href="view/css/pagination_phantrang.css">
     <link rel="stylesheet" href="view/css/footer.css">
+    <link rel="stylesheet" href="view/css/tuyendung.css">
+    <link rel="stylesheet" href="view/css/baohanh.css">
+    <link rel="stylesheet" href="view/css/lienhe.css">
+    <link rel="stylesheet" href="view/css/gioithieu.css">
+    <link rel="stylesheet" href="view/css/tintuc.css">
+    <link rel="stylesheet" href="view/css/gioHang.css">
+    <link rel="stylesheet" href="view/css/chitietsanpham.css">
+    <link rel="stylesheet" href="view/css/nguoidung.css">
+    <link rel="stylesheet" href="view/css/reset.css">
     <!-- js -->
-    <script src="view/main.js"></script>
+    
+
+
+    <style>
+        .input-search input[type="text"] {
+            float: left;
+            padding-left: 15px;
+            border: none;
+            border-radius: 10px 0 0 10px;
+            height: 100%;
+            width: calc(100% - 100px - 20px);
+            /* 100 la width button, 20 la padding button */
+        }
+
+        .input-search input[type="submit"] {
+            float: right;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 0 10px;
+            color: #888;
+            background: none;
+            width: 100px;
+            height: 100%;
+            border: none;
+            cursor: pointer;
+            -webkit-transition-duration: .3s;
+            -o-transition-duration: .3s;
+            transition-duration: .3s;
+        }
+    </style>
 
 </head>
 
@@ -31,89 +69,20 @@
     <div class="top-nav group">
         <section>
             <div class="social-top-nav">
-                <a class="fa fa-facebook"></a>
-                <a class="fa fa-twitter"></a>
-                <a class="fa fa-google"></a>
-                <a class="fa fa-youtube"></a>
+                <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                <a href="https://www.twitter.com/" class="fa fa-twitter"></a>
+                <a href="https://www.google.com/" class="fa fa-google"></a>
+                <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
             </div> <!-- End Social Topnav -->
 
             <ul class="top-nav-quicklink flexContain">
                 <li><a href="index.php"><i class="fa fa-home"></i> Trang chủ</a></li>
-                <li><a href="tintuc.html"><i class="fa fa-newspaper-o"></i> Tin tức</a></li>
-                <li><a href="tuyendung.html"><i class="fa fa-handshake-o"></i> Tuyển dụng</a></li>
-                <li><a href="gioithieu.html"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
-                <li><a href="trungtambaohanh.html"><i class="fa fa-wrench"></i> Bảo hành</a></li>
-                <li><a href="lienhe.html"><i class="fa fa-phone"></i> Liên hệ</a></li>
+                <li><a href="index.php?act=tintuc"><i class="fa fa-newspaper-o"></i> Tin tức</a></li>
+                <li><a href="index.php?act=tuyendung"><i class="fa fa-handshake-o"></i> Tuyển dụng</a></li>
+                <li><a href="index.php?act=gioithieu"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
+                <li><a href="index.php?act=baohanh"><i class="fa fa-wrench"></i> Bảo hành</a></li>
+                <li><a href="index.php?act=lienhe"><i class="fa fa-phone"></i> Liên hệ</a></li>
             </ul> <!-- End Quick link -->
         </section><!-- End Section -->
     </div>
-    <section style="min-height: 85vh">
-        <div class="header group">
-            <div class="logo">
-                <a href="index.php">
-                    <img src="view/img/logo.jpg" alt="Trang chủ Smartphone Store" title="Trang chủ Smartphone Store">
-                </a>
-            </div> <!-- End Logo -->
-
-            <div class="content">
-                <div class="search-header" style="position: relative; left: 162px; top: 1px;">
-                    <form class="input-search" method="get" action="index.html">
-                        <div class="autocomplete">
-                            <input id="search-box" name="search" autocomplete="off" type="text"
-                                placeholder="Nhập từ khóa tìm kiếm...">
-                            <button type="submit">
-                                <i class="fa fa-search"></i>
-                                Tìm kiếm
-                            </button>
-                        </div>
-                    </form> <!-- End Form search -->
-                    <div class="tags">
-                        <strong>Từ khóa: </strong>
-                        <a href="index.html?search=Samsung">Samsung</a><a href="index.html?search=iPhone">iPhone</a><a
-                            href="index.html?search=Huawei">Huawei</a><a href="index.html?search=Oppo">Oppo</a><a
-                            href="index.html?search=Mobi">Mobi</a>
-                    </div>
-                </div> <!-- End Search header -->
-
-                <div class="tools-member">
-                <?php 
-                    if(isset($_SESSION['user'])){
-                        extract($_SESSION['user']);
-                ?>
-
-                    <div class="member">
-                        <a><i class="fa fa-user"></i><?=" ".$user?></a>
-                        <div class="menuMember">
-                            <a href="index.php?act=dangnhap">Trang người dùng</a>
-                            <a href="index.php?act=thoat">Đăng xuất</a>
-                        </div>
-                    </div>                        
-
-                <?php
-                    }else{
-                ?>
-                    <div class="member">
-                        <a><i class="fa fa-user"></i>Tài khoản</a>
-                        <div class="menuMember">
-                            <a href="index.php?act=dangnhap">Trang người dùng</a>
-                            <a href="index.php?act=thoat">Đăng xuất</a>
-                        </div>
-                    </div> <!-- End Member -->
-                <?php }?>
-                    <div class="cart">
-                        <a href="giohang.html">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>Giỏ hàng</span>
-                            <span class="cart-number"></span>
-                        </a>
-                    </div> <!-- End Cart -->
-
-                    <!-- <div class="check-order">
-                    <a>
-                        <i class="fa fa-truck"></i>
-                        <span>Đơn hàng</span>
-                    </a>
-                </div> -->
-                </div><!-- End Tools Member -->
-            </div> <!-- End Content -->
-        </div>
+    

@@ -15,7 +15,14 @@ if (isset($_GET['act'])) {
             //Kiểm tra xem user có click vào nút add hay ko
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                 $tenloai = $_POST['tenloai'];
-                insert_danhmuc($tenloai);
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                    //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                } else {
+                    //echo "Sorry, there was an error uploading your file.";
+                }
+                insert_danhmuc($tenloai,$target_file);
                 $thongbao = "Them thanh cong";
             }
             include "danhmuc/add.php";
@@ -159,7 +166,7 @@ if (isset($_GET['act'])) {
                 } else {
                     //echo "Sorry, there was an error uploading your file.";
                 }
-                insert_sanpham($tensp, $giasp, $hinh, $iddm, $soluong, $danhgia,$manhinh,$hedieuhanh,$camerasau,$cameratruoc,$cpu,$ram,$memory,$pin,$idsale,$idcolor,$giatrikhuyenmai);
+                insert_sanpham($tensp, $giasp, $hinh, $soluong, $iddm, $danhgia, $manhinh, $hedieuhanh, $camerasau, $cameratruoc, $cpu, $ram, $memory, $pin, $idsale, $idcolor, $giatrikhuyenmai);
                 $thongbao = "Them thanh cong";
             }
             $listdanhmuc = loadall_danhmuc();

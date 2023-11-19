@@ -53,7 +53,8 @@
                     }
                     
                 ?>
-                </h2>       
+                </h2>   
+                <li style="list-style-type: none;">Quản lý: <a href="../admin/index.php">Admin</a></li>    
             </div>
         </div>
 

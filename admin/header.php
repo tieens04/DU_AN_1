@@ -41,7 +41,7 @@
                 <hr>
             </li>
             <li class="nav-item">
-                <a href="../index.html" class="nav-link">
+                <a href="../index.php" class="nav-link">
                     <i class="fa fa-arrow-left"></i>
                     Đăng xuất (về Trang chủ)
                 </a>

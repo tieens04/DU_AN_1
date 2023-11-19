@@ -33,7 +33,7 @@
                         <td style="width: 10%">' . $hinh . '</td>
                         <td style="width: 40%">' . $name . '</td>
                         <td style="width: 15%">' . $price . '</td>
-                        <td style="width: 15%">' . $soluong . '</td>
+                        <td style="width: 15%">' . $so_luong . '</td>
                         <td style="width: 15%">
                             <div class="tooltip">
                                 <a href="' . $suasp . '""><i class="fa fa-wrench"></i></a>

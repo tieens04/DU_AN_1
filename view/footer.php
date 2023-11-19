@@ -15,12 +15,12 @@
                 </section>
             </div>
 
-            <p><a href="index.html">LDD Phone Store</a> - All rights reserved © 2021 - Designed by
+            <p><a href="index.php">LDD Phone Store</a> - All rights reserved © 2021 - Designed by
                 <span style="color: #eee; font-weight: bold">group 15th</span>
             </p>
         </div>
     </div>
-
+    <i class="fa fa-arrow-up" id="goto-top-page" onclick="topFunction()"></i>
 </body>
-
+<script src="view/main.js"></script>
 </html>

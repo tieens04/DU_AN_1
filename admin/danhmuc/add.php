@@ -12,7 +12,10 @@
             <td>Loại:</td>
             <td><input type="text" name="tenloai" placeholder="nhập vào tên loại"></td>
         </tr>
-
+        <tr>
+            <td>Hình:</td>
+            <td><input type="file" name="img"></td>
+        </tr>
         <tr>
             <td colspan="2" class="table-footer">
                 <input class="button" type="submit" name="themmoi" value="THÊM MỚI">    
