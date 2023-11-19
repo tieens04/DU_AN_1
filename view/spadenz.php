@@ -1,5 +1,5 @@
 <div class="contain-products">
-<div class="choosedFilter flexContain">
+    <div class="choosedFilter flexContain">
         <a id="deleteAllFilter" style="display: block;" href="index.php">
             <h3>Xóa bộ lọc</h3>
         </a>

@@ -1,6 +1,13 @@
 <div class="contain-products">
-    <div class="filterName">
-        <input type="text" placeholder="Lọc trong trang theo tên..." value="<?= $tendm ?>">
+    <div class="choosedFilter flexContain">
+        <a id="deleteAllFilter" style="display: block;" href="index.php">
+            <h3>Xóa bộ lọc</h3>
+        </a>
+        <a href="index.php">
+            <h3>
+                <?= $tendm ?> <i class="fa fa-close"></i>
+            </h3>
+        </a>
     </div> <!-- End FilterName -->
 
     <ul id="products" class="homeproduct group flexContain">
