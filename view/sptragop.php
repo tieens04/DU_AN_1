@@ -1,5 +1,5 @@
 <div class="contain-products">
-<div class="choosedFilter flexContain">
+    <div class="choosedFilter flexContain">
         <a id="deleteAllFilter" style="display: block;" href="index.php">
             <h3>Xóa bộ lọc</h3>
         </a>
@@ -26,14 +26,14 @@
             alt="">
         <h3>' . $name . '</h3>
         <div class="price">
-            <strong>' . $price . '₫</strong>
+            <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
         </div>
         <div class="ratingresult">
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
                 class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
         </div>
         <label class="giamgia">
-            <i class="fa fa-bolt"></i> ' . $gia_tri_khuyen_mai . '₫
+            <i class="fa fa-bolt"></i> ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
         </label>
         <div class="tooltip">
             <button class="themvaogio">

@@ -1,4 +1,3 @@
-
 <div class="chitietSanpham" style="margin-bottom: 100px">
     <?php
     extract($onesp);
@@ -28,11 +27,11 @@
         <div class="price_sale">
             <div class="area_price">
                 <strong>
-                    <?= $price ?> ₫
+                    <?= number_format($price, 0, ".", ".") ?> ₫
                 </strong>
                 <label class="giamgia">
                     <i class="fa fa-bolt"> </i>
-                    <?= $gia_tri_khuyen_mai ?> đ
+                    <?= number_format($gia_tri_khuyen_mai, 0, ".", ".") ?> đ
                 </label>
             </div>
             <div class="ship" style="display: none;">
@@ -141,7 +140,7 @@
                     <img src="' . $hinh . '" alt="">
                     <h3>' . $name . '</h3>
                     <div class="price">
-                        <strong>' . $price . '₫</strong>
+                        <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
                     </div>
                     <div class="ratingresult">
                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i

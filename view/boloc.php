@@ -7,7 +7,7 @@
             <a href="index.php?act=sanphamduoi2tr">Dưới 2 triệu</a>
             <a href="index.php?act=sanphamtu2den4">Từ 2 - 4 triệu</a>
             <a href="index.php?act=sanphamtu4den7">Từ 4 - 7 triệu</a>
-            <a href="index.php?act=sanphamtu4den7">Từ 7 - 13 triệu</a>
+            <a href="index.php?act=sanphamtu7den13">Từ 7 - 13 triệu</a>
             <a href="index.php?act=sanphamtren13">Trên 13 triệu</a>
         </div>
 
