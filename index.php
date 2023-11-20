@@ -1,7 +1,8 @@
 <?php
 session_start();
+ob_start();
 if (!isset($_SESSION['mycart'])) // nếu session này tồn tại 
-    $_SESSION['mycart'] = [];
+    $_SESSION['mycart']= array();
 include "model/pdo.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
@@ -47,9 +48,28 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $img = $_POST['img'];
                     $price = $_POST['price'];
                     $soluong = 1;
+                    $fg=0;
                     $ttien = $soluong * $price;
-                    $spadd = [$id, $name, $img, $price, $soluong, $ttien];
+                    
+                    if(isset($_SESSION['mycart'])&&(count($_SESSION['mycart'])>0)){
+                        $i=0;
+                        foreach ($_SESSION['mycart'] as $cart) {
+                          if($cart[0]==$id){
+                            //cập nhật mới số lượng
+                            $soluong+=$cart[4];
+                            $fg=1;
+                            //cập nhật số lượng mới vào giỏ hàng
+                            $_SESSION['mycart'][$i][4]=$soluong;
+                            break;
+                          }
+                          $i++;
+                        }
+                      }
+                      //khi số lượng ban đầu không thay đổi thì thêm mới sp vào giỏ hàng
+                      if($fg==0){
+                        $spadd = [$id, $name, $img, $price, $soluong, $ttien];
                     $_SESSION['mycart'][]= $spadd;
+                      }
                     header('location: index.php?act=viewcart');
                 }
                 include "view/dungchung.php";
@@ -68,6 +88,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "view/viewcart.php";
                 break;
             case 'viewcart':
+                
                 include "view/dungchung.php";
                 include "view/viewcart.php";
                 break;
