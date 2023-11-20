@@ -70,6 +70,7 @@
 .noPadding {
     padding: 0 0 0 10px;
     line-height: 2.5em;
+    
 }
 .listSanPham td a {
     display: block;

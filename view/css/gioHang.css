@@ -77,7 +77,7 @@
     padding: 5px 0;
 }
 .listSanPham td a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Hình ảnh sản phẩm */

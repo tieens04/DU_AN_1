@@ -121,6 +121,25 @@
         </div>
     </div>
 </div>
+<div class="">
+    <?php
+    include "./view/binhluan/comment.php";
+
+?>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#binhluan").load("../view/binhluan/comment.php", { idpro: <?= $id ?> });
+            });
+        </script>
+        <div class="mb" id="binhluan">
+            
+        </div>
+
+
+
+
 
 <div class="khungSanPham" style="border-color: #434aa8">
     <h3 class="tenKhung" style="background-image: linear-gradient(120deg, #434aa8 0%, #ec1f1f 50%, #434aa8 100%);">*
