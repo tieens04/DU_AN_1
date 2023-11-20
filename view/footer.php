@@ -23,4 +23,5 @@
     <i class="fa fa-arrow-up" id="goto-top-page" onclick="topFunction()"></i>
 </body>
 <script src="view/main.js"></script>
+
 </html>

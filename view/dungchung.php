@@ -129,7 +129,7 @@
                 <?php }?>
                  
                     <div class="cart">
-                        <a href="view/giohang.php">
+                        <a href="index.php?act=viewcart">
                             <i class="fa fa-shopping-cart"></i>
                             <span>Giỏ hàng</span>
                             <span class="cart-number"></span>

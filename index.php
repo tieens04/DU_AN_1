@@ -1,10 +1,13 @@
 <?php 
 ob_start(); 
     session_start();
+    if (!isset($_SESSION['mycart'])) // nếu session này tồn tại 
+    $_SESSION['mycart'] = array();
     include "model/pdo.php";
     include "model/sanpham.php";
     include "model/danhmuc.php";
     include "model/taikhoan.php";
+    include "model/cart.php";
     include "view/header.php";
     include "view/global.php";
     $spnb = loadall_sanpham_home_noibatnhat();
@@ -41,10 +44,97 @@ ob_start();
                 include "view/dungchung.php";
                 include "view/lienhe.php";
                 break;
-            case 'giohang':
+            case 'addtocart':
+                if (isset($_POST['addtocart']) && ($_POST['addtocart'])) { // nếu tồn tại và được click thì
+                    $id = $_POST['id'];
+                    $name = $_POST['name'];
+                    $img = $_POST['img'];
+                    $price = $_POST['price'];
+                    $soluong = 1;
+                    $fg=0;
+                    $ttien = $soluong * $price;
+                    
+                    if(isset($_SESSION['mycart'])&&(count($_SESSION['mycart'])>0)){
+                        $i=0;
+                        foreach ($_SESSION['mycart'] as $cart) {
+                          if($cart[0]==$id){
+                            //cập nhật mới số lượng
+                            $soluong+=$cart[4];
+                            $fg=1;
+                            //cập nhật số lượng mới vào giỏ hàng
+                            $_SESSION['mycart'][$i][4]=$soluong;
+                            break;
+                          }
+                          $i++;
+                        }
+                      }
+                      //khi số lượng ban đầu không thay đổi thì thêm mới sp vào giỏ hàng
+                      if($fg==0){
+                        $spadd = [$id, $name, $img, $price, $soluong, $ttien];
+                    $_SESSION['mycart'][]= $spadd;
+                      }
+                    header('location: index.php?act=viewcart');
+                }
                 include "view/dungchung.php";
-                include "view/giohang.php";
+                //include "view/viewcart.php";
                 break;
+            case 'delcart':
+                if (isset($_GET['idcart'])) {
+                    $idcart = $_GET['idcart']; //Nếu 'idcart' đã được gửi, giá trị sẽ được lưu vào biến $idcart để sử dụng sau này.
+                    array_splice($_SESSION['mycart'], $idcart, 1); //array_splice để loại bỏ phần tử từ một mảng.
+                    //$idcart là vị trí của phần tử trong mảng cần bỏ.
+                    //1 nghĩa là chỉ loại bỏ một phần tử.   
+                } else {
+                    $_SESSION['mycart'] = [];
+                }
+                include "view/dungchung.php";
+                include "view/cart/viewcart.php";
+                break;
+            case 'viewcart':
+                include "view/dungchung.php";
+                include "view/cart/viewcart.php";
+                break;
+
+        
+                case 'bill':
+                    include "view/dungchung.php";
+                    include "view/cart/bill.php";
+                    break;
+                case 'billcomfirm':
+                    
+                    if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
+                        if (isset($_SESSION['user'])) {
+                            $iduser = $_SESSION['user']['id'];
+                        } else {
+                            $id = 0;
+                        }
+                        $name = $_POST['name'];
+                        $email = $_POST['email'];
+                        $address = $_POST['address'];
+                        $tel = $_POST['tel'];
+                        $pttt = $_POST['pttt'];
+                        $ngaydathang = date('h:i:sa d/m/Y');
+                        $tongdonhang = tongdonhang();
+                        //tạo bill
+                        $idbill = insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang);
+                        // nhập cart
+                        foreach ($_SESSION['mycart'] as $cart) {
+                            insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $idbill);
+                        }
+                        $_SESSION['cart'] = []; //xóa session cart
+                    }
+                    //show
+                    $bill = loadone_bill($idbill);
+                    $bill_ct = loadall_cart($idbill);
+                    include "view/dungchung.php";
+                    include "view/cart/billcomfirm.php";
+                    break;
+                case 'mybill':
+                    $listbill = loadall_bill($_SESSION['user']['id']);
+                    include "view/dungchung.php";
+                    include "view/cart/mybill.php";
+                    break;
+
             case 'sanpham':
                 include "view/dungchung.php";
                 $allsp = loadall_dssanpham();

@@ -14,28 +14,35 @@
             $linksp = "index.php?act=chitietsanpham&idsp=" . $id;
             $hinh = $img_path . $img;
             echo '<li class="sanPham">
-    <a href="' . $linksp . '">
-        <img src="' . $hinh . '"
-            alt="">
+        <a href="' . $linksp . '">
+        <img src="' . $hinh . '" alt="">
         <h3>' . $name . '</h3>
         <div class="price">
-            <strong>' . $price . '₫</strong>
+        <strong>' . $price . '₫</strong>
         </div>
         <div class="ratingresult">
-            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <span>' . $danh_gia . ' đánh giá</span>
         </div>
         <label class="giamgia">
-            <i class="fa fa-bolt"></i> ' . $gia_tri_khuyen_mai . '₫
+        <i class="fa fa-bolt"></i> ' . $gia_tri_khuyen_mai . '₫
         </label>
+        <form action="index.php?act=addtocart" method="POST">
+        <input type = "hidden" name ="id" value="' . $id . '">
+        <input type = "hidden" name ="name" value="' . $name . '">
+        <input type = "hidden" name ="img" value="' . $img . '">
+        <input type = "hidden" name ="price" value="' . $price . '">
         <div class="tooltip">
-            <button class="themvaogio">
-                <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                +
-            </button>
+        <input class="themvaogio" type="submit" name ="addtocart" value="+">
+        <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
         </div>
-    </a>
-</li>';
+        </form>
+        </a>
+        </li>';
         }
         ?>
 
