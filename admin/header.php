@@ -33,6 +33,7 @@
             <li class="nav-item"><a href="index.php" class="nav-link "><i class="fa fa-home"></i> Trang Chủ</a></li>
             <li class="nav-item"><a href="index.php?act=adddm" class="nav-link"><i class="fa fa-th-large"></i> Danh mục</a></li>
             <li class="nav-item"><a href="index.php?act=addmau" class="nav-link"><i class="fa fa-th-large"></i> Màu</a></li>
+            <li class="nav-item"><a href="index.php?act=addbonho" class="nav-link"><i class="fa fa-th-large"></i> Bộ nhớ</a></li>
             <li class="nav-item"><a href="index.php?act=addsp" class="nav-link"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
             <li class="nav-item"><a href="index.php?act=addkm" class="nav-link"><i class="fa fa-th-large"></i> Khuyến mãi</a></li>
             <li class="nav-item"><a href="index.php?act=listbill" class="nav-link"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>

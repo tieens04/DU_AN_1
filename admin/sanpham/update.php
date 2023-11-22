@@ -104,8 +104,19 @@ if (is_file($hinhpath)) {
             <td><input type="text" name="ram" placeholder="nhập vào ram" value="<?=$ram?>"></td>
         </tr>
         <tr>
-            <td>Bộ nhớ trong</td>
-            <td><input type="text" name="memory" placeholder="nhập vào bộ nhớ trong" value="<?=$memory?>"></td>
+            <td>Bộ nhớ trong:</td>
+            <td>
+                <select name="idbonho" id="">
+                    <option value="0" selected>Tất cả</option>
+                    <?php
+                    foreach ($listbonho as $bonho) {
+                        extract($bonho);
+                        if($idbonho==$id) $s="selected"; else $s="";
+                        echo '<option value="' . $id . '"  '.$s.'>' . $name . '</option>';
+                    }
+                    ?>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>Dung lượng Pin</td>

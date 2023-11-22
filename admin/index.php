@@ -4,6 +4,7 @@ include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/khuyenmai.php";
 include "../model/mau.php";
+include "../model/bonho.php";
 include "../model/taikhoan.php";
 include "../model/cart.php";
 include "header.php";
@@ -140,6 +141,45 @@ if (isset($_GET['act'])) {
             $listkhuyenmai = loadall_khuyenmai();
             include "khuyenmai/list.php";
             break;
+        /* Controller bộ nhớ */
+        case 'addbonho':
+            //Kiểm tra xem user có click vào nút add hay ko
+            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $tenbonho = $_POST['tenbonho'];
+                insert_bonho($tenbonho);
+                $thongbao = "Them thanh cong";
+            }
+            include "bonho/add.php";
+            break;
+        case 'listbonho':
+            $listbonho = loadall_bonho();
+            include "bonho/list.php";
+            break;
+        case 'xoabonho':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) { // kiểm tra id xem có tồn tại k nếu có và >0 thì delete
+                delete_bonho($_GET['id']);
+            }
+            $listbonho = loadall_bonho(); // delete xong thì hiển thị danh sách 
+            include "bonho/list.php";
+            break;
+
+        case 'suabonho':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $bonho = loadone_bonho($_GET['id']);
+            }
+            include "bonho/update.php";
+            break;
+
+        case 'updatebonho':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $id = $_POST['id'];
+                $tenbonho = $_POST['tenbonho'];
+                update_bonho($id, $tenbonho);
+                $thongbao = "Cap nhat thanh cong";
+            }
+            $listbonho = loadall_bonho();
+            include "bonho/list.php";
+            break;
         /* Controller sản phẩm */
         case 'addsp':
             //Kiểm tra xem user có click vào nút add hay ko
@@ -159,7 +199,7 @@ if (isset($_GET['act'])) {
                 $cpu = $_POST['cpu'];
                 $ram = $_POST['ram'];
                 $pin = $_POST['pin'];
-                $memory = $_POST['memory'];
+                $idbonho = $_POST['idbonho'];
                 $giatrikhuyenmai = $_POST['giatrikhuyenmai'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
@@ -168,12 +208,13 @@ if (isset($_GET['act'])) {
                 } else {
                     //echo "Sorry, there was an error uploading your file.";
                 }
-                insert_sanpham($iddm, $idkm, $idmau, $tensp, $giasp, $hinh, $soluong, $danhgia, $manhinh, $hedieuhanh, $cameratruoc, $camerasau, $cpu, $ram, $pin, $memory, $giatrikhuyenmai);
+                insert_sanpham($iddm, $idkm, $idmau, $tensp, $giasp, $hinh, $soluong, $danhgia, $manhinh, $hedieuhanh, $cameratruoc, $camerasau, $cpu, $ram, $pin, $idbonho, $giatrikhuyenmai);
                 $thongbao = "Them thanh cong";
             }
             $listdanhmuc = loadall_danhmuc();
             $listkhuyenmai = loadall_khuyenmai();
             $listmau = loadall_mau();
+            $listbonho = loadall_bonho();
             // var_dump($listdanhmuc);
             include "sanpham/add.php";
             break;
@@ -184,16 +225,19 @@ if (isset($_GET['act'])) {
                 $iddm = $_POST['iddm'];
                 $idkm = $_POST['idkm'];
                 $idmau = $_POST['idmau'];
+                $idbonho = $_POST['idbonho'];
             } else {
                 $kyw = '';
                 $iddm = 0;
                 $idkm = 0;
                 $idmau = 0;
+                $idbonho = 0;
             }
             $listdanhmuc = loadall_danhmuc();
             $listkhuyenmai = loadall_khuyenmai();
+            $listbonho = loadall_bonho();
             $listmau = loadall_mau();
-            $listsanpham = loadall_sanpham($kyw, $iddm, $idkm, $idmau);
+            $listsanpham = loadall_sanpham($kyw, $iddm, $idmau, $idkm,$idbonho);
             include "sanpham/list.php";
             break;
 
@@ -211,6 +255,7 @@ if (isset($_GET['act'])) {
             $listdanhmuc = loadall_danhmuc();
             $listkhuyenmai = loadall_khuyenmai();
             $listmau = loadall_mau();
+            $listbonho = loadall_bonho();
             include "sanpham/update.php";
             break;
         case 'updatesp':
@@ -231,7 +276,7 @@ if (isset($_GET['act'])) {
                 $cpu = $_POST['cpu'];
                 $ram = $_POST['ram'];
                 $pin = $_POST['pin'];
-                $memory = $_POST['memory'];
+                $idbonho = $_POST['idbonho'];
                 $giatrikhuyenmai = $_POST['giatrikhuyenmai'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
@@ -240,15 +285,17 @@ if (isset($_GET['act'])) {
                 } else {
                     //echo "Sorry, there was an error uploading your file.";
                 }
-                update_sanpham($id, $iddm, $idkm, $idmau, $tensp, $giasp, $hinh, $soluong, $danhgia, $manhinh, $hedieuhanh, $cameratruoc, $camerasau, $cpu, $ram, $pin, $memory, $giatrikhuyenmai);
+                update_sanpham($id, $iddm, $idkm, $idmau, $tensp, $giasp, $hinh,$soluong,$danhgia,$manhinh,$hedieuhanh,$cameratruoc,$camerasau,$cpu,$ram,$pin,$idbonho,$giatrikhuyenmai);
                 $thongbao = "Cap nhat thanh cong";
             }
             $listdanhmuc = loadall_danhmuc();
             $listkhuyenmai = loadall_khuyenmai();
             $listmau = loadall_mau();
+            $listbonho = loadall_bonho();
             $listsanpham = loadall_sanpham("", 0);
             include "sanpham/list.php";
             break;
+            
             /* Controller danh sách khách hàng */
         case 'dskh':
             $listtaikhoan = loadall_taikhoan();

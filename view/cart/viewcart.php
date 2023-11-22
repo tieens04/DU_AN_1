@@ -15,10 +15,11 @@
             <th>Sản phẩm</th>
             <th>Đơn giá</th>
             <th>Số lượng</th>
+            <th>Khuyến mãi</th>
             <th>Thành tiền</th>
             <th>Thao tác</th>
             </tr>
-            <td colspan="7" style="padding-top: 0px; padding-bottom: 0px;"> 
+            <td colspan="8" style="padding-top: 0px; padding-bottom: 0px;"> 
 		<h1 style="color:green; background-color:white; font-weight:bold; text-align:center; padding: 15px 0;">
 					Giỏ hàng trống !!     
 		</h1> 

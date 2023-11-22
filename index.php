@@ -86,7 +86,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $_SESSION['mycart'] = [];
             }
             include "view/dungchung.php";
-            include "view/viewcart.php";
+            include "view/cart/viewcart.php";
             break;
         case 'viewcart':
             include "view/dungchung.php";

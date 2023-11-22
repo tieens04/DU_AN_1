@@ -87,8 +87,17 @@
             <td><input type="text" name="ram" placeholder="nhập vào ram"></td>
         </tr>
         <tr>
-            <td>Memory</td>
-            <td><input type="text" name="memory" placeholder="nhập vào memory"></td>
+            <td>Bộ nhớ:</td>
+            <td>
+                <select name="idbonho">
+                    <?php
+                    foreach ($listbonho as $bonho) {
+                        extract($bonho);
+                        echo '<option value="' . $id . '">' . $name . '</option>';
+                    }
+                    ?>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>Dung lượng Pin</td>
