@@ -32,6 +32,7 @@
         <input type = "hidden" name ="name" value="' . $name . '">
         <input type = "hidden" name ="img" value="' . $img . '">
         <input type = "hidden" name ="price" value="' . $price . '">
+        <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
         <div class="tooltip">
         <input class="themvaogio" type="submit" name ="addtocart" value="+">
         <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>

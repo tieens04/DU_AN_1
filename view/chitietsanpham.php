@@ -60,6 +60,7 @@
             <input type = "hidden" name ="name" value="' . $name . '">
             <input type = "hidden" name ="img" value="' . $img . '">
             <input type = "hidden" name ="price" value="' . $price . '">
+            <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
             <div class="area_order">
 
             <input class="buy_now" type="submit" name="addtocart" value="Thêm vào giỏ hàng">
@@ -159,15 +160,16 @@
                     <div class="price">
                     <strong>' . $price . '₫</strong>
                     </div>
-                    <div class="ratingresult">
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i><i class="fa fa-star-o"></i><span>' . $danh_gia . 'đánh giá</span>
-                    </div>
+                    <label class="giamgia">
+                    <i class="fa fa-bolt"> </i>
+                    '.$gia_tri_khuyen_mai.' đ
+                    </label>
                         <form action="index.php?act=addtocart" method="POST">
                         <input type = "hidden" name ="id" value="' . $id . '">
                         <input type = "hidden" name ="name" value="' . $name . '">
                         <input type = "hidden" name ="img" value="' . $img . '">
                         <input type = "hidden" name ="price" value="' . $price . '">
+                        <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
                         <div class="tooltip">
                         <input class="themvaogio" type="submit" name ="addtocart" value="+">
                         <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>

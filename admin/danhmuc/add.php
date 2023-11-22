@@ -1,16 +1,20 @@
 
-<form action="index.php?act=adddm" method="POST">
+<form action="index.php?act=adddm" method="POST" enctype="multipart/form-data">
     <table class="table-outline table-content table-header">
         <tr>
-            <th colspan="2">Thêm mới loại hàng hóa</th>
+            <th colspan="2">Thêm loại sản phẩm</th>
         </tr>
         <tr>
             <td>Mã loại</td>
             <td><input type="text" name="maloai" placeholder="nhập vào mã loại"></td>
         </tr>
         <tr>
-            <td>Tên loại:</td>
+            <td>Loại:</td>
             <td><input type="text" name="tenloai" placeholder="nhập vào tên loại"></td>
+        </tr>
+        <tr>
+            <td>Hình:</td>
+            <td><input type="file" name="img"></td>
         </tr>
 
         <tr>

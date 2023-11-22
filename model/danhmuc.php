@@ -43,4 +43,15 @@ function load_tendm($iddm)
         return "";
     }
 }
+function load_tenmau($idmau)
+{
+    if ($idmau > 0) {
+        $sql = "select * from mau where id=" . $idmau;
+        $mau = pdo_query_one($sql);
+        extract($mau);
+        return $name;
+    } else {
+        return "";
+    }
+}
 ?>
