@@ -9,21 +9,14 @@
             <div class="content">
                 <div class="search-header" style="position: relative; left: 162px; top: 1px;">
                     <form class="input-search" method="post" action="index.php?act=timkiem">
-                        <!-- <div class="autocomplete"> -->
+                        
                             <input name="kyw" autocomplete="on" type="text" placeholder="Nhập từ khóa tìm kiếm...">
                             <input type="submit" name="timkiem" value="Tìm kiếm">
-                                <!-- <i class="fa fa-search"></i>
-                                Tìm kiếm
-                            </button> -->
-                        <!-- </div> -->
+                                
                     </form> <!-- End Form search -->
                     <div class="tags">
                         <strong>Từ khóa: </strong>
-                        <!-- <a href="index.html?search=Samsung">Samsung</a>
-                        <a href="index.html?search=iPhone">iPhone</a>
-                        <a href="index.html?search=Huawei">Huawei</a>
-                        <a href="index.html?search=Oppo">Oppo</a>
-                        <a href="index.html?search=Mobi">Mobi</a> -->
+                        
                         <?php
                         foreach ($dsdm_header as $dm) {
                         extract($dm);

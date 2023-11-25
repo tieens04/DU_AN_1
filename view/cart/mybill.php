@@ -1,13 +1,13 @@
-<main class="catalog  mb ">
+<main class="mb ">
 
-    <div class="boxleft">
+    <div class="">
 
         <div class="">
             <div class="boxtitle">ĐƠN HÀNG CỦA BẠN</div>
         </div>
         <form action="index.php?act=mybill" method="POST">
             <div class="row2 mb10 formds_loai">
-                <table>
+                <table class="listSanPham">
 
                     <tr>
                         <th>MÃ ĐƠN HÀNG</th>

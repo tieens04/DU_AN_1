@@ -33,13 +33,21 @@
     }
     ?>
     </table> 
-    <h2 class="thongbao">
-                <?php 
-                    if(isset($thongbao)&&($thongbao!="")){
-                        echo $thongbao;
-                    }
-                ?>
-                </h2> 
+        <h2 class="thongbao">
+            <?php 
+                if(isset($thongbao)&&($thongbao!="")){
+                    echo $thongbao;
+                }
+                
+            ?>
+            
+        </h2> 
+        <?php
+            if(isset($_SESSION['user'])){
+                    include "view/cart/mybill.php";
+                }
+            ?>
     </form>
+    
     </section>
 <!-- End Section -->

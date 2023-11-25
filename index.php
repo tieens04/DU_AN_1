@@ -101,6 +101,7 @@ ob_start();
                     }
                     
                 }
+                $listbill = loadall_bill($_SESSION['user']['id']);
                 include "view/dungchung.php";
                 include "view/cart/viewcart.php";
                 break;
@@ -139,11 +140,7 @@ ob_start();
                     include "view/dungchung.php";
                     include "view/cart/billcomfirm.php";
                     break;
-                case 'mybill':
-                    $listbill = loadall_bill($_SESSION['user']['id']);
-                    include "view/dungchung.php";
-                    include "view/cart/mybill.php";
-                    break;
+               
 
             case 'sanpham':
                 include "view/dungchung.php";
