@@ -67,7 +67,7 @@
                             </ul>
 
                             <div class="cd-signin-modal__block js-signin-modal-block" data-type="login"> <!-- log in form -->
-                                <form class="cd-signin-modal__form" action="index.php?act=dangnhap" method="post">
+                                <form id="form-login" class="cd-signin-modal__form" action="index.php?act=dangnhap" method="post">
                                     <p class="cd-signin-modal__fieldset">
                                         <label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signin-username">Username</label>
                                         <input name="user" class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-username" type="text" placeholder="Username" required>

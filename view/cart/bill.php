@@ -1,7 +1,7 @@
 <main class="catalog  mb ">
     <div class="boxleft">
         <form action="index.php?act=billcomfirm" method="POST">
-            <div class="row2 mb10 formds_loai">
+            <div>
                 <table>
                     <?php
                     if (isset($_SESSION['user'])) {
@@ -16,39 +16,35 @@
                         $tel = "";
                     }
                     ?>
-                    <tr>
-                        <td>Tên người dùng</td>
-                        <td><input type="text" name="name" value="<?= $name ?>"></td>
-                    </tr>
-                    <tr>
-                        <td>Địa chỉ</td>
-                        <td><input type="text" name="address" value="<?= $address ?>"></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td><input type="text" name="email" value="<?= $email ?>"></td>
-                    </tr>
-                    <tr>
-                        <td>Điện thoại</td>
-                        <td><input type="text" name="tel" value="<?= $tel ?>"></td>
-                    </tr>
+
+                    <div class="boxtitle">THÔNG TIN LIÊN HỆ</div>
+                    <div class="row boxcontent formtaikhoan">
+                            <div class="mb">
+                            Tên người dùng
+                            <input type="text" name="name" value="<?= $name ?>">
+                            </div>
+                            
+                            <div class="mb">
+                            Địa chỉ
+                            <input type="text" name="address" value="<?= $address ?>">
+                            </div>
+
+                            <div class="mb">
+                            Email
+                            <input type="text" name="email" value="<?= $email ?>"><br>
+                            </div>
+
+                            <div class="mb">
+                            Điện thoại
+                            <input type="text" name="tel" value="<?= $tel ?>">
+                            </div>                          
+                    </div>
                 </table>
             </div>
-            <div class="items">
-                <div class="">Phương thúc thanh toán</div>
-                <table>
-                    <tr>
-                        <td><input type="radio" value="1" name="pttt" checked>Trả tiền khi nhận hàng</td>
-                        <td><input type="radio" value="2" name="pttt" checked>Chuyển khản ngân hàng</td>
-                        <td><input type="radio" value="3" name="pttt" checked>Thanh toán online</td>
-                    </tr>
-                </table>
-                <a href="index.php?act=billcomfirm">
-                    <input class="custom-btn btn-13" type="submit" value="ĐỒNG Ý ĐẶT HÀNG" name="dongydathang">
-                </a>
-            </div>
+
             <div class="row mb">
-                <div class="row2 mb10 formds_loai">
+            <div class="boxtitle">ĐƠN HÀNG CỦA BẠN</div>
+                <div>
                     <table class="listSanPham">
                         <?php
                         viewcart(0);
@@ -56,7 +52,22 @@
                     </table>
                 </div>
             </div>
+        
+    </div>
+    <div class="boxright">
+            <div class="items">
+                <div class="boxtitle">PHƯƠNG THỨC THANH TOÁN</div>
+                
+                    
+                        <input type="radio" value="1" name="pttt" checked>Trả tiền khi nhận hàng <br>
+                        <input type="radio" value="2" name="pttt" checked>Chuyển khản ngân hàng <br>
+                        <input type="radio" value="3" name="pttt" checked>Thanh toán online <br>
+                    
+                
+                <a href="index.php?act=billcomfirm">
+                    <input class="custom-btn btn-13" type="submit" value="ĐỒNG Ý ĐẶT HÀNG" name="dongydathang">
+                </a>
+            </div>
         </form>
     </div>
-    
 </main>

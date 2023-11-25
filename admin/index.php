@@ -5,6 +5,7 @@ include "../model/sanpham.php";
 include "../model/sale.php";
 include "../model/color.php";
 include "../model/taikhoan.php";
+include "../model/cart.php";
 include "header.php";
 
 if (isset($_GET['act'])) {
@@ -242,10 +243,33 @@ if (isset($_GET['act'])) {
                 $listsanpham = loadall_sanpham("", 0);
                 include "sanpham/list.php";
                 break;
+        case 'listbill':
+            $listbill = loadall_bill(0);
+            include "donhang/list.php";
+            break;
+        case 'xoabill':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_bill($_GET['id']);
+            }
+            $listbill = loadall_bill("");
+            include "donhang/list.php";
+            break;
             case 'dskh':
                 $listtaikhoan = loadall_taikhoan();
                 include "taikhoan/list.php";
                 break;
+            // case 'listsp':
+            //     if (isset($_POST['listok']) && ($_POST['listok'])) {
+            //             $kyw = $_POST['kyw'];
+            //             $iddm = $_POST['iddm'];
+            //         } else {
+            //             $kyw = '';
+            //             $iddm = 0;
+            //         }
+            //         $listdanhmuc = loadall_danhmuc();
+            //         $listsanpham = loadall_sanpham($kyw, $iddm);
+            //         include "sanpham/list.php";
+            //         break;
     }
 } else {
     include "home.php";

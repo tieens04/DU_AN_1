@@ -10,7 +10,7 @@
     border: 1px solid #ddd;
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    
     background-color: #4CAF50;
     color: white;
 }
@@ -134,4 +134,21 @@
 }
 .xoaHet:hover {
     background-color: rgb(224, 65, 65);
+}
+.catalog{
+    display:flex;
+    
+    /* height: 350px; */
+}
+.boxleft{
+  width: 75%;
+  
+  border-right: 1.5px #eee solid;
+}
+.boxright{
+  width:25%;
+
+  height:312px;
+  overflow-x:hidden;
+  overflow-y:auto;
 }

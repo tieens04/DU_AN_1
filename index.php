@@ -51,8 +51,9 @@ ob_start();
                     $img = $_POST['img'];
                     $price = $_POST['price'];
                     $soluong = 1;
+                    $giatrikhuyenmai = $_POST['gia_tri_khuyen_mai'];
                     $fg=0;
-                    $ttien = $soluong * $price;
+                    $ttien = $soluong * $price - $giatrikhuyenmai;
                     
                     if(isset($_SESSION['mycart'])&&(count($_SESSION['mycart'])>0)){
                         $i=0;
@@ -70,7 +71,7 @@ ob_start();
                       }
                       //khi số lượng ban đầu không thay đổi thì thêm mới sp vào giỏ hàng
                       if($fg==0){
-                        $spadd = [$id, $name, $img, $price, $soluong, $ttien];
+                        $spadd = [$id, $name, $img, $price, $soluong, $giatrikhuyenmai, $ttien];
                     $_SESSION['mycart'][]= $spadd;
                       }
                     header('location: index.php?act=viewcart');
@@ -91,6 +92,15 @@ ob_start();
                 include "view/cart/viewcart.php";
                 break;
             case 'viewcart':
+                if(isset($_POST['bill'])&&($_POST['bill'])){
+                    if(isset($_SESSION['user'])){
+
+                        header('Location:index.php?act=bill');
+                    }else{
+                        $thongbao="Vui lòng đăng nhập để tiếp tục thanh toán";
+                    }
+                    
+                }
                 include "view/dungchung.php";
                 include "view/cart/viewcart.php";
                 break;
@@ -119,7 +129,7 @@ ob_start();
                         $idbill = insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang);
                         // nhập cart
                         foreach ($_SESSION['mycart'] as $cart) {
-                            insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $idbill);
+                            insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[3] * $cart[4] - $cart[5], $idbill);
                         }
                         $_SESSION['cart'] = []; //xóa session cart
                     }
@@ -198,16 +208,20 @@ ob_start();
                     $checkuser=checkuser($user,$pass);
                     if(is_array($checkuser)){
                         $_SESSION['user']=$checkuser;
-
-                        header('Location:index.php');
+                        // header('Location:index.php');
+                        if (isset($_SERVER['HTTP_REFERER'])) {
+                            header('Location: ' . $_SERVER['HTTP_REFERER']);
+                        } else {
+                            header('Location:index.php');
+                        }
                     }
                     else{
                         
                         echo "<script>alert('User hoặc Password đã sai.Vui lòng nhập lại!');</script>";
-                        include "view/dungchung.php";
-                        include "view/home.php";
                         
-                    }
+                        
+                    }include "view/dungchung.php";
+                        include "view/home.php";
                     
                 }
                 // include "view/taikhoan/dangnhap.php";

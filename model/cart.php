@@ -16,12 +16,13 @@ function viewcart($del)
             <th>Sản phẩm</th>
             <th>Đơn giá</th>
             <th>Số lượng</th>
+            <th>Khuyến mãi</th>
             <th>Thành tiền</th>
             ' . $xoasp_th . '
             </tr>';
     foreach ($_SESSION['mycart'] as $cart) {
         $hinh = $img_path . $cart[2];
-        $ttien = $cart[3] * $cart[4];
+        $ttien = $cart[3] * $cart[4] - $cart[5];
         $tong += $ttien;
         if ($del == 1) {
             $xoasp_td = '<td>
@@ -32,12 +33,13 @@ function viewcart($del)
         } else {
             $xoasp_td = '';
         }
-        echo '<tr style="text-align: center;">
+        echo '<tr>
                 <td>'.($i+1).'</td>
                 <td><img src="' . $hinh . '" alt="" height="80px"></td>
                 <td>' . $cart[1] . '</td>
                 <td>' . $cart[3] . '</td>
                 <td>' . $cart[4] . '</td>
+                <td>' . $cart[5] . '</td>
                 <td>' . $ttien . '</td>
                 ' . $xoasp_td . '
                 </tr>';
@@ -51,7 +53,7 @@ function viewcart($del)
     }
     echo '<tr style="text-align: center;height: 50px;">
             <td colspan="4">Tổng đơn hàng</td>
-            <td colspan="2">' . $tong . '</td>
+            <td colspan="3">' . $tong . '</td>
             '. $xoasp_tc .'
             </tr>';
 }
@@ -72,10 +74,9 @@ function bill_chi_tiet($listbill)
             </tr>';
     foreach ($listbill as $cart) {
         $hinh = $img_path . $cart['img'];
-
-        $tong += $cart['thanhtien'];
-        echo '<tr>
         
+        $tong += $cart['thanhtien'];
+        echo '<tr>  
         <td><img src="' . $hinh . '" alt="" height="80px"></td>
         <td>' . $cart['name'] . '</td>
         <td>' . $cart['price'] . '</td>
@@ -95,7 +96,7 @@ function tongdonhang()
     $tong = 0;
 
     foreach ($_SESSION['mycart'] as $cart) {
-        $ttien = $cart[3] * $cart[4];
+        $ttien = $cart[3] * $cart[4] - $cart[5];
         $tong += $ttien;
     }
     return $tong;
@@ -161,7 +162,8 @@ function get_ttdh($n)
     }
     return $tt;
 }
-//////
+
+
 function loadall_thongke()
 {
     $sql = "SELECT danhmuc.id as madm, danhmuc.name as tendm, 
@@ -174,5 +176,11 @@ function loadall_thongke()
 
     $listtk = pdo_query($sql);
     return $listtk;
+}
+       
+function delete_bill($id)
+{
+    $sql = "delete from bill where id=" . $id;
+    pdo_execute($sql);
 }
 ?>        

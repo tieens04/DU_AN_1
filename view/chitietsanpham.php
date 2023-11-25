@@ -29,7 +29,7 @@
                 </strong>
                 <label class="giamgia">
                     <i class="fa fa-bolt"> </i>
-                    <?= $gia_tri_khuyen_mai ?> đ
+                    <?= $gia_tri_khuyen_mai ?>
                 </label>
             </div>
             <div class="area_promo">
@@ -60,7 +60,8 @@
             <input type = "hidden" name ="name" value="' . $name . '">
             <input type = "hidden" name ="img" value="' . $img . '">
             <input type = "hidden" name ="price" value="' . $price . '">
-            <div class="area_order">
+            <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
+            <div class="area_order" style="color:white;">
 
             <input class="buy_now" type="submit" name="addtocart" value="Thêm vào giỏ hàng">
             <i class="fa fa-cart-plus" onclick="document.querySelector(&quot;.buy_now&quot;).click()"></i>
@@ -142,7 +143,7 @@
 
 
 
-<div class="khungSanPham" style="border-color: #434aa8">
+        <div class="khungSanPham" style="border-color: #434aa8">
     <h3 class="tenKhung" style="background-image: linear-gradient(120deg, #434aa8 0%, #ec1f1f 50%, #434aa8 100%);">*
         Bạn
         có
@@ -160,15 +161,16 @@
                     <div class="price">
                     <strong>' . $price . '₫</strong>
                     </div>
-                    <div class="ratingresult">
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i><i class="fa fa-star-o"></i><span>' . $danh_gia . 'đánh giá</span>
-                    </div>
+                    <label class="giamgia">
+                    <i class="fa fa-bolt"> </i>
+                    '.$gia_tri_khuyen_mai.' đ
+                    </label>
                         <form action="index.php?act=addtocart" method="POST">
                         <input type = "hidden" name ="id" value="' . $id . '">
                         <input type = "hidden" name ="name" value="' . $name . '">
                         <input type = "hidden" name ="img" value="' . $img . '">
                         <input type = "hidden" name ="price" value="' . $price . '">
+                        <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
                         <div class="tooltip">
                         <input class="themvaogio" type="submit" name ="addtocart" value="+">
                         <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
