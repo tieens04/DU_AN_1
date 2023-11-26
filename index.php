@@ -100,9 +100,6 @@ ob_start();
                         $thongbao="Vui lòng đăng nhập để tiếp tục thanh toán";
                     }
                 }
-                if(isset($_SESSION['user'])){
-                    $listbill = loadall_bill($_SESSION['user']['id']);
-                }
                 include "view/dungchung.php";
                 include "view/cart/viewcart.php";
                 break;
@@ -241,6 +238,7 @@ ob_start();
                     header('Location: index.php?act=edit_taikhoan');
                         
                 }
+                    $listbill = loadall_bill($_SESSION['user']['id']);
                 include "view/dungchung.php";
                 include "view/taikhoan/edit_taikhoan.php";
                 break;

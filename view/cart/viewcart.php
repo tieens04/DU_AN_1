@@ -8,6 +8,7 @@
             echo'
             
             <input type="submit" value="TIẾP TỤC ĐẶT HÀNG" name="bill">'; 
+            
         } else {
             echo ' <tr>
             <th>STT</th>
@@ -42,11 +43,6 @@
             ?>
             
         </h2> 
-        <?php
-            if(isset($_SESSION['user'])){
-                    include "view/cart/mybill.php";
-                }
-            ?>
     </form>
     
     </section>

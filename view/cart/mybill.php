@@ -17,7 +17,7 @@
                         <th>TÌNH TRẠNG ĐƠN HÀNG</th>
                     </tr>
                     <?php
-                    if (is_array($listbill)) {
+                    if (is_array($listbill)&& (isset($_SESSION['user']))) {
                         foreach ($listbill as $bill) {
                             extract($bill);
                             $ttdh = get_ttdh($bill['bill_status']);
