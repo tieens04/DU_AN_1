@@ -99,13 +99,14 @@ ob_start();
                     }else{
                         $thongbao="Vui lòng đăng nhập để tiếp tục thanh toán";
                     }
-                    
                 }
-                $listbill = loadall_bill($_SESSION['user']['id']);
+                if(isset($_SESSION['user'])){
+                    $listbill = loadall_bill($_SESSION['user']['id']);
+                }
                 include "view/dungchung.php";
                 include "view/cart/viewcart.php";
                 break;
-
+                
         
                 case 'bill':
                     include "view/dungchung.php";
