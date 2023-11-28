@@ -1,8 +1,8 @@
-<main class="catalog  mb ">
+<br><main class="catalog  mb ">
     <div class="boxleft">
         <form action="index.php?act=billcomfirm" method="POST">
             <div>
-                <table>
+                
                     <?php
                     if (isset($_SESSION['user'])) {
                         $name = $_SESSION['user']['user'];
@@ -17,33 +17,33 @@
                     }
                     ?>
 
-                    <div class="boxtitle">THÔNG TIN LIÊN HỆ</div>
+                    <div class="boxtitle">Địa chỉ giao hàng</div>
                     <div class="row boxcontent formtaikhoan">
                             <div class="mb">
                             Tên người dùng
-                            <input type="text" name="name" value="<?= $name ?>">
+                            <input type="text" name="name" value="<?= $name ?>" required>
                             </div>
                             
                             <div class="mb">
                             Địa chỉ
-                            <input type="text" name="address" value="<?= $address ?>">
+                            <input type="text" name="address" value="<?= $address ?>" required>
                             </div>
 
                             <div class="mb">
                             Email
-                            <input type="text" name="email" value="<?= $email ?>"><br>
+                            <input type="text" name="email" value="<?= $email ?>" required>
                             </div>
 
                             <div class="mb">
                             Điện thoại
-                            <input type="text" name="tel" value="<?= $tel ?>">
+                            <input type="text" name="tel" value="<?= $tel ?>" required>
                             </div>                          
                     </div>
-                </table>
-            </div>
+                
+            </div><br>
 
-            <div class="row mb">
-            <div class="boxtitle">ĐƠN HÀNG CỦA BẠN</div>
+            <div class="">
+            <div class="boxtitle">Đơn hàng của bạn</div>
                 <div>
                     <table class="listSanPham">
                         <?php
@@ -56,17 +56,33 @@
     </div>
     <div class="boxright">
             <div class="items">
-                <div class="boxtitle">PHƯƠNG THỨC THANH TOÁN</div>
+                <div class="boxtitle1">Phương thức thanh toán</div>
                 
                     
-                        <input type="radio" value="1" name="pttt" checked>Trả tiền khi nhận hàng <br>
-                        <input type="radio" value="2" name="pttt" checked>Chuyển khản ngân hàng <br>
-                        <input type="radio" value="3" name="pttt" checked>Thanh toán online <br>
-                    
+                        <!-- <label class="container" for=""><input type="radio" value="1" name="pttt" checked><i class="fa fa-money" aria-hidden="true"></i>Trả tiền khi nhận hàng</label> <br>
+                        <label class="container" for=""><input type="radio" value="2" name="pttt" checked>Chuyển khản ngân hàng</label> <br>
+                        <label class="container" for=""><input type="radio" value="3" name="pttt" checked>Thanh toán online</label> <br> -->
+                    <label class="container"><i class="fa fa-money" aria-hidden="true"></i>  Trả tiền khi nhận hàng
+                        <input type="radio" value="1" name="pttt" checked>
+                        <span class="checkmark"></span><hr>
+                        <span class="span">Trả tiền khi nhận hàng</span>
+                    </label>
+
+                    <label class="container"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Chuyển khản ngân hàng
+                        <input type="radio" value="2" name="pttt">
+                        <span class="checkmark"></span><hr>
+                        <span class="span">Chuyển khoản ngân hàng</span>
+                    </label>
+
+                    <label class="container"><i class="fa fa-credit-card" aria-hidden="true"></i> Thanh toán online
+                        <input type="radio" value="3" name="pttt">
+                        <span class="checkmark"></span><hr>
+                        <span class="span">Bạn phải có tài khoản VNPay</span>
+                    </label>
                 
-                <a href="index.php?act=billcomfirm">
+                <!-- <a href="index.php?act=billcomfirm"> -->
                     <input class="custom-btn btn-13" type="submit" value="ĐỒNG Ý ĐẶT HÀNG" name="dongydathang">
-                </a>
+                <!-- </a> -->
             </div>
         </form>
     </div>

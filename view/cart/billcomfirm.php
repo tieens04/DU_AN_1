@@ -19,6 +19,7 @@
         <?php
         if (isset($bill) && (is_array($bill))) {
             extract($bill);
+            $pttt = get_pttt($bill['bill_pttt']);
         }
         ?>
         <div class="">
@@ -27,7 +28,7 @@
                 <li>- Mã đơn hàng: DAM-<?= $bill['id']; ?></li>
                 <li>- Ngày đặt hàng: <?= $bill['ngaydathang']; ?></li>
                 <li>- Tổng đơn hàng: <?= $bill['total']; ?></li>
-                <li>- Phương thức thanh toán: <?= $bill['bill_pttt']; ?></li>
+                <li>- Phương thức thanh toán: <?= $pttt; ?></li>
             </div>
             
         </div>

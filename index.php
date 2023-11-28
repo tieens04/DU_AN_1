@@ -109,6 +109,7 @@ ob_start();
                     include "view/dungchung.php";
                     include "view/cart/bill.php";
                     break;
+                    
                 case 'billcomfirm':
                     
                     if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
@@ -131,6 +132,9 @@ ob_start();
                             insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[3] * $cart[4] - $cart[5], $idbill);
                         }
                         $_SESSION['cart'] = []; //xóa session cart
+                    }
+                    if (isset($_POST['redirect'])) {
+                        check_out();
                     }
                     //show
                     $bill = loadone_bill($idbill);

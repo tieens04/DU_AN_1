@@ -51,9 +51,9 @@ function viewcart($del)
     } else {
         $xoasp_tc = '';
     }
-    echo '<tr style="text-align: center;height: 50px;">
-            <td colspan="4">Tổng đơn hàng</td>
-            <td colspan="3">' . $tong . '</td>
+    echo '<tr style="height: 50px;">
+            <td colspan="6">Tổng đơn hàng</td>
+            <td colspan="1">' . $tong . '</td>
             '. $xoasp_tc .'
             </tr>';
 }
@@ -163,7 +163,24 @@ function get_ttdh($n)
     return $tt;
 }
 
-
+function get_pttt($a)
+{
+    switch ($a) {
+        case '1':
+            $pt = "Trả tiền khi nhận hàng";
+            break;
+        case '2':
+            $pt = "Chuyển khản ngân hàng";
+            break;
+        case '3':
+            $pt = "Thanh toán online";
+            break;
+        default:
+            $pt = "Trả tiền khi nhận hàng";
+            break;
+    }
+    return $pt;
+}
 function loadall_thongke()
 {
     $sql = "SELECT danhmuc.id as madm, danhmuc.name as tendm, 
@@ -182,5 +199,10 @@ function delete_bill($id)
 {
     $sql = "delete from bill where id=" . $id;
     pdo_execute($sql);
+}
+function check_out(){
+   
+        echo "tien";
+    
 }
 ?>        

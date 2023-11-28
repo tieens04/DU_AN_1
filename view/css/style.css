@@ -266,8 +266,19 @@ hr {
     border-top-right-radius: 5px;
     border: 1px #ccc solid;
 }
+.boxtitle1{
+  font-weight: 550;
+  color: #333;
+  padding: 10px;
+  text-align: center;
+}
+.custom-btn{
+  width: 100%;
+  height: 40px;
+}
 .mb{
     margin-bottom: 10px;
+    
 }
 .boxcontent{
     border-left: 1px #ccc solid;

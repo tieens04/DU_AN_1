@@ -90,8 +90,8 @@
                             echo "<span style='color:red'>Chu ky khong hop le</span>";
                         }
                         ?>
-
-                    </label>
+                    </label> <br>                       
+                    <a href="http://localhost:3000/index.php?act=bill"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>
                 </div> 
             </div>
             <p>
