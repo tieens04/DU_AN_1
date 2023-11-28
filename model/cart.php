@@ -66,11 +66,11 @@ function bill_chi_tiet($listbill)
     $i = 0;
 
     echo '<tr>
-            <td>Hình</td>
-            <td>Sản phẩm</td>
-            <td>Đơn giá</td>
-            <td>Số lượng</td>
-            <td>Thành tiền</td> 
+            <th>Hình</th>
+            <th>Sản phẩm</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th> 
             </tr>';
     foreach ($listbill as $cart) {
         $hinh = $img_path . $cart['img'];
@@ -85,7 +85,7 @@ function bill_chi_tiet($listbill)
         </tr>';
         $i += 1;
     }
-    echo '<tr>
+    echo '<tr style="height: 50px;">
 <td colspan="4">Tổng đơn hàng</td>
 <td>' . $tong . '</td>
 </tr>';
