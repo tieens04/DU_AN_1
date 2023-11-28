@@ -4,8 +4,8 @@
             <table class="table-header">
                 <tr>
                     <!-- Theo độ rộng của table content -->
-                    <th title="Sắp xếp" style="width: 10%">Mã khuyến mãi <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 40%">Tên khuyến mãi <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 10%">Mã màu <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 40%">Tên màu <i class="fa fa-sort"></i></th>
                     <th style="width: 15%">Hành động</th>
                 </tr>
             </table>

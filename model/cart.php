@@ -37,17 +37,17 @@ function viewcart($del)
                 <td>'.($i+1).'</td>
                 <td><img src="' . $hinh . '" alt="" height="80px"></td>
                 <td>' . $cart[1] . '</td>
-                <td>' . $cart[3] . '</td>
+                <td>' . number_format($cart[3], 0, ".", ".") . '₫</td>
                 <td>' . $cart[4] . '</td>
-                <td>' . $cart[5] . '</td>
-                <td>' . $ttien . '</td>
+                <td>' . number_format($cart[5], 0, ".", ".") . '₫</td>
+                <td>' . number_format($ttien, 0, ".", ".") . '₫</td>
                 ' . $xoasp_td . '
                 </tr>';
         $i++;
     }
     echo '<tr>
             <td colspan="4">Tổng đơn hàng</td>
-            <td colspan="3">' . $tong . '</td>
+            <td colspan="3">' . number_format($tong, 0, ".", ".") . '₫</td>
             <td><a href="index.php?act=delcart"> 
             <input type="button" value="Xóa tất cả"> </a></td>
             </tr>';
@@ -95,16 +95,15 @@ function tongdonhang()
     }
     return $tong;
 }
-
-function insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang)
-{
-    $sql = "INSERT INTO bill(iduser,bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,total) values('$iduser','$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
-    return pdo_execute_return_lastInsertId($sql);
-}
 function insert_cart($iduser, $idpro, $img, $name, $price, $soluong, $thanhtien, $idbill)
 {
     $sql = "INSERT INTO cart(iduser,idpro,img,name,price,soluong,thanhtien,idbill) values('$iduser','$idpro','$img','$name','$price','$soluong','$thanhtien','$idbill')";
     return pdo_execute($sql);
+}
+function insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang)
+{
+    $sql = "INSERT INTO bill(iduser,bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,total) values('$iduser','$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
+    return pdo_execute_return_lastInsertId($sql);
 }
 function loadone_bill($id)
 {

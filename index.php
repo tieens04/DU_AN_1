@@ -6,6 +6,7 @@ if (!isset($_SESSION['mycart'])) // nếu session này tồn tại
 include "model/pdo.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
+include "model/taikhoan.php";
 include "model/cart.php";
 include "view/header.php";
 include "global.php";
@@ -92,35 +93,35 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/dungchung.php";
             include "view/cart/viewcart.php";
             break;
-        case 'billcomfirm':
-
-            if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
-                if (isset($_SESSION['user'])) {
-                    $iduser = $_SESSION['user']['id'];
-                } else {
-                    $id = 0;
+            case 'billcomfirm':
+            
+                if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
+                    if (isset($_SESSION['user'])) {
+                        $iduser = $_SESSION['user']['id'];
+                    } else {
+                        $id = 0;
+                    }
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    $address = $_POST['address'];
+                    $tel = $_POST['tel'];
+                    $pttt = $_POST['pttt'];
+                    $ngaydathang = date('h:i:sa d/m/Y');
+                    $tongdonhang = tongdonhang();
+                    //tạo bill
+                    $idbill = insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang);
+                    // nhập cart
+                    foreach ($_SESSION['mycart'] as $cart) {
+                        insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $idbill);
+                    }
+                    $_SESSION['cart'] = []; //xóa session cart
                 }
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $address = $_POST['address'];
-                $tel = $_POST['tel'];
-                $pttt = $_POST['pttt'];
-                $ngaydathang = date('h:i:sa d/m/Y');
-                $tongdonhang = tongdonhang();
-                //tạo bill
-                $idbill = insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang);
-                // nhập cart
-                foreach ($_SESSION['mycart'] as $cart) {
-                    insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $idbill);
-                }
-                $_SESSION['cart'] = []; //xóa session cart
-            }
-            //show
-            $bill = loadone_bill($idbill);
-            $bill_ct = loadall_cart($idbill);
-            include "view/dungchung.php";
-            include "view/cart/billcomfirm.php";
-            break;
+                //show
+                $bill = loadone_bill($idbill);
+                $bill_ct = loadall_cart($idbill);
+                include "view/dungchung.php";
+                include "./view/cart/billcomfirm.php";
+                break;
         case 'mybill':
             $listbill = loadall_bill($_SESSION['user']['id']);
             include "view/dungchung.php";
@@ -128,8 +129,111 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
         case 'sanpham':
             include "view/dungchung.php";
+            include "view/boloc.php";
             $allsp = loadall_dssanpham();
             include "view/sanpham.php";
+            break;
+        case 'sanphamduoi2tr':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_duoi2tr = loadall_sanpham_duoi2tr();
+            include "view/spduoi2tr.php";
+            break;
+        case 'sanphamtu2den4':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tu2_4 = loadall_sanpham_tu_2_4();
+            include "view/sptu2den4.php";
+            break;
+        case 'sanphamtu4den7':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tu4_7 = loadall_sanpham_tu_4_7();
+            include "view/sptu4den7.php";
+            break;
+        case 'sanphamtu7den13':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tu7_13 = loadall_sanpham_tu_7_13();
+            include "view/sptu7den13.php";
+            break;
+        case 'sanphamtren13':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tren_13 = loadall_sanpham_tren_13();
+            include "view/sptren13.php";
+            break;
+        case 'spgiamgia':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_giamgia = loadall_sanpham_home_giamgialon();
+            include "view/spgiamgia.php";
+            break;
+        case 'sptragop':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tragop = loadall_sanpham_home_tragop();
+            include "view/sptragop.php";
+            break;
+        case 'spmoiramat':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_moiramat = loadall_sanpham_home_sanphammoi();
+            include "view/spmoiramat.php";
+            break;
+        case 'spgiareonline':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_giareonline = loadall_sanpham_home_giare();
+            include "view/spgiareonline.php";
+            break;
+        case 'spmau':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            if (isset($_GET['idmau']) && ($_GET['idmau'] > 0)) {
+                $idmau = $_GET['idmau'];
+                $tenmau = load_tenmau($idmau);
+                $sp_mau = loadall_sanpham_mauxanh($idmau);
+                include "view/spmau.php";
+            } else {
+                include "view/home.php";
+            }
+            break;
+        case 'spgiatangdan':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_giatangdan = loadall_sanpham_gia_tangdan();
+            include "view/spgiatangdan.php";
+            break;
+        case 'spgiagiamdan':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_giagiamdan = loadall_sanpham_gia_giamdan();
+            include "view/spgiagiamdan.php";
+            break;
+        case 'spdanhgiatang':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_danhgiatang = loadall_sanpham_danhgia_tang();
+            include "view/spdanhgiatang.php";
+            break;
+        case 'spdanhgiagiam':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_danhgiagiam = loadall_sanpham_danhgia_giam();
+            include "view/spdanhgiagiam.php";
+            break;
+        case 'spa_z':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_adenz = loadall_sanpham_adenz();
+            include "view/spadenz.php";
+            break;
+        case 'spz_a':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_zdena = loadall_sanpham_zdena();
+            include "view/spzdena.php";
             break;
         case 'timkiem':
             if (isset($_POST['timkiem']) && ($_POST['timkiem'])) {
@@ -166,9 +270,81 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "view/home.php";
             }
             break;
-        case 'nguoidung':
+        /* Start - Tài khoản */
+        case 'dangky':
+            if (isset($_POST['dangky']) && ($_POST['dangky'])) {
+                $email = $_POST['email'];
+                $user = $_POST['user'];
+                $pass = $_POST['pass'];
+                insert_taikhoan($email, $user, $pass);
+                echo "<script>alert('Đăng ký thành công!');</script>";
+                include "view/dungchung.php";
+                include "view/home.php";
+            }
+
+            break;
+
+        case 'dangnhap':
+            if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
+                $user = $_POST['user'];
+                $pass = $_POST['pass'];
+                $checkuser = checkuser($user, $pass);
+                if (is_array($checkuser)) {
+                    $_SESSION['user'] = $checkuser;
+                    header('Location:index.php');
+                } else if($_SESSION['trang']=="chitietsanpham"){
+                    header('Location:index.php?act=chitietsanpham&id='.$_SESSION['idpro'].'#binhluan');
+                } else {
+                    echo "<script>alert('User hoặc Password đã sai.Vui lòng nhập lại!');</script>";
+                    include "view/dungchung.php";
+                    include "view/home.php";
+
+                }
+
+            }
+            // include "view/taikhoan/dangnhap.php";
+            // include "view/taikhoan/dangky.php";
+            break;
+
+
+        case 'edit_taikhoan':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $user = $_POST['user'];
+                $pass = $_POST['pass'];
+                $email = $_POST['email'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $id = $_POST['id'];
+
+                update_taikhoan($id, $user, $pass, $email, $address, $tel);
+                $_SESSION['user'] = checkuser($user, $pass);
+                header('Location: index.php?act=edit_taikhoan');
+
+            }
             include "view/dungchung.php";
-            include "view/nguoidung.php";
+            include "view/taikhoan/edit_taikhoan.php";
+            break;
+
+        case 'quenmk':
+            if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
+                $email = $_POST['email'];
+                $tel = $_POST['tel'];
+
+                $checkemail = checkemail($email, $tel);
+                if (is_array($checkemail)) {
+                    $thongbao = "Mật khẩu của bạn là: " . $checkemail['pass'];
+                } else {
+                    $thongbao = "Email và số điện thoại này không tồn tại";
+                }
+            }
+            include "view/dungchung.php";
+            include "view/taikhoan/quenmk.php";
+            break;
+        /* End - Tài khoản */
+
+        /* Start - Bill */
+        case 'bill':
+            include "./view/cart/bill.php";
             break;
         case 'thoat':
             session_unset(); //xóa hết session và trở về trang chủ

@@ -1,12 +1,21 @@
 <div class="contain-products">
-    <div class="filterName">
-        <input type="text" placeholder="Lọc trong trang theo tên..." value="<?= $tendm ?>">
-    </div> <!-- End FilterName -->
+    <div class="choosedFilter flexContain">
+        <a id="deleteAllFilter" style="display: block;" href="index.php">
+            <h3>Xóa bộ lọc</h3>
+        </a>
+        <a href="index.php">
+            <h3>
+                <?= $tendm ?> <i class="fa fa-close"></i>
+            </h3>
+        </a>
+    </div> 
+    <!-- End FilterName -->
     <ul id="products" class="homeproduct group flexContain">
         <div id="khongCoSanPham">
             <i class="fa fa-times-circle"></i>
             Không có sản phẩm nào
-        </div> <!-- End Khong co san pham -->
+        </div> 
+        <!-- End Khong co san pham -->
         <?php
         foreach ($dssp as $sp) {
             extract($sp);
@@ -18,14 +27,14 @@
             alt="">
         <h3>' . $name . '</h3>
         <div class="price">
-            <strong>' . $price . '₫</strong>
+            <strong>' . number_format($price, 0, ".", ".") . '₫₫</strong>
         </div>
         <div class="ratingresult">
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
             <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
         </div>
         <label class="giamgia">
-            <i class="fa fa-bolt"></i> ' . $gia_tri_khuyen_mai . '₫
+            <i class="fa fa-bolt"></i> ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
         </label>
         <form action="index.php?act=addtocart" method="POST">
         <input type = "hidden" name ="id" value="' . $id . '">

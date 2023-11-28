@@ -7,7 +7,7 @@
             viewcart(1);
             echo'
             <a href="index.php?act=bill">
-            <input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>'; 
+            <input type="button" name="" value="TIẾP TỤC ĐẶT HÀNG"></a>'; 
         } else {
             echo ' <tr>
             <th>STT</th>

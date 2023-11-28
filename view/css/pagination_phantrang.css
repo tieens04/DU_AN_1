@@ -12,6 +12,8 @@
     padding: 10px 15px;
     border-radius: 5px;
     color: #555;
+    text-decoration: none; /* Loại bỏ gạch chân trên liên kết */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
 }
 
 .pagination a:hover:not(.current) {
@@ -21,4 +23,9 @@
 .pagination .current {
     color: white;
     background: #0950E8;
+}
+
+.pagination a:active {
+    background-color: #0950E8; /* Màu nền khi ô vuông đang được click */
+    color: white; /* Màu chữ khi ô vuông đang được click */
 }

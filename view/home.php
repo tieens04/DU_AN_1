@@ -25,32 +25,9 @@
     ?>
 
 </div>
-
-
-<div class="flexContain">
-
-    <div class="pricesRangeFilter dropdown">
-        <button class="dropbtn">Giá tiền</button>
-        <div class="dropdown-content"></div>
-    </div>
-
-    <div class="promosFilter dropdown">
-        <button class="dropbtn">Khuyến mãi</button>
-        <div class="dropdown-content"></div>
-    </div>
-
-    <div class="starFilter dropdown">
-        <button class="dropbtn">Số lượng sao</button>
-        <div class="dropdown-content"></div>
-    </div>
-
-    <div class="sortFilter dropdown">
-        <button class="dropbtn">Sắp xếp</button>
-        <div class="dropdown-content"></div>
-    </div>
-
-</div> <!-- End khung chọn bộ lọc -->
-
+<?php
+include "view/boloc.php";
+?>
 <div class="choosedFilter flexContain">
     <a id="deleteAllFilter" style="display: none;">
         <h3>Xóa bộ lọc</h3>
@@ -73,7 +50,6 @@
 
     <div class="pagination"></div>
 </div>
-
 <!-- Div hiển thị khung sp hot, khuyến mãi, mới ra mắt ... -->
 <div class="contain-khungSanPham">
     <div class="khungSanPham" style="border-color: #ff9c00">
@@ -85,33 +61,34 @@
             foreach ($spnb as $sp) {
                 extract($sp);
                 $hinh = $img_path . $img;
+
                 echo '<li class="sanPham">
                 <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
-    <img src="' . $hinh . '" alt="">
-    <h3>' . $name . '</h3>
-    <div class="price">
-    <strong>' . $price . '₫</strong>
-    </div>
-    <div class="ratingresult">
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
-    </div>
-    <label class="giamgia">
-    <i class="fa fa-bolt"></i> Giảm ' . $gia_tri_khuyen_mai . '₫
-    </label>
-    <form action="index.php?act=addtocart" method="POST">
-    <input type = "hidden" name ="id" value="' . $id . '">
-    <input type = "hidden" name ="name" value="' . $name . '">
-    <input type = "hidden" name ="img" value="' . $img . '">
-    <input type = "hidden" name ="price" value="' . $price . '">
-    <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
-    <div class="tooltip">
-    <input class="themvaogio" type="submit" name ="addtocart" value="+">
-    <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-    </div>
-    </form>
-    </a>
-    </li>';
+                <img src="' . $hinh . '" alt="">
+                <h3>' . $name . '</h3>
+                <div class="price">
+                <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
+                </div>
+                <div class="ratingresult">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
+                </div>
+                <label class="giamgia">
+                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                </label>
+                <form action="index.php?act=addtocart" method="POST">
+                <input type = "hidden" name ="id" value="' . $id . '">
+                <input type = "hidden" name ="name" value="' . $name . '">
+                <input type = "hidden" name ="img" value="' . $img . '">
+                <input type = "hidden" name ="price" value="' . $price . '">
+                <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
+                <div class="tooltip">
+                <input class="themvaogio" type="submit" name ="addtocart" value="+">
+                <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                </div>
+                </form>
+                </a>
+                </li>';
 
 
             }
@@ -135,31 +112,31 @@
                 $hinh = $img_path . $img;
                 echo '<li class="sanPham">
                 <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
-    <img src="' . $hinh . '" alt="">
-    <h3>' . $name . '</h3>
-    <div class="price">
-    <strong>' . $price . '₫</strong>
-    </div>
-    <div class="ratingresult">
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
-    </div>
-    <label class="giamgia">
-    <i class="fa fa-bolt"></i> Giảm ' . $gia_tri_khuyen_mai . '₫
-    </label>
-    <form action="index.php?act=addtocart" method="POST">
-    <input type = "hidden" name ="id" value="' . $id . '">
-    <input type = "hidden" name ="name" value="' . $name . '">
-    <input type = "hidden" name ="img" value="' . $img . '">
-    <input type = "hidden" name ="price" value="' . $price . '">
-    <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
-    <div class="tooltip">
-    <input class="themvaogio" type="submit" name ="addtocart" value="+">
-    <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-    </div>
-    </form>
-    </a>
-    </li>';
+                <img src="' . $hinh . '" alt="">
+                <h3>' . $name . '</h3>
+                <div class="price">
+                <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
+                </div>
+                <div class="ratingresult">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
+                </div>
+                <label class="giamgia">
+                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                </label>
+                <form action="index.php?act=addtocart" method="POST">
+                <input type = "hidden" name ="id" value="' . $id . '">
+                <input type = "hidden" name ="name" value="' . $name . '">
+                <input type = "hidden" name ="img" value="' . $img . '">
+                <input type = "hidden" name ="price" value="' . $price . '">
+                <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
+                <div class="tooltip">
+                <input class="themvaogio" type="submit" name ="addtocart" value="+">
+                <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                </div>
+                </form>
+                </a>
+                </li>';
             }
             ?>
 
@@ -183,31 +160,31 @@
                 $hinh = $img_path . $img;
                 echo '<li class="sanPham">
                 <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
-    <img src="' . $hinh . '" alt="">
-    <h3>' . $name . '</h3>
-    <div class="price">
-    <strong>' . $price . '₫</strong>
-    </div>
-    <div class="ratingresult">
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
-    </div>
-    <label class="giamgia">
-    <i class="fa fa-bolt"></i> Giảm ' . $gia_tri_khuyen_mai . '₫
-    </label>
-    <form action="index.php?act=addtocart" method="POST">
-    <input type = "hidden" name ="id" value="' . $id . '">
-    <input type = "hidden" name ="name" value="' . $name . '">
-    <input type = "hidden" name ="img" value="' . $img . '">
-    <input type = "hidden" name ="price" value="' . $price . '">
-    <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
-    <div class="tooltip">
-    <input class="themvaogio" type="submit" name ="addtocart" value="+">
-    <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-    </div>
-    </form>
-    </a>
-    </li>';
+                <img src="' . $hinh . '" alt="">
+                <h3>' . $name . '</h3>
+                <div class="price">
+                <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
+                </div>
+                <div class="ratingresult">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
+                </div>
+                <label class="giamgia">
+                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                </label>
+                <form action="index.php?act=addtocart" method="POST">
+                <input type = "hidden" name ="id" value="' . $id . '">
+                <input type = "hidden" name ="name" value="' . $name . '">
+                <input type = "hidden" name ="img" value="' . $img . '">
+                <input type = "hidden" name ="price" value="' . $price . '">
+                <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
+                <div class="tooltip">
+                <input class="themvaogio" type="submit" name ="addtocart" value="+">
+                <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                </div>
+                </form>
+                </a>
+                </li>';
             }
             ?>
         </div>
@@ -229,35 +206,40 @@
                 $hinh = $img_path . $img;
                 echo '<li class="sanPham">
                 <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
-    <img src="' . $hinh . '" alt="">
-    <h3>' . $name . '</h3>
-    <div class="price">
-    <strong>' . $price . '₫</strong>
-    </div>
-    <div class="ratingresult">
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
-    </div>
-    <label class="giamgia">
-    <i class="fa fa-bolt"></i> Giảm ' . $gia_tri_khuyen_mai . '₫
-    </label>
-    <form action="index.php?act=addtocart" method="POST">
-    <input type = "hidden" name ="id" value="' . $id . '">
-    <input type = "hidden" name ="name" value="' . $name . '">
-    <input type = "hidden" name ="img" value="' . $img . '">
-    <input type = "hidden" name ="price" value="' . $price . '">
-    <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
-    <div class="tooltip">
-    <input class="themvaogio" type="submit" name ="addtocart" value="+">
-    <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-    </div>
-    </form>
-    </a>
-    </li>';
+                <img src="' . $hinh . '" alt="">
+                <h3>' . $name . '</h3>
+                <div class="price">
+                <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
+                </div>
+                <div class="ratingresult">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
+                </div>
+                <label class="giamgia">
+                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                </label>
+                <form action="index.php?act=addtocart" method="POST">
+                <input type = "hidden" name ="id" value="' . $id . '">
+                <input type = "hidden" name ="name" value="' . $name . '">
+                <input type = "hidden" name ="img" value="' . $img . '">
+                <input type = "hidden" name ="price" value="' . $price . '">
+                <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
+                <div class="tooltip">
+                <input class="themvaogio" type="submit" name ="addtocart" value="+">
+                <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                </div>
+                </form>
+                </a>
+                </li>';
             }
             ?>
         </div>
     </div>
+    <!-- <a class="xemTatCa" href="index.php?act=dssanpham" style="	border-left: 2px solid #ff9c00;
+                    border-right: 2px solid #ff9c00;">
+            Xem tất cả 39 sản phẩm
+        </a>
+    </div> -->
     <div class="khungSanPham" style="border-color: #ff9c00">
         <h3 class="tenKhung" style="background-image: linear-gradient(120deg, #5de272 0%, #007012 50%, #5de272 100%);">
             *
@@ -269,35 +251,38 @@
                 extract($sp);
                 $hinh = $img_path . $img;
                 echo '<li class="sanPham">
-    <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
-    <img src="' . $hinh . '" alt="">    
-    <h3>' . $name . '</h3>
-    <div class="price">
-    <strong>' . $price . '₫</strong>
-    </div>
-    <div class="ratingresult">
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-    <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
-    </div>
-    <label class="giamgia">
-    <i class="fa fa-bolt"></i> Giảm ' . $gia_tri_khuyen_mai . '₫
-    </label>
-    <form action="index.php?act=addtocart" method="POST">
-    <input type = "hidden" name ="id" value="' . $id . '">
-    <input type = "hidden" name ="name" value="' . $name . '">
-    <input type = "hidden" name ="img" value="' . $img . '">
-    <input type = "hidden" name ="price" value="' . $price . '">
-    <div class="tooltip">
-    <input class="themvaogio" type="submit" name ="addtocart" value="+">
-    <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-    </div>
-    </form>
-    </a>
-    </li>';
+                <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
+                <img src="' . $hinh . '" alt="">
+                <h3>' . $name . '</h3>
+                <div class="price">
+                <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
+                </div>
+                <div class="ratingresult">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
+                </div>
+                <label class="giamgia">
+                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                </label>
+                <form action="index.php?act=addtocart" method="POST">
+                <input type = "hidden" name ="id" value="' . $id . '">
+                <input type = "hidden" name ="name" value="' . $name . '">
+                <input type = "hidden" name ="img" value="' . $img . '">
+                <input type = "hidden" name ="price" value="' . $price . '">
+                <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
+                <div class="tooltip">
+                <input class="themvaogio" type="submit" name ="addtocart" value="+">
+                <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                </div>
+                </form>
+                </a>
+                </li>';
             }
             ?>
         </div>
     </div>
+
+
     <div style="margin-bottom:50px">
         <a class="xemTatCa" href="index.php?act=sanpham" style="	border-left: 2px solid #ff9c00;
                     border-right: 2px solid #ff9c00;">

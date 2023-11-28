@@ -25,11 +25,11 @@
         <div class="price_sale">
             <div class="area_price">
                 <strong>
-                    <?=$price?> ₫
+                <?= number_format($price, 0, ".", ".") ?> ₫
                 </strong>
                 <label class="giamgia">
                     <i class="fa fa-bolt"> </i>
-                    <?= $gia_tri_khuyen_mai ?> đ
+                    <?= number_format($gia_tri_khuyen_mai, 0, ".", ".") ?> đ
                 </label>
             </div>
             <div class="area_promo">
@@ -53,6 +53,21 @@
                     <p>1 đổi 1 trong 1 tháng nếu lỗi, đổi sản phẩm tại nhà trong 1 ngày.</p>
                 </div>
             </div>
+            <div class="box03 group desk">
+                <a href="#" data-index="0" class="box03__item item act">64GB</a>
+                <a href="#" data-index="1" class="box03__item item ">128GB</a>
+                <a href="#" data-index="2" class="box03__item item ">256GB</a>
+            </div>
+            <div class="scrolling_inner scroll-right">
+        <div class="box03 color group desk">
+                    <a href="#" class="box03__item item act">Xanh lá</a>
+                    <a href="#" class="box03__item item ">Tím</a>
+                    <a href="#"  class="box03__item item ">Đen</a>
+                    <a href="#" class="box03__item item ">Đỏ</a>
+                    <a href="#"  class="box03__item item ">Trắng</a>
+                    <a href="#" class="box03__item item ">Xanh Dương</a>
+        </div>
+    </div>
             <?php
             echo' 
             <form action="index.php?act=addtocart" method="POST">
@@ -109,7 +124,7 @@
                 <li>
                     <p>Bộ nhớ trong</p>
                     <div>
-                        <?= $memory ?>
+                        <?= $idbonho ?>
                     </div>
                 </li>
                 <li>
@@ -122,26 +137,12 @@
         </div>
     </div>
 </div>
-<div class="">
-    <?php
-    include "./view/binhluan/comment.php";
-
-?>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#binhluan").load("../view/binhluan/comment.php", { idpro: <?= $id ?> });
-            });
-        </script>
-        <div class="mb" id="binhluan">
-            
+        <hr>
+        <div id="binhluan">
+            <iframe src="view/binhluan.php?idpro=<?=$id?>" width="100%" height="600px" frameborder="0"></iframe>
         </div>
-
-
-
-
-
+        
+        <hr>
 <div class="khungSanPham" style="border-color: #434aa8">
     <h3 class="tenKhung" style="background-image: linear-gradient(120deg, #434aa8 0%, #ec1f1f 50%, #434aa8 100%);">*
         Bạn
@@ -154,11 +155,11 @@
             extract($sp);
             $hinh = $img_path . $img;
             echo '<li class="sanPham">
-                    <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
-                    <img src="' . $hinh . '" alt="">
+                    <a  href="index.php?act=chitietsanpham&idsp=' . $id . '">
+                    <img src="' . $hinh . '" alt="" style="height: 200px;">
                     <h3>' . $name . '</h3>
                     <div class="price">
-                    <strong>' . $price . '₫</strong>
+                    <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
                     </div>
                     <label class="giamgia">
                     <i class="fa fa-bolt"> </i>
@@ -181,4 +182,4 @@
         ?>
     </div>
 </div>
-
+                

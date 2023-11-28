@@ -3,6 +3,7 @@ include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/khuyenmai.php";
+include "../model/binhluan.php";
 include "../model/mau.php";
 include "../model/bonho.php";
 include "../model/taikhoan.php";
@@ -319,12 +320,16 @@ if (isset($_GET['act'])) {
             $listbill = loadall_bill(0);
             include "bill/listbill.php";
             break;
-        case 'xoabill':
+            case 'dsbl':
+                $listbinhluan = loadall_binhluan(0); //load tất cả thì cho số 0
+                include "binhluan/list.php";
+                break;
+            case 'xoabl':
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                    delete_bill($_GET['id']);
+                    delete_binhluan($_GET['id']);
                 }
-                $listbill = loadall_bill();
-                include "bill/list.php";
+                $listbinhluan = loadall_binhluan("");
+                include "binhluan/list.php";
                 break;
         case 'thongke':
             $listthongke = loadall_thongke();

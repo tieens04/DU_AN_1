@@ -29,8 +29,8 @@
                         <td style="width: 5%">' . $id . '</td>   
                         <td style="width: 10%">' . $hinh . '</td>
                         <td style="width: 40%">' . $name . '</td>
-                        <td style="width: 15%">' . $price . '</td>
-                        <td style="width: 15%">' . $so_luong . '</td>
+                        <td style="width: 15%">' . number_format($price, 0, ".", ".") . '₫</td>
+                        <td style="width: 15%">' . number_format($so_luong, 0, ".", ".") . '</td>
                         <td style="width: 15%">
                             <div class="tooltip">
                                 <a href="' . $suasp . '""><i class="fa fa-wrench"></i></a>

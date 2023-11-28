@@ -30,7 +30,7 @@
                                 <td style="width: 10%">DA1-'.$bill['id'].'</td>   
                                 <td style="width: 25%">'.$kh.'</td>
                                 <td style="width: 10%">'.$countsp.'</td>
-                                <td style="width: 10%">'.$bill["total"].'</td>
+                                <td style="width: 10%">' . number_format($bill["total"], 0, ".", ".") . '₫</td>
                                 <td style="width: 20%">'.$ttdh.'</td>
                                 <td style="width: 10%">'.$bill["ngaydathang"].'</td>
                                 <td style="width: 10%">

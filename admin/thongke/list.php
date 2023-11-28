@@ -24,9 +24,9 @@
                         <td style="width: 10%">' . $madm . '</td>   
                         <td style="width: 10%">' . $tendm . '</td>   
                         <td style="width: 10%">' . $countsp . '</td>   
-                        <td style="width: 15%">' . $maxprice . '</td>   
-                        <td style="width: 15%">' . $minprice . '</td>   
-                        <td style="width: 15%">' . $avgprice . '</td>
+                        <td style="width: 15%">' . number_format($maxprice, 0, ".", ".") . '₫</td>   
+                        <td style="width: 15%">' . number_format($minprice, 0, ".", ".") . '₫</td>   
+                        <td style="width: 15%">' . number_format($avgprice, 0, ".", ".") . '₫</td> 
             </div>
             </td>
             </td>

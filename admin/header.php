@@ -37,6 +37,7 @@
             <li class="nav-item"><a href="index.php?act=addsp" class="nav-link"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
             <li class="nav-item"><a href="index.php?act=addkm" class="nav-link"><i class="fa fa-th-large"></i> Khuyến mãi</a></li>
             <li class="nav-item"><a href="index.php?act=listbill" class="nav-link"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
+            <li class="nav-item"><a href="index.php?act=dsbl" class="nav-link"><i class="fa fa-file-text-o"></i> Bình luận</a></li>
             <li class="nav-item"><a href="index.php?act=dskh" class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
             <li class="nav-item"><a href="index.php?act=thongke" class="nav-link"><i class="fa fa-address-book-o"></i>Thống kê</a></li>
             <li class="nav-item">

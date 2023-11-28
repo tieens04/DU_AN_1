@@ -6,7 +6,7 @@
         </tr>
         <tr>
             <td>Mã màu:</td>
-            <td><input type="text" name="mamau" placeholder="nhập vào tên màu"></td>
+            <td><input type="text" name="mamau" placeholder="nhập vào mã màu"></td>
         </tr>
         <tr>
             <td>Màu:</td>
