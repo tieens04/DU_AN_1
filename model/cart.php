@@ -203,7 +203,7 @@ function delete_bill($id)
 function check_out(){
    
     $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-$vnp_Returnurl = "http://localhost:3000/index.php?act=bill";
+$vnp_Returnurl = "http://localhost:3000/vnpay_php/vnpay_return.php";
 $vnp_TmnCode = "JJHC9QFM";//Mã website tại VNPAY 
 $vnp_HashSecret = "JFDMCNMJGUIXVQNHYKHPRDBGZHSPUEHZ"; //Chuỗi bí mật
 
