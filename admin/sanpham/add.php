@@ -8,7 +8,7 @@
             <td><input type="text" name="tensp" placeholder="nhập vào tên sản phẩm"></td>
         </tr>
         <tr>
-            <td>Hãng:</td>
+            <td>Hãng sản phẩm:</td>
             <td>
             <select name="iddm">
                     <?php
@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td>Giá</td>
-            <td><input type="text" name="gia" placeholder="nhập vào giá"></td>
+            <td><input type="text" name="giasp" placeholder="nhập vào giá"></td>
         </tr>
         <tr>
             <td>Số lượng</td>
@@ -35,10 +35,10 @@
         <tr>
             <td>Khuyến mãi:</td>
             <td>
-                <select name="idsale">
+                <select name="idkm">
                     <?php
-                    foreach ($listsale as $sale) {
-                        extract($sale);
+                    foreach ($listkhuyenmai as $khuyenmai) {
+                        extract($khuyenmai);
                         echo '<option value="' . $id . '">' . $name . '</option>';
                     }
                     ?>
@@ -52,10 +52,10 @@
         <tr>
             <td>Màu:</td>
             <td>
-                <select name="idcolor">
+                <select name="idmau">
                     <?php
-                    foreach ($listcolor as $color) {
-                        extract($color);
+                    foreach ($listmau as $mau) {
+                        extract($mau);
                         echo '<option value="' . $id . '">' . $name . '</option>';
                     }
                     ?>
@@ -87,8 +87,21 @@
             <td><input type="text" name="ram" placeholder="nhập vào ram"></td>
         </tr>
         <tr>
+            <td>Bộ nhớ:</td>
+            <td>
+                <select name="idbonho">
+                    <?php
+                    foreach ($listbonho as $bonho) {
+                        extract($bonho);
+                        echo '<option value="' . $id . '">' . $name . '</option>';
+                    }
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td>Dung lượng Pin</td>
-            <td><input type="text" name="dungluongpin" placeholder="nhập vào dung lượng pin"></td>
+            <td><input type="text" name="pin" placeholder="nhập vào dung lượng pin"></td>
         </tr>
         <tr>
             <td>Hình</td>
@@ -98,8 +111,8 @@
             <td colspan="2" class="table-footer">
                 <input class="button" type="submit" name="themmoi" value="THÊM MỚI">
                 <button class="button" type="reset">NHẬP LẠI</button>
-                <button class="button" type="button" onclick="window.location.href='index.php?act=listsp'">DANH
-                    SÁCH</button>
+                <button class="button" type="button" onclick="window.location.href='index.php?act=listsp'">DANH SÁCH</button>
+                    
             </td>
         </tr>
         </div>

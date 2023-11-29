@@ -20,12 +20,7 @@
 
 
 </head>
-<style>
-    h1{
-        text-align: center;
-        line-height: 100px;
-    }
-</style>
+
 <body>
     <header>
         <h2>SmartPhone Store - Admin</h2>
@@ -37,12 +32,14 @@
             <li class="nav-title">MENU</li>
             <li class="nav-item"><a href="index.php" class="nav-link "><i class="fa fa-home"></i> Trang Chủ</a></li>
             <li class="nav-item"><a href="index.php?act=adddm" class="nav-link"><i class="fa fa-th-large"></i> Danh mục</a></li>
-            <li class="nav-item"><a href="index.php?act=addcolor" class="nav-link"><i class="fa fa-th-large"></i> Màu</a></li>
+            <li class="nav-item"><a href="index.php?act=addmau" class="nav-link"><i class="fa fa-th-large"></i> Màu</a></li>
+            <li class="nav-item"><a href="index.php?act=addbonho" class="nav-link"><i class="fa fa-th-large"></i> Bộ nhớ</a></li>
             <li class="nav-item"><a href="index.php?act=addsp" class="nav-link"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
-            <li class="nav-item"><a href="index.php?act=addsale" class="nav-link"><i class="fa fa-th-large"></i> Khuyến mãi</a></li>
+            <li class="nav-item"><a href="index.php?act=addkm" class="nav-link"><i class="fa fa-th-large"></i> Khuyến mãi</a></li>
+            <li class="nav-item"><a href="index.php?act=listbill" class="nav-link"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
             <li class="nav-item"><a href="index.php?act=dsbl" class="nav-link"><i class="fa fa-file-text-o"></i> Bình luận</a></li>
-            <li class="nav-item"><a class="nav-link"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
             <li class="nav-item"><a href="index.php?act=dskh" class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
+            <li class="nav-item"><a href="index.php?act=thongke" class="nav-link"><i class="fa fa-address-book-o"></i>Thống kê</a></li>
             <li class="nav-item">
                 <hr>
             </li>

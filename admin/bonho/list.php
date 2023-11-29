@@ -4,17 +4,17 @@
             <table class="table-header">
                 <tr>
                     <!-- Theo độ rộng của table content -->
-                    <th title="Sắp xếp" style="width: 10%">Mã <i class="fa fa-sort"></i></th>
-                    <th title="Sắp xếp" style="width: 40%">Tên <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 10%">Mã bộ nhớ <i class="fa fa-sort"></i></th>
+                    <th title="Sắp xếp" style="width: 40%">Tên bộ nhớ <i class="fa fa-sort"></i></th>
                     <th style="width: 15%">Hành động</th>
                 </tr>
             </table>
 
             <?php
-            foreach ($listdanhmuc as $danhmuc) {
-                extract($danhmuc);
-                $suadm = "index.php?act=suadm&id=".$id;
-                $xoadm = "index.php?act=xoadm&id=".$id;
+            foreach ($listbonho as $bonho) {
+                extract($bonho);
+                $suabonho = "index.php?act=suabonho&id=".$id;
+                $xoabonho = "index.php?act=xoabonho&id=".$id;
 
                 echo '
                 <table class="table-outline">
@@ -24,18 +24,18 @@
                         <td style="width: 40%">' . $name . '</td>
                         <td style="width: 15%">
                             <div class="tooltip">
-                            <a href="'.$suadm.'""><i class="fa fa-wrench"></i></a>
+                            <a href="'.$suabonho.'""><i class="fa fa-wrench"></i></a>
                         <span class="tooltiptext">Sửa</span>
                                 </div>
                             <div class="tooltip">
-                            <a href="'.$xoadm.'""><i class="fa fa-trash"></i></a>
+                            <a href="'.$xoabonho.'""><i class="fa fa-trash"></i></a>
                         <span class="tooltiptext">Xóa</span>
-            </div>
-            </td>
-            </td>
-            </tr>
-            </tbody>
-            </table>
+                    </div>  
+                    </td>
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
                     ';
             }
             ?>
@@ -46,9 +46,9 @@
             <option value="ten">Tìm theo tên</option>
         </select>
         <input type="text" placeholder="Tìm kiếm...">
-        <button><a href="index.php?act=adddm">
+        <button><a href="index.php?act=addbonho">
     <i class="fa fa-plus-square"></i>
-    Thêm loại sản phẩm
+    Thêm bộ nhớ sản phẩm
 </a></button>
     </div>
     </form>

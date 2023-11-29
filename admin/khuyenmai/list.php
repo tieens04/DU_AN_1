@@ -11,10 +11,10 @@
             </table>
 
             <?php
-            foreach ($listsale as $sale) {
-                extract($sale);
-                $suasale = "index.php?act=suasale&id=".$id;
-                $xoasale = "index.php?act=xoasale&id=".$id;
+            foreach ($listkhuyenmai as $khuyenmai) {
+                extract($khuyenmai);
+                $suakm = "index.php?act=suakm&id=".$id;
+                $xoakm = "index.php?act=xoakm&id=".$id;
 
                 echo '
                 <table class="table-outline">
@@ -24,11 +24,11 @@
                         <td style="width: 40%">' . $name . '</td>
                         <td style="width: 15%">
                             <div class="tooltip">
-                            <a href="'.$suasale.'""><i class="fa fa-wrench"></i></a>
+                            <a href="'.$suakm.'""><i class="fa fa-wrench"></i></a>
                         <span class="tooltiptext">Sửa</span>
                                 </div>
                             <div class="tooltip">
-                            <a href="'.$xoasale.'""><i class="fa fa-trash"></i></a>
+                            <a href="'.$xoakm.'""><i class="fa fa-trash"></i></a>
                         <span class="tooltiptext">Xóa</span>
                     </div>
                     </td>
@@ -46,7 +46,7 @@
             <option value="ten">Tìm theo tên</option>
         </select>
         <input type="text" placeholder="Tìm kiếm...">
-        <button><a href="index.php?act=addsale">
+        <button><a href="index.php?act=addkm">
     <i class="fa fa-plus-square"></i>
     Thêm khuyến mãi
 </a></button>

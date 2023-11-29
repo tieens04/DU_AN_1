@@ -1,7 +1,4 @@
-
-<!-- Sản Phẩm -->
 <div class="sanpham">
-
     <div class="table-content">
         <form action="index.php?act=listsp" method="POST">
             <table class="table-header">
@@ -32,8 +29,8 @@
                         <td style="width: 5%">' . $id . '</td>   
                         <td style="width: 10%">' . $hinh . '</td>
                         <td style="width: 40%">' . $name . '</td>
-                        <td style="width: 15%">' . $price . '</td>
-                        <td style="width: 15%">' . $so_luong . '</td>
+                        <td style="width: 15%">' . number_format($price, 0, ".", ".") . '₫</td>
+                        <td style="width: 15%">' . number_format($so_luong, 0, ".", ".") . '</td>
                         <td style="width: 15%">
                             <div class="tooltip">
                                 <a href="' . $suasp . '""><i class="fa fa-wrench"></i></a>
@@ -49,21 +46,20 @@
                     ';
             }
             ?>
-            <div class="table-footer">
-                <select name="kieuTimSanPham">
-                    <option value="ma">Tìm theo mã</option>
-                    <option value="ten">Tìm theo tên</option>
-                </select>
-                <input type="text" placeholder="Tìm kiếm...">
-                <button><a href="index.php?act=addsp">
-                        <i class="fa fa-plus-square"></i>
-                        Thêm sản phẩm
-                    </a></button>
-            </div>
-        </form>
     </div>
+    <div class="table-footer">
+        <select name="iddm">
+            <option value="0" selected>Tất cả</option>
+            <?php
+            foreach ($listdanhmuc as $danhmuc) {
+                extract($danhmuc);
+                echo '<option value="' . $id . '">' . $name . '</option>';
+            }
+            ?>
+        </select>
+        <input type="text" name="kyw" placeholder="Tìm kiếm...">
+        <input type="submit" name="listok" value="OK">
+        <button><a href="index.php?act=addsp"><i class="fa fa-plus-square"></i>Thêm sản phẩm</a></button>
+    </div>
+    </form>
 </div>
-</div>
-</body>
-
-</html>

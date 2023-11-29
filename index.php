@@ -3,7 +3,7 @@ include "model/pdo.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
 include "view/header.php";
-include "model/color.php";
+include "model/mau.php";
 include "model/bonho.php";
 include "global.php";
 $spnb = loadall_sanpham_home_noibatnhat();
@@ -101,18 +101,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $sp_giareonline = loadall_sanpham_home_giare();
             include "view/spgiareonline.php";
             break;
-        case 'spmau':
-            include "view/dungchung.php";
-            include "view/boloc.php";
-            if (isset($_GET['idmau']) && ($_GET['idmau'] > 0)) {
-                $idmau = $_GET['idmau'];
-                $tenmau = load_tenmau($idmau);
-                $sp_mau = loadall_sanpham_mau($idmau);
-                include "view/spmau.php";
-            } else {
-                include "view/home.php";
-            }
-            break;
+    
         case 'spgiatangdan':
             include "view/dungchung.php";
             include "view/boloc.php";
