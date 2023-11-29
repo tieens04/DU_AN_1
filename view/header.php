@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous">
     <link rel="stylesheet" href="view/css/style.css">
+
     <link rel="stylesheet" href="view/css/topnav.css">
     <link rel="stylesheet" href="view/css/header.css">
     <link rel="stylesheet" href="view/css/banner.css">
@@ -29,7 +30,7 @@
     <link rel="stylesheet" href="view/css/gioHang.css">
     <link rel="stylesheet" href="view/css/chitietsanpham.css">
     <link rel="stylesheet" href="view/css/nguoidung.css">
-
+    <link rel="stylesheet" href="view/css/reset.css">
     <style>
         .input-search input[type="text"] {
             float: left;

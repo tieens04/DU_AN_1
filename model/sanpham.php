@@ -31,7 +31,7 @@ function loadall_sanpham_home_giare()
 }
 function loadall_dssanpham()
 {
-    $sql = "select * from sanpham order by id desc limit 0,15";
+    $sql = "select * from sanpham order by id desc limit 0,10";
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
@@ -65,7 +65,7 @@ function loadall_sanpham_tren_13()
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
-function loadall_sanpham_mauxanh($idmau)
+function loadall_sanpham_mau($idmau)
 {
     $sql = "select * from sanpham where 1";
     if ($idmau > 0) {
@@ -92,10 +92,10 @@ function delete_sanpham($id)
     $sql = "delete from sanpham where id=" . $id;
     pdo_execute($sql);
 }
-function insert_sanpham($tensp, $giasp, $hinh, $soluong, $iddm, $danhgia, $manhinh, $hedieuhanh, $camerasau, $cameratruoc, $cpu, $ram, $memory, $pin, $idsale, $idcolor, $giatrikhuyenmai)
+function insert_sanpham($tensp, $giasp, $hinh, $soluong, $iddm, $danhgia, $manhinh, $hedieuhanh, $camerasau, $cameratruoc, $cpu, $ram, $pin, $idsale, $idcolor, $giatrikhuyenmai)
 {
-    $sql = "INSERT INTO sanpham(name,price,img,so_luong,iddm,danh_gia,man_hinh,he_dieu_hanh,camera_truoc,camera_sau,cpu,ram,memory,pin,idkm,idmau,gia_tri_khuyen_mai) 
-    values('$tensp','$giasp','$hinh','$soluong','$iddm','$danhgia','$manhinh','$hedieuhanh','$camerasau','$cameratruoc','$cpu','$ram','$memory','$pin','$idsale','$idcolor','$giatrikhuyenmai')";
+    $sql = "INSERT INTO sanpham(name,price,img,so_luong,iddm,danh_gia,man_hinh,he_dieu_hanh,camera_truoc,camera_sau,cpu,ram,pin,idkm,idmau,gia_tri_khuyen_mai) 
+    values('$tensp','$giasp','$hinh','$soluong','$iddm','$danhgia','$manhinh','$hedieuhanh','$camerasau','$cameratruoc','$cpu','$ram','$pin','$idsale','$idcolor','$giatrikhuyenmai')";
     pdo_execute($sql);
 }
 function loadall_sanpham($kyw = "", $iddm = 0)
@@ -147,5 +147,13 @@ function loadall_sanpham_zdena()
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
-
+function update_sanpham($id, $iddm, $tensp, $giasp, $hinh, $soluong, $danhgia, $manhinh, $hedieuhanh, $cameratruoc, $camerasau, $cpu, $ram, $pin, $giatrikhuyenmai)
+{
+    if ($hinh != "") {
+        $sql = "update sanpham set iddm='" . $iddm . "', name='" . $tensp . "', price='" . $giasp . "', img='" . $hinh . "', so_luong='" . $soluong . "', danh_gia='" . $danhgia . "', man_hinh='" . $manhinh . "', he_dieu_hanh='" . $hedieuhanh . "', camera_truoc='" . $cameratruoc . "', camera_sau='" . $camerasau . "', cpu='" . $cpu . "', ram='" . $ram . "', pin='" . $pin . "', gia_tri_khuyen_mai	='" . $giatrikhuyenmai . "' where id=" . $id;
+    } else {
+        $sql = "update sanpham set iddm='" . $iddm . "',  name='" . $tensp . "', price='" . $giasp . "', so_luong='" . $soluong . "', danh_gia='" . $danhgia . "', man_hinh='" . $manhinh . "', he_dieu_hanh='" . $hedieuhanh . "', camera_truoc='" . $cameratruoc . "', camera_sau='" . $camerasau . "', cpu='" . $cpu . "', ram='" . $ram . "', pin='" . $pin . "', gia_tri_khuyen_mai	='" . $giatrikhuyenmai . "' where id=" . $id;
+    }
+    pdo_execute($sql);
+}
 ?>

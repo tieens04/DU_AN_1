@@ -20,7 +20,12 @@
 
 
 </head>
-
+<style>
+    h1{
+        text-align: center;
+        line-height: 100px;
+    }
+</style>
 <body>
     <header>
         <h2>SmartPhone Store - Admin</h2>

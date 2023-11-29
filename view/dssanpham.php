@@ -1,3 +1,4 @@
+
 <div class="contain-products">
     <div class="choosedFilter flexContain">
         <a id="deleteAllFilter" style="display: block;" href="index.php">
@@ -47,3 +48,4 @@
         ?>
     </ul><!-- End products -->
 </div>
+

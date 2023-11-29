@@ -1,3 +1,61 @@
+<style>
+    .bonho {
+        width: 30px;
+        height: 30px;
+        padding: 8px;
+        border: 1px #ccc solid;
+        border-radius: 3px;
+        color: #333333;
+    }
+
+    .bonho:hover {
+        color: #2f80ed;
+    }
+
+    #bonho a:hover {
+        border: 1px #2f80ed solid;
+    }
+
+    #bonho {
+        margin: 25px 10px 20px;
+    }
+
+    #bonho button {
+        border: none;
+        background-color: #fff;
+    }
+
+    #mau {
+        margin: 20px 10px 20px;
+
+    }
+
+    #mau button {
+        border: none;
+        background-color: #fff;
+    }
+
+
+
+    #mau a:hover {
+        border: 1px #2f80ed solid;
+    }
+
+    .mau {
+        width: 30px;
+        height: 30px;
+        padding: 8px;
+        border: 1px #ccc solid;
+        border-radius: 3px;
+        color: #333333;
+
+    }
+
+    .mau:hover {
+        color: #2f80ed;
+
+    }
+</style>
 <div class="chitietSanpham" style="margin-bottom: 100px">
     <?php
     extract($onesp);
@@ -31,7 +89,7 @@
                 </strong>
                 <label class="giamgia">
                     <i class="fa fa-bolt"> </i>
-                    <?= number_format($gia_tri_khuyen_mai, 0, ".", ".") ?> đ
+                    <?= number_format($gia_tri_khuyen_mai, 0, ".", ".") ?> ₫
                 </label>
             </div>
             <div class="ship" style="display: none;">
@@ -42,9 +100,27 @@
                 <strong>Khuyến mãi</strong>
                 <div class="promo">
                     <img src="view/img/chitietsanpham/icon-tick.png">
-                    <div>Khuyến mãi siêu lớn</div>
+                    <div>Khuyến mãi <span style="font-weight:bold">
+                            <?= number_format($gia_tri_khuyen_mai, 0, ".", ".") ?>
+                        </span>₫ siêu lớn</div>
                 </div>
             </div>
+            <!-- // Hiển thị chọn màu sản phẩm -->
+            <div id="mau">
+                <button><a href="" class="mau">Titan xanh</a></button>
+                <button><a href="" class="mau">Titan đen</a></button>
+                <button><a href="" class="mau">Titan trắng</a></button>
+                <button><a href="" class="mau">Titan tự nhiên</a></button>
+            </div>
+            <div id="bonho">
+                <?php
+                foreach ($dsbonho as $bonho) {
+                    extract($bonho);
+                    echo '<button> <a href="" class="bonho">' . $name . '</a></button> ';
+                }
+                ?>
+            </div>
+            <!-- // End -->
             <div class="policy">
                 <div>
                     <img src="view/img/chitietsanpham/box.png">
@@ -108,10 +184,12 @@
                     </div>
                 </li>
                 <li>
+                    <!-- // Hiển thị chọn bộ nhớ sản phẩm -->
                     <p>Bộ nhớ trong</p>
                     <div>
-                        <?= $memory ?>
+
                     </div>
+                    <!-- // End -->
                 </li>
                 <li>
                     <p>Dung lượng pin</p>

@@ -284,11 +284,24 @@
     background: -webkit-linear-gradient(top, #fd6e1d, #f59000);
 }
 
-.area_order .buy_now p {
+.area_order input {
+    width: 100%;
     display: block;
     font-size: 13px;
     margin: 3px 0;
+    border: none;
 }
+.buy_now + i {
+    position: absolute;
+    top: 90.5%;
+    right: 75%;
+    transform: translateY(-50%);
+    font-weight: 900;
+    cursor: pointer;
+   
+  }
+
+
 
 .policy {
     display: block;

@@ -9,12 +9,6 @@ function delete_color($id)
     $sql = "delete from mau where id=" . $id;
     pdo_execute($sql);
 }
-function loadall_color()
-{
-    $sql = "select * from mau order by id desc";
-    $listcolor = pdo_query($sql);
-    return $listcolor;
-}
 function loadone_color($id)
 {
     $sql = "select * from mau where id=" . $id;
@@ -25,6 +19,12 @@ function update_color($id, $tenmau)
 {
     $sql = "update mau set name='" . $tenmau . "' where id=" . $id;
     pdo_execute($sql);
+}
+function loadall_color()
+{
+    $sql = "select * from mau";
+    $listcolor = pdo_query($sql);
+    return $listcolor;
 }
 
 ?>

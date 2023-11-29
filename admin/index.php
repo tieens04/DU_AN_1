@@ -157,7 +157,6 @@ if (isset($_GET['act'])) {
                 $camerasau = $_POST['camerasau'];
                 $cpu = $_POST['cpu'];
                 $ram = $_POST['ram'];
-                $memory = $_POST['bonhotrong'];
                 $pin = $_POST['dungluongpin'];                  
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
@@ -166,7 +165,7 @@ if (isset($_GET['act'])) {
                 } else {
                     //echo "Sorry, there was an error uploading your file.";
                 }
-                insert_sanpham($tensp, $giasp, $hinh, $soluong, $iddm, $danhgia, $manhinh, $hedieuhanh, $camerasau, $cameratruoc, $cpu, $ram, $memory, $pin, $idsale, $idcolor, $giatrikhuyenmai);
+                insert_sanpham($tensp, $giasp, $hinh, $soluong, $iddm, $danhgia, $manhinh, $hedieuhanh, $camerasau, $cameratruoc, $cpu, $ram, $pin, $idsale, $idcolor, $giatrikhuyenmai);
                 $thongbao = "Them thanh cong";
             }
             $listdanhmuc = loadall_danhmuc();
@@ -224,7 +223,6 @@ if (isset($_GET['act'])) {
                 $camerasau = $_POST['camerasau'];
                 $cpu = $_POST['cpu'];
                 $ram = $_POST['ram'];
-                $memory = $_POST['bonhotrong'];
                 $pin = $_POST['dungluongpin'];     
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
@@ -233,7 +231,7 @@ if (isset($_GET['act'])) {
                     } else {
                         //echo "Sorry, there was an error uploading your file.";
                     }
-                    update_sanpham($id,$tensp, $giasp, $hinh, $iddm, $soluong, $danhgia,$manhinh,$hedieuhanh,$camerasau,$cameratruoc,$cpu,$ram,$memory,$pin,$idsale,$idcolor,$giatrikhuyenmai);
+                    update_sanpham($id, $iddm, $tensp, $giasp, $hinh, $soluong, $danhgia, $manhinh, $hedieuhanh, $cameratruoc, $camerasau, $cpu, $ram, $pin, $giatrikhuyenmai);
                     $thongbao = "Cap nhat thanh cong";
                 }
                 $listdanhmuc = loadall_danhmuc();

@@ -1,4 +1,79 @@
+<style>
+table{	
+	margin-top: 10px;
+	height: 20px;
+}
+.open-modal-btn{
+	padding: 5px;
+	cursor: pointer;
+	background: #FFF;
+	border: 1px solid #0C9;
+}
+.open-modal-btn:hover{
+    background: #0C9;
+}
+    .modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.6);
+}
 
+.modal_inner {
+	width: 600px;
+	position: relative;
+	margin: auto;
+	top: 50%;
+	background: #eee;
+	border-radius: 5px;
+	overflow: hidden;
+	animation: modalShow 0.2s linear;
+}
+
+.modal_body {
+	padding: 15px;
+	background: #eee;
+}
+
+.modal_body h2 {
+	color: #505260;
+	margin-bottom: 10px;
+}
+
+.modal_footer {
+	padding: 15px;
+	text-align: center;
+	background: #3599ae;
+}
+
+.modal_footer button {
+	padding: 10px 20px;
+	color: white;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.hide {
+	display: none;
+}
+
+@keyframes modalShow {
+	from {
+		top: -200px;
+		opacity: 0;
+
+	}
+
+	to {
+		top: 50%;
+		opacity: 1;
+	}
+}
+</style>
 <div class="body-lienhe">
     <div class="lienhe-header">Liên hệ</div>
     <div class="lienhe-info">
@@ -63,10 +138,24 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><button type="submit">Gửi thông tin liên hệ</button></td>
+                        <td>
+                            <!-- <input type="submit" name="guithongtin" class="open-modal-btn" placeholder="Gửi thông tin liên hệ" > -->
+                            <input type="button" class="open-modal-btn" value="Gửi thông tin liên hệ" >
+                        </td>
                     </tr>
                 </table>
             </form>
+
+        </div>
+        <div class="modal hide" >
+            <div class="modal_inner">
+                <div class="modal_body">
+                    <h2>Bạn đã gửi thông tin liên hệ thành công</h2>
+                </div>
+                <div class="modal_footer">
+                    <button><a href="index.php">Trở về trang chủ</a></button>
+                </div>
+            </div>
         </div>
         <div class="thongtinnhom">
             <p style="font-size: 22px; color: gray">Thông tin thành viên nhóm: </p>
@@ -79,7 +168,43 @@
                     <th>Lớp</th>
                     <th>Tỉ lệ công việc</th>
                 </tr>
+                <tr>
+                    <td>Nguyễn Việt Anh</td>
+                    <td>PH33479</td>
+                    <td>Nam</td>
+                    <td>WD18337</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ngô Quốc Tiến</td>
+                    <td>PH38179</td>
+                    <td>Nam</td>
+                    <td>WD18337</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Nguyễn Đức Hiếu</td>
+                    <td>PH31723</td>
+                    <td>Nam</td>
+                    <td>WD18337</td>
+                    <td></td>
+                </tr>
             </table>
         </div>
     </div>
 </div>
+<script>
+
+    var btnOpen = document.querySelector('.open-modal-btn');
+    var modal = document.querySelector('.modal')
+    function toggleModal() {
+        modal.classList.toggle('hide')
+    }
+    btnOpen.addEventListener('click', toggleModal);
+    modal.addEventListener('click', function (e) {
+        if (e.target == e.currentTarget) {
+            toggleModal()
+        }
+    });
+
+</script>

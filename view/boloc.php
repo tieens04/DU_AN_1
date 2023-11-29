@@ -23,21 +23,6 @@
         </div>
     </div>
 
-    <div class="starFilter dropdown">
-        <button class="dropbtn">Màu</button>
-        <div class="dropdown-content">
-            <?php
-            foreach ($dsmau as $mau) {
-                extract($mau);
-                $linkmau = "index.php?act=spmau&idmau=" . $id;
-                echo ' <a href="' . $linkmau . '">' . $name . '</a>';
-            }
-            ?>
-
-            <!-- <a href="index.html?promo=tragop">Màu đỏ</a>
-            <a href="index.html?promo=moiramat">Màu tím</a> -->
-        </div>
-    </div>
 
     <div class="sortFilter dropdown">
         <button class="dropbtn">Sắp xếp</button>

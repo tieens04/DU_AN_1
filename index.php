@@ -4,6 +4,7 @@ include "model/sanpham.php";
 include "model/danhmuc.php";
 include "view/header.php";
 include "model/color.php";
+include "model/bonho.php";
 include "global.php";
 $spnb = loadall_sanpham_home_noibatnhat();
 $spmoi = loadall_sanpham_home_sanphammoi();
@@ -12,7 +13,7 @@ $spgiamgia = loadall_sanpham_home_giamgialon();
 $spgiare = loadall_sanpham_home_giare();
 $dsdm = loadall_danhmuc();
 $dsdm_header = loadall_danhmuc_header();
-$dsmau = loadall_color();
+$dsbonho = loadall_bonho();
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
@@ -106,7 +107,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['idmau']) && ($_GET['idmau'] > 0)) {
                 $idmau = $_GET['idmau'];
                 $tenmau = load_tenmau($idmau);
-                $sp_mau = loadall_sanpham_mauxanh($idmau);
+                $sp_mau = loadall_sanpham_mau($idmau);
                 include "view/spmau.php";
             } else {
                 include "view/home.php";
@@ -164,6 +165,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $sp_cungloai = loadall_sanpham_cungloai($id);
                 $onesp = loadone_sanpham($id);
                 extract($onesp);
+
                 include "view/dungchung.php";
                 include "view/chitietsanpham.php";
             } else {
@@ -182,11 +184,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "view/home.php";
             }
             break;
-        case 'nguoidung':
-            include "view/dungchung.php";
-            include "view/nguoidung.php";
-            break;
-
+        // case 'guilienhe':
+        //     include "view/guilienhe.php";
+        //     break;
         default:
             include "view/home.php";
             break;

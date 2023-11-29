@@ -87,10 +87,6 @@
             <td><input type="text" name="ram" placeholder="nhập vào ram"></td>
         </tr>
         <tr>
-            <td>Bộ nhớ trong</td>
-            <td><input type="text" name="bonhotrong" placeholder="nhập vào bộ nhớ trong"></td>
-        </tr>
-        <tr>
             <td>Dung lượng Pin</td>
             <td><input type="text" name="dungluongpin" placeholder="nhập vào dung lượng pin"></td>
         </tr>
