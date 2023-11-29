@@ -84,14 +84,30 @@
                             if ($_GET['vnp_ResponseCode'] == '00') {
                                 echo "<span style='color:blue'>GD Thanh cong</span>";
                             } else {
-                                echo "<span style='color:red'>GD Khong thanh cong</span>";
+                                echo '<span style="color:red">GD Khong thanh cong</span>
+                                <a href="index.php?act=bill"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>';
+                                
                             }
                         } else {
                             echo "<span style='color:red'>Chu ky khong hop le</span>";
                         }
                         ?>
-                    </label> <br>                       
-                    <a href="http://localhost:3000/index.php?act=bill"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>
+                    </label><br>
+                    <label>
+                        <?php
+                        if ($secureHash == $vnp_SecureHash) {
+                            if ($_GET['vnp_ResponseCode'] == '00') {
+                                echo '<a href="http://localhost:3000/index.php?act=bill"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>';
+                            } else {
+                                echo '<a href="http://localhost:3000/index.php?act=bill"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>';
+                                
+                            }
+                        } else {
+                            echo '<a href="http://localhost:3000/index.php?act=bill"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>';
+                        }
+                        ?>
+                    </label>                      
+                    
                 </div> 
             </div>
             <p>

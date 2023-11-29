@@ -9,7 +9,7 @@
             <div class="row2 mb10 formds_loai">
                 <table class="listSanPham">
 
-                    <tr>
+                    <tr style="font-size: 20;">
                         <th>MÃ ĐƠN HÀNG</th>
                         <th>NGÀY ĐẶT</th>
                         <th>SỐ LƯỢNG</th>

@@ -63,7 +63,7 @@
                         <label class="container" for=""><input type="radio" value="2" name="pttt" checked>Chuyển khản ngân hàng</label> <br>
                         <label class="container" for=""><input type="radio" value="3" name="pttt" checked>Thanh toán online</label> <br> -->
                     <label class="container"><i class="fa fa-money" aria-hidden="true"></i>  Trả tiền khi nhận hàng
-                        <input type="radio" value="1" name="pttt" checked>
+                        <input type="radio" value="1" name="pttt" checked="checked">
                         <span class="checkmark"></span><hr>
                         <span class="span">Trả tiền khi nhận hàng</span>
                     </label>
