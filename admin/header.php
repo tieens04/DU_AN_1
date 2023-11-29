@@ -40,6 +40,7 @@
             <li class="nav-item"><a href="index.php?act=addcolor" class="nav-link"><i class="fa fa-th-large"></i> Màu</a></li>
             <li class="nav-item"><a href="index.php?act=addsp" class="nav-link"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
             <li class="nav-item"><a href="index.php?act=addsale" class="nav-link"><i class="fa fa-th-large"></i> Khuyến mãi</a></li>
+            <li class="nav-item"><a href="index.php?act=dsbl" class="nav-link"><i class="fa fa-file-text-o"></i> Bình luận</a></li>
             <li class="nav-item"><a class="nav-link"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
             <li class="nav-item"><a href="index.php?act=dskh" class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
             <li class="nav-item">

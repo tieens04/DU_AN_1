@@ -5,6 +5,7 @@ include "../model/sanpham.php";
 include "../model/sale.php";
 include "../model/color.php";
 include "../model/taikhoan.php";
+include "../model/binhluan.php";
 include "header.php";
 
 if (isset($_GET['act'])) {
@@ -22,7 +23,7 @@ if (isset($_GET['act'])) {
                 } else {
                     //echo "Sorry, there was an error uploading your file.";
                 }
-                insert_danhmuc($tenloai,$target_file);
+                insert_danhmuc($tenloai, $target_file);
                 $thongbao = "Them thanh cong";
             }
             include "danhmuc/add.php";
@@ -57,7 +58,7 @@ if (isset($_GET['act'])) {
             include "danhmuc/list.php";
             break;
 
-            /* Controller loại màu sản phẩm */
+        /* Controller loại màu sản phẩm */
         case 'addcolor':
             //Kiểm tra xem user có click vào nút add hay ko
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
@@ -68,18 +69,18 @@ if (isset($_GET['act'])) {
             include "color/add.php";
             break;
 
-            case 'listcolor':
-                $listcolor = loadall_color();
-                include "color/list.php";
-                break;
-            case 'xoacolor':
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) { // kiểm tra id xem có tồn tại k nếu có và >0 thì delete
-                    delete_color($_GET['id']);
-                }
-                $listcolor = loadall_color(); // delete xong thì hiển thị danh sách 
-                include "color/list.php";
-                break;
-        
+        case 'listcolor':
+            $listcolor = loadall_color();
+            include "color/list.php";
+            break;
+        case 'xoacolor':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) { // kiểm tra id xem có tồn tại k nếu có và >0 thì delete
+                delete_color($_GET['id']);
+            }
+            $listcolor = loadall_color(); // delete xong thì hiển thị danh sách 
+            include "color/list.php";
+            break;
+
 
         case 'suacolor':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -98,7 +99,7 @@ if (isset($_GET['act'])) {
             $listcolor = loadall_color();
             include "color/list.php";
             break;
-            /* Controller sale */
+        /* Controller sale */
 
         case 'addsale':
             //Kiểm tra xem user có click vào nút add hay ko
@@ -148,8 +149,8 @@ if (isset($_GET['act'])) {
                 $giasp = $_POST['gia'];
                 $soluong = $_POST['soluong'];
                 $danhgia = $_POST['danhgia'];
-                $idsale = $_POST['idsale']; 
-                $idcolor = $_POST['idcolor']; 
+                $idsale = $_POST['idsale'];
+                $idcolor = $_POST['idcolor'];
                 $giatrikhuyenmai = $_POST['giatrikhuyenmai'];
                 $manhinh = $_POST['manhinh'];
                 $hedieuhanh = $_POST['hedieuhanh'];
@@ -157,7 +158,7 @@ if (isset($_GET['act'])) {
                 $camerasau = $_POST['camerasau'];
                 $cpu = $_POST['cpu'];
                 $ram = $_POST['ram'];
-                $pin = $_POST['dungluongpin'];                  
+                $pin = $_POST['dungluongpin'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
                 if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
@@ -175,7 +176,7 @@ if (isset($_GET['act'])) {
             include "sanpham/add.php";
             break;
 
-            case 'listsp':
+        case 'listsp':
             if (isset($_POST['listok']) && ($_POST['listok'])) {
                 $kyw = $_POST['kyw'];
                 $iddm = $_POST['iddm'];
@@ -188,7 +189,7 @@ if (isset($_GET['act'])) {
             $listsanpham = loadall_sanpham($kyw, $iddm);
             include "sanpham/list.php";
             break;
-        
+
         case 'xoasp':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 delete_sanpham($_GET['id']);
@@ -205,8 +206,8 @@ if (isset($_GET['act'])) {
             $listcolor = loadall_color();
             include "sanpham/update.php";
             break;
-            case 'updatesp':
-                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+        case 'updatesp':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                 $id = $_POST['id'];
                 $tensp = $_POST['tensp'];
                 $iddm = $_POST['iddm'];
@@ -214,8 +215,8 @@ if (isset($_GET['act'])) {
                 $giasp = $_POST['gia'];
                 $soluong = $_POST['soluong'];
                 $danhgia = $_POST['danhgia'];
-                $idsale = $_POST['idsale']; 
-                $idcolor = $_POST['id_color']; 
+                $idsale = $_POST['idsale'];
+                $idcolor = $_POST['id_color'];
                 $giatrikhuyenmai = $_POST['giatrikhuyenmai'];
                 $manhinh = $_POST['manhinh'];
                 $hedieuhanh = $_POST['hedieuhanh'];
@@ -223,27 +224,38 @@ if (isset($_GET['act'])) {
                 $camerasau = $_POST['camerasau'];
                 $cpu = $_POST['cpu'];
                 $ram = $_POST['ram'];
-                $pin = $_POST['dungluongpin'];     
+                $pin = $_POST['dungluongpin'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-                    if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                        //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-                    } else {
-                        //echo "Sorry, there was an error uploading your file.";
-                    }
-                    update_sanpham($id, $iddm, $tensp, $giasp, $hinh, $soluong, $danhgia, $manhinh, $hedieuhanh, $cameratruoc, $camerasau, $cpu, $ram, $pin, $giatrikhuyenmai);
-                    $thongbao = "Cap nhat thanh cong";
+                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                    //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                } else {
+                    //echo "Sorry, there was an error uploading your file.";
                 }
-                $listdanhmuc = loadall_danhmuc();
-                $listsale = loadall_sale();
-                $listcolor = loadall_color();
-                $listsanpham = loadall_sanpham("", 0);
-                include "sanpham/list.php";
-                break;
-            case 'dskh':
-                $listtaikhoan = loadall_taikhoan();
-                include "taikhoan/list.php";
-                break;
+                update_sanpham($id, $iddm, $tensp, $giasp, $hinh, $soluong, $danhgia, $manhinh, $hedieuhanh, $cameratruoc, $camerasau, $cpu, $ram, $pin, $giatrikhuyenmai);
+                $thongbao = "Cap nhat thanh cong";
+            }
+            $listdanhmuc = loadall_danhmuc();
+            $listsale = loadall_sale();
+            $listcolor = loadall_color();
+            $listsanpham = loadall_sanpham("", 0);
+            include "sanpham/list.php";
+            break;
+        case 'dskh':
+            $listtaikhoan = loadall_taikhoan();
+            include "taikhoan/list.php";
+            break;
+        case 'dsbl':
+            $listbinhluan = loadall_binhluan(0); //load tất cả thì cho số 0
+            include "binhluan/list.php";
+            break;
+        case 'xoabl':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_binhluan($_GET['id']);
+            }
+            $listbinhluan = loadall_binhluan("");
+            include "binhluan/list.php";
+            break;
     }
 } else {
     include "home.php";

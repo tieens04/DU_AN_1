@@ -160,12 +160,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/sanphamtimkiem.php";
             break;
         case 'chitietsanpham':
+
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
-                $sp_cungloai = loadall_sanpham_cungloai($id);
                 $onesp = loadone_sanpham($id);
                 extract($onesp);
-
+                $sp_cungloai = loadall_sanpham_cungloai($id, $iddm);
                 include "view/dungchung.php";
                 include "view/chitietsanpham.php";
             } else {

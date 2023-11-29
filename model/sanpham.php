@@ -81,9 +81,10 @@ function loadone_sanpham($id)
     $sanpham = pdo_query_one($sql);
     return $sanpham;
 }
-function loadall_sanpham_cungloai($id)
+function loadall_sanpham_cungloai($id, $iddm)
 {
-    $sql = "select * from sanpham where id <> " . $id;
+    $sql = "select * from sanpham where iddm=" . $iddm . " and id <>" . $id;
+    $sql .= " order by id desc limit 0,5";
     $sanpham = pdo_query($sql);
     return $sanpham;
 }
