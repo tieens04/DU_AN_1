@@ -89,12 +89,25 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/dungchung.php";
             include "view/cart/viewcart.php";
             break;
-        case 'viewcart':
+            case 'viewcart':
+                if (isset($_POST['bill']) && ($_POST['bill'])) {
+                    if (isset($_SESSION['user'])) {
+                        header('Location: index.php?act=bill');
+                        exit(); // Đảm bảo kết thúc kịch bản sau khi chuyển hướng
+                    } else {
+                        $thongbao = '<h1 style="color:red; font-weight:bold; font-size:24px; text-align:center; padding: 15px 0;">Vui lòng đăng nhập để tiếp tục thanh toán !!</h1>';
+                        
+                    }
+                }
+                include "view/dungchung.php";
+                include "view/cart/viewcart.php";
+                break;
+            
+        case 'bill':
             include "view/dungchung.php";
-            include "view/cart/viewcart.php";
+            include "view/cart/bill.php";
             break;
             case 'billcomfirm':
-            
                 if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
                     if (isset($_SESSION['user'])) {
                         $iduser = $_SESSION['user']['id'];
@@ -112,26 +125,43 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $idbill = insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang);
                     // nhập cart
                     foreach ($_SESSION['mycart'] as $cart) {
-                        insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $idbill);
+                        insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[3] * $cart[4] - $cart[5], $idbill);
                     }
                     $_SESSION['cart'] = []; //xóa session cart
-                }
-                //show
+                    if($pttt == 1){
+                        
+                    }else{
+                        check_out();
+                    }
+                    
                 $bill = loadone_bill($idbill);
                 $bill_ct = loadall_cart($idbill);
                 include "view/dungchung.php";
-                include "./view/cart/billcomfirm.php";
+                include "view/cart/billcomfirm.php";
+                }
+                //show
+               
                 break;
-        case 'mybill':
-            $listbill = loadall_bill($_SESSION['user']['id']);
+        /* case 'mybill':
             include "view/dungchung.php";
             include "view/cart/mybill.php";
-            break;
+            break; */
         case 'sanpham':
             include "view/dungchung.php";
             include "view/boloc.php";
             $allsp = loadall_dssanpham();
             include "view/sanpham.php";
+            break;
+        case 'sanphamct':
+            if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
+                $onesp = loadone_sanpham($id);
+                extract($onesp);
+                $sp_cung_loai = load_sanpham_cungloai($id, $iddm);
+                include "../view/sanphamct.php";
+            } else {
+                include "../view/home.php";
+            }
+
             break;
         case 'sanphamduoi2tr':
             include "view/dungchung.php";
@@ -249,14 +279,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
-                $sp_cungloai = loadall_sanpham_cungloai($id);
                 $onesp = loadone_sanpham($id);
                 extract($onesp);
+                $sp_cungloai = loadall_sanpham_cungloai($id,$iddm);
                 include "view/dungchung.php";
                 include "view/chitietsanpham.php";
             } else {
                 include "view/home.php";
             }
+            
             break;
         case 'dssanpham':
             include "view/dungchung.php";
@@ -281,7 +312,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "view/dungchung.php";
                 include "view/home.php";
             }
-
             break;
 
         case 'dangnhap':
@@ -292,8 +322,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 if (is_array($checkuser)) {
                     $_SESSION['user'] = $checkuser;
                     header('Location:index.php');
-                } else if($_SESSION['trang']=="chitietsanpham"){
-                    header('Location:index.php?act=chitietsanpham&id='.$_SESSION['idpro'].'#binhluan');
+                } else if ($_SESSION['trang'] == "chitietsanpham") {
+                    header('Location:index.php?act=chitietsanpham&id=' . $_SESSION['idpro'] . '#binhluan');
                 } else {
                     echo "<script>alert('User hoặc Password đã sai.Vui lòng nhập lại!');</script>";
                     include "view/dungchung.php";
@@ -307,45 +337,42 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
 
-        case 'edit_taikhoan':
-            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                $user = $_POST['user'];
-                $pass = $_POST['pass'];
-                $email = $_POST['email'];
-                $address = $_POST['address'];
-                $tel = $_POST['tel'];
-                $id = $_POST['id'];
+            case 'edit_taikhoan':
+                if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                    $user=$_POST['user'];
+                    $pass=$_POST['pass'];
+                    $email=$_POST['email'];
+                    $address=$_POST['address'];
+                    $tel=$_POST['tel'];
+                    $id=$_POST['id'];
 
-                update_taikhoan($id, $user, $pass, $email, $address, $tel);
-                $_SESSION['user'] = checkuser($user, $pass);
-                header('Location: index.php?act=edit_taikhoan');
-
-            }
-            include "view/dungchung.php";
-            include "view/taikhoan/edit_taikhoan.php";
-            break;
-
-        case 'quenmk':
-            if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
-                $email = $_POST['email'];
-                $tel = $_POST['tel'];
-
-                $checkemail = checkemail($email, $tel);
-                if (is_array($checkemail)) {
-                    $thongbao = "Mật khẩu của bạn là: " . $checkemail['pass'];
-                } else {
-                    $thongbao = "Email và số điện thoại này không tồn tại";
+                    update_taikhoan($id,$user,$pass,$email,$address,$tel);
+                    $_SESSION['user']=checkuser($user,$pass);
+                    header('Location: index.php?act=edit_taikhoan');
+                        
                 }
-            }
-            include "view/dungchung.php";
-            include "view/taikhoan/quenmk.php";
-            break;
+                    $listbill = loadall_bill($_SESSION['user']['id']);
+                include "view/dungchung.php";
+                include "view/taikhoan/edit_taikhoan.php";
+                break;
+
+            case 'quenmk':
+                if(isset($_POST['guiemail'])&&($_POST['guiemail'])){
+                    $email=$_POST['email'];
+                    $tel=$_POST['tel'];
+                            
+                    $checkemail=checkemail($email,$tel);                         
+                    if(is_array($checkemail)){
+                        $thongbao="Mật khẩu của bạn là: ".$checkemail['pass'];
+                    }else{
+                        $thongbao="Email và số điện thoại này không tồn tại";
+                    }                          
+                }
+                include "view/dungchung.php";
+                include "view/taikhoan/quenmk.php";
+                break;
         /* End - Tài khoản */
 
-        /* Start - Bill */
-        case 'bill':
-            include "./view/cart/bill.php";
-            break;
         case 'thoat':
             session_unset(); //xóa hết session và trở về trang chủ
             header('Location: index.php');

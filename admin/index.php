@@ -25,13 +25,20 @@ if (isset($_GET['act'])) {
                 } else {
                     //echo "Sorry, there was an error uploading your file.";
                 }
-                insert_danhmuc($tenloai,$target_file);
+                insert_danhmuc($tenloai, $target_file);
                 $thongbao = "Them thanh cong";
             }
             include "danhmuc/add.php";
             break;
         case 'listdm':
-            $listdanhmuc = loadall_danhmuc();
+                if (isset($_POST['listok']) && ($_POST['listok'])) {
+                    $kyw = $_POST['kyw'];
+                } else {
+                    $kyw = '';
+                    $id = 0;
+                    
+                }
+                $listdanhmuc = loadall_danhmuc($kyw);
             include "danhmuc/list.php";
             break;
         case 'xoadm':
@@ -49,17 +56,23 @@ if (isset($_GET['act'])) {
             include "danhmuc/update.php";
             break;
 
-        case 'updatedm':
-            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                $id = $_POST['id'];
-                $tenloai = $_POST['tenloai'];
-                $img = $_POST['img'];
-                update_danhmuc($id, $tenloai);
-                $thongbao = "Cap nhat thanh cong";
-            }
-            $listdanhmuc = loadall_danhmuc();
-            include "danhmuc/list.php";
-            break;
+            case 'updatedm':
+                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                    $id = $_POST['id'];
+                    $tenloai = $_POST['tenloai'];
+                    $target_dir = "../upload/";
+                    $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                    if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                        //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                    } else {
+                        //echo "Sorry, there was an error uploading your file.";
+                    }
+                    update_danhmuc($id, $tenloai, $target_file);
+                    $thongbao = "Cap nhat thanh cong";
+                }
+                $listdanhmuc = loadall_danhmuc();
+                include "danhmuc/list.php";
+                break;
 
         /* Controller loại màu sản phẩm */
         case 'addmau':
@@ -224,21 +237,13 @@ if (isset($_GET['act'])) {
             if (isset($_POST['listok']) && ($_POST['listok'])) {
                 $kyw = $_POST['kyw'];
                 $iddm = $_POST['iddm'];
-                $idkm = $_POST['idkm'];
-                $idmau = $_POST['idmau'];
-                $idbonho = $_POST['idbonho'];
             } else {
                 $kyw = '';
                 $iddm = 0;
-                $idkm = 0;
-                $idmau = 0;
-                $idbonho = 0;
+                
             }
             $listdanhmuc = loadall_danhmuc();
-            $listkhuyenmai = loadall_khuyenmai();
-            $listbonho = loadall_bonho();
-            $listmau = loadall_mau();
-            $listsanpham = loadall_sanpham($kyw, $iddm, $idmau, $idkm,$idbonho);
+            $listsanpham = loadall_sanpham($kyw, $iddm, $idmau, $idkm, $idbonho);
             include "sanpham/list.php";
             break;
 
@@ -303,13 +308,7 @@ if (isset($_GET['act'])) {
             include "taikhoan/list.php";
             break;
             /* Controller tài khoản */
-        case 'xoatk':
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                delete_taikhoan($_GET['id']);
-            }
-            $listtaikhoan = loadall_taikhoan();
-            include "taikhoan/list.php";
-            break;
+        
             /* Controller bill */
         case 'listbill':
             if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
@@ -317,7 +316,7 @@ if (isset($_GET['act'])) {
             }else{
                 $kyw="";
             }
-            $listbill = loadall_bill(0);
+            $listbill = loadall_bill($kyw,0);
             include "bill/listbill.php";
             break;
             case 'dsbl':

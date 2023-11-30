@@ -1,4 +1,4 @@
-/* https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
+
 .listSanPham {
 	margin: 50px auto;
     border-collapse: collapse;
@@ -20,25 +20,15 @@
     padding-bottom: 12px;
     text-align: center;
 }
-
-/* Đổi màu button khi hover vào tr */
-.listSanPham tr:hover td button {
-    background-color: rgb(176, 212, 177)
-}
-
 /* Canh giữa cho cột stt và th */
 .listSanPham tr td:first-child, .listSanPham tr th {
 	text-align: center;
 }
 
 /* những tr chẵn sẽ có màu khác */
-.listSanPham tr:nth-of-type(even) {background-color: #f2f2f2;}
-
-/* Dòng tổng tiền thanh toán sẽ có màu đậm hơn */
-.listSanPham tr:not(:last-child):hover {background-color: #e5e2e2;}
-
+.listSanPham tr:nth-of-type(even) {background-color: #ffffff;}
 /* Last child là dòng tổng tiền */
-.listSanPham tr:last-child { background-color: #aaa; }
+.listSanPham tr:last-child { background-color: #4CAF50; }
 
 /* Số lượng */
 .listSanPham .soluong {
@@ -58,7 +48,7 @@
 .listSanPham .soluong input {
     border: none;
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     font-size: 1em;
     font-weight: bold;
     text-align: center;
@@ -70,6 +60,7 @@
 .noPadding {
     padding: 0 0 0 10px;
     line-height: 2.5em;
+    
     
 }
 .listSanPham td a {
@@ -118,16 +109,32 @@
 }
 
 /* Nút thanh toán */
-.thanhtoan {
-    font-size: 1.5em;
-    padding: 10px 15px;
-    font-weight: bold;
-    background-color: rgb(197, 223, 199);
+.btn-13 {
+    margin-bottom: 50px; /* Tăng khoảng cách giữa nút và các phần tử khác */
+    border: none;
+    z-index: 1;
+    position: relative; /* Sử dụng position: relative để xác định vị trí */
+    display: block; /* Chuyển đổi nút thành block element để quản lý khoảng trống */
+    width: fit-content; /* Tự điều chỉnh chiều rộng dựa trên nội dung */
+    margin-left: auto; /* Đặt nút ở giữa màn hình */
+    margin-right: auto; /* Đặt nút ở giữa màn hình */
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background-color: transparent;
     cursor: pointer;
-    transition-duration: .2s;
+    transition: all 0.3s ease;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+    background:#4CAF50;
+    color: #fff;
+    
 }
-.thanhtoan:hover {
-    background-color: #4CAF50; 
+
+.btn-13:active {
+    top: 2px;
 }
 
 .xoaHet {

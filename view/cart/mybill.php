@@ -1,15 +1,15 @@
-<main class="catalog  mb ">
+<main class="mb ">
 
-    <div class="boxleft">
+    <div class="">
 
         <div class="">
             <div class="boxtitle">ĐƠN HÀNG CỦA BẠN</div>
         </div>
         <form action="index.php?act=mybill" method="POST">
             <div class="row2 mb10 formds_loai">
-                <table>
+                <table class="listSanPham">
 
-                    <tr>
+                    <tr style="font-size: 20;">
                         <th>MÃ ĐƠN HÀNG</th>
                         <th>NGÀY ĐẶT</th>
                         <th>SỐ LƯỢNG</th>
@@ -17,7 +17,7 @@
                         <th>TÌNH TRẠNG ĐƠN HÀNG</th>
                     </tr>
                     <?php
-                    if (is_array($listbill)) {
+                    if (is_array($listbill)&& (isset($_SESSION['user']))) {
                         foreach ($listbill as $bill) {
                             extract($bill);
                             $ttdh = get_ttdh($bill['bill_status']);

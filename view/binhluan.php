@@ -58,7 +58,7 @@
     session_start(); 
     include "../model/pdo.php";
     include "../model/binhluan.php";
-
+    $idpro = $_REQUEST['idpro'];
     if (isset($_GET['idpro'])) {
         $idpro = $_GET['idpro'];
     }

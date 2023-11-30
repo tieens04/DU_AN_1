@@ -1,6 +1,7 @@
 <div class="sanpham">
     <div class="table-content">
-        <form action="#" method="POST">
+        <form action="index.php?act=listbill" method="POST">
+    
             <table class="table-header">
                 <tr>
                     <!-- Theo độ rộng của table content -->
@@ -10,7 +11,7 @@
                     <th style="width: 10%">Giá trị đơn hàng <i class="fa fa-sort"></i></th>
                     <th style="width: 20%">Ngày đặt hàng <i class="fa fa-sort"></i></th>
                     <th style="width: 10%">Tình trạng đơn hàng <i class="fa fa-sort"></i></th>
-                    <th style="width: 10%">Hành động</th>
+
                 </tr>
             </table>
             <?php
@@ -31,14 +32,8 @@
                                 <td style="width: 25%">'.$kh.'</td>
                                 <td style="width: 10%">'.$countsp.'</td>
                                 <td style="width: 10%">' . number_format($bill["total"], 0, ".", ".") . '₫</td>
-                                <td style="width: 20%">'.$ttdh.'</td>
-                                <td style="width: 10%">'.$bill["ngaydathang"].'</td>
-                                <td style="width: 10%">
-                                    <div class="tooltip">
-                                    <a href="'.$xoabill.'""><i class="fa fa-trash"></i></a>
-                                <span class="tooltiptext">Xóa</span>
-                            </div>
-                            </td>
+                                <td style="width: 20%">'.$bill["ngaydathang"].'</td>
+                                <td style="width: 10%">'.$ttdh.'</td>
                             </td>
                             </tr>
                             </tbody>
@@ -48,11 +43,8 @@
             ?>
     </div>
     <div class="table-footer">
-        <select name="kieuTimSanPham">
-            <option value="ma">Tìm theo mã</option>
-            <option value="ten">Tìm theo tên</option>
-        </select>
-        <input type="text" placeholder="Tìm kiếm...">
+        <input type="text" name="kyw" placeholder="Tìm kiếm...">
+        <input type="submit" name="listok" value="OK">
     </div>
     </form>
 </div>

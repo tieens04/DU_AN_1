@@ -40,12 +40,5 @@
             }
             ?>
     </div>
-    <div class="table-footer">
-        <select name="kieuTimSanPham">
-            <option value="ma">Tìm theo mã</option>
-            <option value="ten">Tìm theo tên</option>
-        </select>
-        <input type="text" placeholder="Tìm kiếm...">
-    </div>
     </form>
 </div>

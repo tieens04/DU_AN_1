@@ -54,8 +54,11 @@
                     
                 ?>
                 </h2>   
-                <li style="list-style-type: none;">Quản lý: <a href="../admin/index.php">Admin</a></li>    
+                <li style="list-style-type: none;">Quản lý: <a href="./admin/index.php">Admin</a></li>    
             </div>
+            <?php
+              include "view/cart/mybill.php";        
+            ?>
         </div>
 
     

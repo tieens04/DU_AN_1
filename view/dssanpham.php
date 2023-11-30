@@ -22,12 +22,12 @@
             $linksp = "index.php?act=chitietsanpham&idsp=" . $id;
             $hinh = $img_path . $img;
             echo '<li class="sanPham">
-    <a href="' . $linksp . '">
+        <a href="' . $linksp . '">
         <img src="' . $hinh . '"
             alt="">
         <h3>' . $name . '</h3>
         <div class="price">
-            <strong>' . number_format($price, 0, ".", ".") . '₫₫</strong>
+            <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
         </div>
         <div class="ratingresult">
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>

@@ -97,7 +97,7 @@
                                         </p>
                                     </form>
 
-                                    <p class="cd-signin-modal__bottom-message"><a href="index.php?act=quenmk">Quên mật
+                                    <p class="cd-signin-modal__bottom-message"  ><a href="index.php?act=quenmk" style="color:white;">Quên mật
                                             khẩu?</a></p>
                                 </div> <!-- cd-signin-modal__block -->
 

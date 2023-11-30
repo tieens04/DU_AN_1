@@ -59,7 +59,10 @@
         </select>
         <input type="text" name="kyw" placeholder="Tìm kiếm...">
         <input type="submit" name="listok" value="OK">
-        <button><a href="index.php?act=addsp"><i class="fa fa-plus-square"></i>Thêm sản phẩm</a></button>
+        <button>
+            <a href="index.php?act=addsp">
+                <i class="fa fa-plus-square"></i>Thêm sản phẩm</a>
+        </button>
     </div>
     </form>
 </div>

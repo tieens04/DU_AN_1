@@ -109,12 +109,16 @@ function loadone_sanpham($id)
     $sanpham = pdo_query_one($sql);
     return $sanpham;
 }
-function loadall_sanpham_cungloai($id)
+function loadall_sanpham_cungloai($id, $iddm)
 {
-    $sql = "select * from sanpham where id <> " . $id;
+    // Sửa câu truy vấn SQL
+    $sql = "SELECT * FROM sanpham WHERE iddm = $iddm AND id <> $id ORDER BY id DESC LIMIT 0, 5";
+    
+    // Thực hiện truy vấn và trả về kết quả
     $sanpham = pdo_query($sql);
     return $sanpham;
 }
+
 function delete_sanpham($id)
 {
     $sql = "delete from sanpham where id=" . $id;
@@ -126,7 +130,7 @@ function insert_sanpham($iddm, $idkm, $idmau, $tensp, $giasp, $hinh, $soluong, $
     values('$tensp','$giasp','$hinh','$soluong','$iddm','$danhgia','$manhinh','$hedieuhanh','$camerasau','$cameratruoc','$cpu','$ram','$idbonho','$pin','$idkm','$idmau','$giatrikhuyenmai')";
     pdo_execute($sql);
 }
-function loadall_sanpham($kyw = "",$iddm=0)
+function loadall_sanpham($kyw = "",$iddm=0,)
 {   
     ;
     $sql = "select * from sanpham where 1";

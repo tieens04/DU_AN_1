@@ -41,11 +41,7 @@
             ?>
     </div>
     <div class="table-footer">
-        <select name="kieuTimSanPham">
-            <option value="ma">Tìm theo mã</option>
-            <option value="ten">Tìm theo tên</option>
-        </select>
-        <input type="text" placeholder="Tìm kiếm...">
+        
         <button><a href="index.php?act=addkm">
     <i class="fa fa-plus-square"></i>
     Thêm khuyến mãi

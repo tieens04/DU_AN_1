@@ -41,15 +41,21 @@
             ?>
     </div>
     <div class="table-footer">
-        <select name="kieuTimSanPham">
-            <option value="ma">Tìm theo mã</option>
-            <option value="ten">Tìm theo tên</option>
+        <!-- <select name="maloai">
+            <option value="0" selected>Tất cả</option>
+            <?php
+            foreach ($listdanhmuc as $danhmuc) {
+                extract($danhmuc);
+                echo '<option value="' . $id . '">' . $name . '</option>';
+            }
+            ?>
         </select>
-        <input type="text" placeholder="Tìm kiếm...">
-        <button><a href="index.php?act=adddm">
-    <i class="fa fa-plus-square"></i>
-    Thêm loại sản phẩm
-</a></button>
+        <input type="text" name="kyw" placeholder="Tìm kiếm...">
+        <input type="submit" name="listok" value="OK"> -->
+        <button>
+            <a href="index.php?act=adddm">
+                <i class="fa fa-plus-square"></i>Thêm sản phẩm</a>
+        </button>
     </div>
     </form>
 </div>

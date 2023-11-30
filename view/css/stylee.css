@@ -779,7 +779,16 @@ x sigin/signup popup
 .cd-signin-modal__block.cd-signin-modal__block--is-selected {
   display: block;
 }
-
+.boxtitle1{
+    font-weight: 550;
+    color: #5c5c5c;
+    padding: 10px;
+    text-align: center;
+  }
+.custom-btn{
+    width: 100%;
+    height: 40px;
+  }
 
 
 

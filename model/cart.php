@@ -45,13 +45,20 @@ function viewcart($del)
                 </tr>';
         $i++;
     }
-    echo '<tr>
-            <td colspan="4">Tổng đơn hàng</td>
-            <td colspan="3">' . number_format($tong, 0, ".", ".") . '₫</td>
-            <td><a href="index.php?act=delcart"> 
-            <input type="button" value="Xóa tất cả"> </a></td>
+    if ($del == 1) {
+        $xoasp_tc = '<td><a href="index.php?act=delcart"> 
+        <input type="button" value="Xóa tất cả"> </a></td>';
+    } else {
+        $xoasp_tc = '';
+    }
+    echo '<tr style="height: 50px;">
+            <td style="color:white" colspan="6">Tổng đơn hàng</td>
+            <td style="color:white" colspan="1">' . number_format($tong, 0, ".", ".") . '₫</td>
+            '. $xoasp_tc .'
             </tr>';
 }
+
+//////
 function bill_chi_tiet($listbill)
 {
     global $img_path;
@@ -67,13 +74,12 @@ function bill_chi_tiet($listbill)
             </tr>';
     foreach ($listbill as $cart) {
         $hinh = $img_path . $cart['img'];
-
-        $tong += $cart['thanhtien'];
-        echo '<tr>
         
+        $tong += $cart['thanhtien'];
+        echo '<tr>  
         <td><img src="' . $hinh . '" alt="" height="80px"></td>
         <td>' . $cart['name'] . '</td>
-        <td>' . $cart['price'] . '</td>
+        <td>' . number_format($cart['price'], 0, ".", ".") . '₫</td>
         <td>' . $cart['soluong'] . '</td>
         <td>' . $cart['thanhtien'] . '</td>
         </tr>';
@@ -90,20 +96,21 @@ function tongdonhang()
     $tong = 0;
 
     foreach ($_SESSION['mycart'] as $cart) {
-        $ttien = $cart[3] * $cart[4];
+        $ttien = $cart[3] * $cart[4] - $cart[5];
         $tong += $ttien;
     }
     return $tong;
+}
+
+function insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang)
+{
+    $sql = "INSERT INTO bill(iduser,bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,total) values('$iduser','$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
+    return pdo_execute_return_lastInsertId($sql);
 }
 function insert_cart($iduser, $idpro, $img, $name, $price, $soluong, $thanhtien, $idbill)
 {
     $sql = "INSERT INTO cart(iduser,idpro,img,name,price,soluong,thanhtien,idbill) values('$iduser','$idpro','$img','$name','$price','$soluong','$thanhtien','$idbill')";
     return pdo_execute($sql);
-}
-function insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang)
-{
-    $sql = "INSERT INTO bill(iduser,bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,total) values('$iduser','$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
-    return pdo_execute_return_lastInsertId($sql);
 }
 function loadone_bill($id)
 {
@@ -156,7 +163,24 @@ function get_ttdh($n)
     return $tt;
 }
 
-
+function get_pttt($a)
+{
+    switch ($a) {
+        case '1':
+            $pt = "Trả tiền khi nhận hàng";
+            break;
+        case '2':
+            $pt = "Chuyển khản ngân hàng";
+            break;
+        case '3':
+            $pt = "Thanh toán online";
+            break;
+        default:
+            $pt = "Trả tiền khi nhận hàng";
+            break;
+    }
+    return $pt;
+}
 function loadall_thongke()
 {
     $sql = "SELECT danhmuc.id as madm, danhmuc.name as tendm, 
@@ -169,5 +193,76 @@ function loadall_thongke()
 
     $listtk = pdo_query($sql);
     return $listtk;
+}
+       
+function delete_bill($id)
+{
+    $sql = "delete from bill where id=" . $id;
+    pdo_execute($sql);
+}
+function check_out(){
+   
+$vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+$vnp_Returnurl = "http://localhost/DA/vnpay_php/vnpay_return.php";
+$vnp_TmnCode = "JJHC9QFM";//Mã website tại VNPAY 
+$vnp_HashSecret = "JFDMCNMJGUIXVQNHYKHPRDBGZHSPUEHZ"; //Chuỗi bí mật
+
+$vnp_TxnRef = rand(00,9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+$vnp_OrderInfo = 'Nội dung thanh toán';
+$vnp_OrderType = 'billpayment';
+$vnp_Amount = tongdonhang()*100;
+$vnp_Locale = 'vn';
+$vnp_BankCode = 'NCB';
+$vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+$inputData = array(
+    "vnp_Version" => "2.1.0",
+    "vnp_TmnCode" => $vnp_TmnCode,
+    "vnp_Amount" => $vnp_Amount,
+    "vnp_Command" => "pay",
+    "vnp_CreateDate" => date('YmdHis'),
+    "vnp_CurrCode" => "VND",
+    "vnp_IpAddr" => $vnp_IpAddr,
+    "vnp_Locale" => $vnp_Locale,
+    "vnp_OrderInfo" => $vnp_OrderInfo,
+    "vnp_OrderType" => $vnp_OrderType,
+    "vnp_ReturnUrl" => $vnp_Returnurl,
+    "vnp_TxnRef" => $vnp_TxnRef
+
+);
+
+if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+    $inputData['vnp_BankCode'] = $vnp_BankCode;
+}
+
+ksort($inputData);
+$query = "";
+$i = 0;
+$hashdata = "";
+foreach ($inputData as $key => $value) {
+    if ($i == 1) {
+        $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+    } else {
+        $hashdata .= urlencode($key) . "=" . urlencode($value);
+        $i = 1;
+    }
+    $query .= urlencode($key) . "=" . urlencode($value) . '&';
+}
+
+$vnp_Url = $vnp_Url . "?" . $query;
+if (isset($vnp_HashSecret)) {
+    $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);
+    $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+}
+$returnData = array('code' => '00'
+    , 'message' => 'success'
+    , 'data' => $vnp_Url);
+    if (isset($_POST['dongydathang'])) {
+        header('Location: ' . $vnp_Url);
+        die();
+    } else {
+        echo json_encode($returnData);
+    }
+
+    
 }
 ?>        

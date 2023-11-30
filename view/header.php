@@ -12,13 +12,14 @@
     <!-- Load font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="view/css/stylee.css">
     <link rel="stylesheet" href="view/css/topnav.css">
-    <link rel="stylesheet" href="view/css/header.css">
+    <link rel="stylesheet" href="view/css/headerr.css">
     <link rel="stylesheet" href="view/css/banner.css">
     <link rel="stylesheet" href="view/css/taikhoan.css">
     <link rel="stylesheet" href="view/css/trangchu.css">
-    <link rel="stylesheet" href="view/css/home_productsss.css">
+    <link rel="stylesheet" href="view/css/home_sanpham.css">
     <link rel="stylesheet" href="view/css/pagination_phantrangg.css">
     <link rel="stylesheet" href="view/css/footer.css">
     <link rel="stylesheet" href="view/css/tuyendung.css">
@@ -26,7 +27,7 @@
     <link rel="stylesheet" href="view/css/lienhe.css">
     <link rel="stylesheet" href="view/css/gioithieu.css">
     <link rel="stylesheet" href="view/css/tintuc.css">
-    <link rel="stylesheet" href="view/css/giohangg.css">
+    <link rel="stylesheet" href="view/css/cart.css">
     <link rel="stylesheet" href="view/css/chitietsanphammm.css">
     <link rel="stylesheet" href="view/css/nguoidung.css">
     <link rel="stylesheet" href="view/css/reset.css">
