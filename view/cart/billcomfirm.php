@@ -3,19 +3,19 @@
 </div>
 <main class="catalog mb">
     <div class="boxleft">
-    <div class="row mb">
-                <div class="boxtitle">Chi tiết giỏ hàng</div>
-                <div>
-                    <table class="listSanPham">
-                        <?php
-                        bill_chi_tiet($bill_ct);
-                        ?>
-                    </table>
-                </div>
+        <div class="mb">
+            <div class="boxtitle">Chi tiết giỏ hàng</div>
+            <div>
+                <table class="listSanPham">
+                    <?php
+                    bill_chi_tiet($bill_ct);
+                    ?>
+                </table>
             </div>
+        </div>
     </div>
     <div class="boxright">
-        
+
         <?php
         if (isset($bill) && (is_array($bill))) {
             extract($bill);
@@ -30,33 +30,33 @@
                 <li>- Tổng đơn hàng: <?= $bill['total']; ?></li>
                 <li>- Phương thức thanh toán: <?= $pttt; ?></li>
             </div>
-            
+
         </div>
-        
+
         <form action="index.php?act=billcomfirm" method="POST">
             <div>
                 <table>
                     <div class="boxtitle">THÔNG TIN ĐẶT HÀNG</div>
                     <div class="mb">
-                        Người đặt hàng: 
+                        Người đặt hàng:
                         <?= $bill['bill_name']; ?>
                     </div>
                     <div class="mb">
-                        Địa chỉ: 
+                        Địa chỉ:
                         <?= $bill['bill_address']; ?>
                     </div>
                     <div class="mb">
-                        Email: 
+                        Email:
                         <?= $bill['bill_email']; ?>
                     </div>
                     <div class="mb">
-                        Điện thoại: 
+                        Điện thoại:
                         <?= $bill['bill_tel']; ?>
                     </div>
 
                 </table>
             </div>
-           
+
         </form>
     </div>
 

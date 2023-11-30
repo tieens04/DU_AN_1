@@ -1,6 +1,6 @@
 /* https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
 .listSanPham {
-	margin: auto;
+    margin: auto;
     border-collapse: collapse;
     width: 100%;
     text-align: center;
@@ -11,13 +11,19 @@
     border: 1px solid #ddd;
     padding-top: 12px;
     padding-bottom: 12px;
-    
-    background-color: #4CAF50;
+
+    background-color: #99B898;
+    /* background-color: #4CAF50; */
     color: white;
 }
+
 .listSanPham td {
     border: 1px solid #ddd;
 }
+.listSanPham tr {
+    height: 50px;
+}
+
 
 /* Đổi màu button khi hover vào tr */
 .listSanPham tr:hover td button {
@@ -30,29 +36,37 @@
 } */
 
 /* những tr chẵn sẽ có màu khác */
-.listSanPham tr:nth-of-type(even) {background-color: #f2f2f2;}
+.listSanPham tr:nth-of-type(even) {
+    background-color: #f2f2f2;
+}
 
 /* Dòng tổng tiền thanh toán sẽ có màu đậm hơn */
-.listSanPham tr:not(:last-child):hover {background-color: #e5e2e2;}
+.listSanPham tr:not(:last-child):hover {
+    background-color: #A8A7A7;
+}
 
 /* Last child là dòng tổng tiền */
-.listSanPham tr:last-child { background-color: #aaa; }
+/* .listSanPham tr:last-child {
+    background-color: #aaa;
+} */
 
 /* Số lượng */
 /* .listSanPham .soluong {
     text-align: center;
 } */
-.listSanPham .soluong button {
+/* .listSanPham .soluong button {
     width: 30px;
     height: 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: transparent; 
+    background-color: transparent;
 }
+
 .listSanPham .soluong button:hover {
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
 }
+
 .listSanPham .soluong input {
     border: none;
     border-radius: 5px;
@@ -62,18 +76,20 @@
     text-align: center;
     width: 5em;
     height: 2em;
-}
+} */
 
 /* Link sản phẩm */
 .noPadding {
     padding: 0 0 0 10px;
     line-height: 2.5em;
 }
+
 .listSanPham td a {
     display: block;
     position: relative;
     padding: 5px 0;
 }
+
 .listSanPham td a:hover {
     text-decoration: underline;
 }
@@ -87,6 +103,7 @@
     border-radius: 10px;
     transition-duration: .1s;
 }
+
 .imgHide a:hover img {
     height: 150px;
 }
@@ -94,7 +111,7 @@
 /* Cột Giá tiền canh lề phải */
 .alignRight {
     text-align: right;
-    padding-right: 30px;  
+    padding-right: 30px;
 }
 
 
@@ -123,8 +140,9 @@
     cursor: pointer;
     transition-duration: .2s;
 }
+
 .thanhtoan:hover {
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
 }
 
 .xoaHet {
@@ -133,25 +151,32 @@
     font-weight: bold;
     cursor: pointer;
 }
+
 .xoaHet:hover {
     background-color: rgb(224, 65, 65);
 }
-.catalog{
-    display:flex;
-    
+
+.catalog {
+    display: flex;
+
     /* height: 350px; */
 }
-.boxleft{
-  width: 70%;
-  
-  border-right: 1.5px #eee solid;
+
+.boxleft {
+    width: 70%;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1.5px #eee solid;
 }
-.boxright{
-  width:30%;
-  margin-left: 5px;
-  height:312px;
-  overflow-x:hidden;
-  overflow-y:auto;
+
+.boxright {
+    width: 30%;
+    margin-left: 5px;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1.5px #eee solid;
 }
 
 /* The container */
@@ -169,17 +194,17 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  
-  /* Hide the browser's default radio button */
-  .container input {
+}
+
+/* Hide the browser's default radio button */
+.container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-  }
-  
-  /* Create a custom radio button */
-  .checkmark {
+}
+
+/* Create a custom radio button */
+.checkmark {
     position: absolute;
     top: 12px;
     left: 5px;
@@ -187,42 +212,44 @@
     width: 15px;
     background-color: #eee;
     border-radius: 50%;
-  }
-  .span{
+}
+
+.span {
     font-size: 10px;
     position: absolute;
     top: 30px;
     left: 35px;
     color: #aaa
-  }
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
     background-color: #ccc;
-  }
-  
-  /* When the radio button is checked, add a blue background */
-  .container input:checked ~ .checkmark {
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked~.checkmark {
     background-color: #2196F3;
-  }
-  
-  /* Create the indicator (the dot/circle - hidden when not checked) */
-  .checkmark:after {
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
     content: "";
     position: absolute;
     display: none;
-  }
-  
-  /* Show the indicator (dot/circle) when checked */
-  .container input:checked ~ .checkmark:after {
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked~.checkmark:after {
     display: block;
-  }
-  
-  /* Style the indicator (dot/circle) */
-  .container .checkmark:after {
-       top: 5px;
-      left: 5px;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: white;
-  }
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+}

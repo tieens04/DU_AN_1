@@ -54,7 +54,7 @@
                 <div class="form-group">
 
                     <label >Số tiền:</label>
-                    <label><?php echo $_GET['vnp_Amount'] ?></label>
+                    <label><?php echo $_GET['vnp_Amount'] / 100 ?></label>
                 </div>  
                 <div class="form-group">
                     <label >Nội dung thanh toán:</label>
@@ -97,7 +97,7 @@
                         <?php
                         if ($secureHash == $vnp_SecureHash) {
                             if ($_GET['vnp_ResponseCode'] == '00') {
-                                echo '<a href="http://localhost:3000/index.php?act=bill"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>';
+                                echo '<a href="http://localhost:3000/index.php?act=edit_taikhoan"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>';
                             } else {
                                 echo '<a href="http://localhost:3000/index.php?act=bill"><input type="button" value="TIẾP TỤC ĐẶT HÀNG"></a>';
                                 

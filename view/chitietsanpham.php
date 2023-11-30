@@ -21,11 +21,11 @@
         $hinh = $img_path . $img;
         echo '<div class="picture">
     <img style="width:390px" src="' . $hinh . '">
-</div>';?>
+</div>'; ?>
         <div class="price_sale">
             <div class="area_price">
                 <strong>
-                    <?=$price?> ₫
+                    <?= $price ?> ₫
                 </strong>
                 <label class="giamgia">
                     <i class="fa fa-bolt"> </i>
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <?php
-            echo' 
+            echo ' 
             <form action="index.php?act=addtocart" method="POST">
             <input type = "hidden" name ="id" value="' . $id . '">
             <input type = "hidden" name ="name" value="' . $name . '">
@@ -65,7 +65,7 @@
 
             <input class="buy_now" type="submit" name="addtocart" value="Thêm vào giỏ hàng">
             <i class="fa fa-cart-plus" onclick="document.querySelector(&quot;.buy_now&quot;).click()"></i>
-            </div></form>';?>
+            </div></form>'; ?>
         </div>
         <div class="info_product">
             <h2>Thông số kỹ thuật</h2>
@@ -74,7 +74,7 @@
                 <li>
                     <p>Màn hình</p>
                     <div>
-                        <?= $man_hinh?>
+                        <?= $man_hinh ?>
                     </div>
                 </li>
                 <li>
@@ -123,27 +123,13 @@
         </div>
     </div>
 </div>
-<div class="">
-    <?php
-    include "./view/binhluan/comment.php";
-
-?>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#binhluan").load("../view/binhluan/comment.php", { idpro: <?= $id ?> });
-            });
-        </script>
-        <div class="mb" id="binhluan">
-            
-        </div>
 
 
 
 
 
-        <div class="khungSanPham" style="border-color: #434aa8">
+
+<div class="khungSanPham" style="border-color: #434aa8">
     <h3 class="tenKhung" style="background-image: linear-gradient(120deg, #434aa8 0%, #ec1f1f 50%, #434aa8 100%);">*
         Bạn
         có
@@ -163,7 +149,7 @@
                     </div>
                     <label class="giamgia">
                     <i class="fa fa-bolt"> </i>
-                    '.$gia_tri_khuyen_mai.' đ
+                    ' . $gia_tri_khuyen_mai . ' đ
                     </label>
                         <form action="index.php?act=addtocart" method="POST">
                         <input type = "hidden" name ="id" value="' . $id . '">

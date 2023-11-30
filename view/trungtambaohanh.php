@@ -1,4 +1,3 @@
-
 <table>
     <tbody>
         <tr>
@@ -16,8 +15,7 @@
         <tr>
             <td class="col1">1</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=10F2, Hồ Trung Thành, P7 – Tp. Cà Mau, Tỉnh Cà Mau"
-                    target="_blank" title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=10F2, Hồ Trung Thành, P7 – Tp. Cà Mau, Tỉnh Cà Mau" target="_blank" title="Xem bản đồ">
                     10F2, Hồ Trung Thành, P7 – Tp. Cà Mau, Tỉnh Cà Mau
                 </a>
             </td>
@@ -28,8 +26,7 @@
         <tr>
             <td class="col1">2</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=14A2 Trần Nguyên Hãn, P.Mỹ Long, Long Xuyên, An Giang"
-                    target="_blank" title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=14A2 Trần Nguyên Hãn, P.Mỹ Long, Long Xuyên, An Giang" target="_blank" title="Xem bản đồ">
                     14A2 Trần Nguyên Hãn, P.Mỹ Long, Long Xuyên, An Giang
                 </a>
             </td>
@@ -40,8 +37,7 @@
         <tr>
             <td class="col1">3</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=114 Tô Hiệu, Quận Lê Chân, Tp. Hải Phòng" target="_blank"
-                    title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=114 Tô Hiệu, Quận Lê Chân, Tp. Hải Phòng" target="_blank" title="Xem bản đồ">
                     114 Tô Hiệu, Quận Lê Chân, Tp. Hải Phòng
                 </a>
             </td>
@@ -52,8 +48,7 @@
         <tr>
             <td class="col1">4</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=32 Lương Khánh Thiện, Tp. Hải phòng" target="_blank"
-                    title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=32 Lương Khánh Thiện, Tp. Hải phòng" target="_blank" title="Xem bản đồ">
                     32 Lương Khánh Thiện, Tp. Hải phòng
                 </a>
             </td>
@@ -64,8 +59,7 @@
         <tr>
             <td class="col1">5</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=123 Nam Kỳ Khởi Nghĩa, Tp. Vũng Tàu, Tỉnh BRVT" target="_blank"
-                    title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=123 Nam Kỳ Khởi Nghĩa, Tp. Vũng Tàu, Tỉnh BRVT" target="_blank" title="Xem bản đồ">
                     123 Nam Kỳ Khởi Nghĩa, Tp. Vũng Tàu, Tỉnh BRVT
                 </a>
             </td>
@@ -76,8 +70,7 @@
         <tr>
             <td class="col1">6</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=157 Ngô Gia Tự, Phường Ngô Quyền, TP Bắc Giang" target="_blank"
-                    title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=157 Ngô Gia Tự, Phường Ngô Quyền, TP Bắc Giang" target="_blank" title="Xem bản đồ">
                     157 Ngô Gia Tự, Phường Ngô Quyền, TP Bắc Giang
                 </a>
             </td>
@@ -88,8 +81,7 @@
         <tr>
             <td class="col1">7</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=32 Lương Khánh Thiện, Tp. Hải phòng" target="_blank"
-                    title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=32 Lương Khánh Thiện, Tp. Hải phòng" target="_blank" title="Xem bản đồ">
                     32 Lương Khánh Thiện, Tp. Hải phòng
                 </a>
             </td>
@@ -100,8 +92,7 @@
         <tr>
             <td class="col1">8</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=139 Nguyễn Văn Cừ, Tp. Bắc Ninh, Tỉnh Bắc Ninh" target="_blank"
-                    title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=139 Nguyễn Văn Cừ, Tp. Bắc Ninh, Tỉnh Bắc Ninh" target="_blank" title="Xem bản đồ">
                     139 Nguyễn Văn Cừ, Tp. Bắc Ninh, Tỉnh Bắc Ninh
                 </a>
             </td>
@@ -112,8 +103,7 @@
         <tr>
             <td class="col1">9</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=39 Nguyễn Đình Chiểu, P 1, Tx. Bến Tre, Tỉnh Bến Tre"
-                    target="_blank" title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=39 Nguyễn Đình Chiểu, P 1, Tx. Bến Tre, Tỉnh Bến Tre" target="_blank" title="Xem bản đồ">
                     39 Nguyễn Đình Chiểu, P 1, Tx. Bến Tre, Tỉnh Bến Tre
                 </a>
             </td>
@@ -124,8 +114,7 @@
         <tr>
             <td class="col1">10</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=10A, Lý Thường Kiệt, Tp. Quy Nhơn, Tỉnh Bình Định"
-                    target="_blank" title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=10A, Lý Thường Kiệt, Tp. Quy Nhơn, Tỉnh Bình Định" target="_blank" title="Xem bản đồ">
                     10A, Lý Thường Kiệt, Tp. Quy Nhơn, Tỉnh Bình Định
                 </a>
             </td>
@@ -136,8 +125,7 @@
         <tr>
             <td class="col1">11</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=42 Phố 11 Vân Giang, P. Vân Giang, Tp. Ninh Bình"
-                    target="_blank" title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=42 Phố 11 Vân Giang, P. Vân Giang, Tp. Ninh Bình" target="_blank" title="Xem bản đồ">
                     42 Phố 11 Vân Giang, P. Vân Giang, Tp. Ninh Bình
                 </a>
             </td>
@@ -148,8 +136,7 @@
         <tr>
             <td class="col1">12</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=283 Cách Mạng Tháng Tám, TX.Thủ Dầu Một, Tỉnh Bình Dương"
-                    target="_blank" title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=283 Cách Mạng Tháng Tám, TX.Thủ Dầu Một, Tỉnh Bình Dương" target="_blank" title="Xem bản đồ">
                     283 Cách Mạng Tháng Tám, TX.Thủ Dầu Một, Tỉnh Bình Dương
                 </a>
             </td>
@@ -160,8 +147,7 @@
         <tr>
             <td class="col1">13</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=47 Khu 2, P. Phước Bình, Tx. Phước Long, Bình Phước"
-                    target="_blank" title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=47 Khu 2, P. Phước Bình, Tx. Phước Long, Bình Phước" target="_blank" title="Xem bản đồ">
                     47 Khu 2, P. Phước Bình, Tx. Phước Long, Bình Phước
                 </a>
             </td>
@@ -172,8 +158,7 @@
         <tr>
             <td class="col1">14</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=20 Nguyễn Hội P.Phú Trinh Tp.Phan Thiết, Tỉnh Bình Thuận"
-                    target="_blank" title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=20 Nguyễn Hội P.Phú Trinh Tp.Phan Thiết, Tỉnh Bình Thuận" target="_blank" title="Xem bản đồ">
                     20 Nguyễn Hội P.Phú Trinh Tp.Phan Thiết, Tỉnh Bình Thuận
                 </a>
             </td>
@@ -184,8 +169,7 @@
         <tr>
             <td class="col1">15</td>
             <td class="col2">
-                <a href="https://maps.google.com/maps?q=76 Nguyễn Đình Chiểu, P 2, Tp. Cao Lãnh, Đồng Tháp"
-                    target="_blank" title="Xem bản đồ">
+                <a href="https://maps.google.com/maps?q=76 Nguyễn Đình Chiểu, P 2, Tp. Cao Lãnh, Đồng Tháp" target="_blank" title="Xem bản đồ">
                     76 Nguyễn Đình Chiểu, P 2, Tp. Cao Lãnh, Đồng Tháp
                 </a>
             </td>

@@ -1,46 +1,46 @@
-var album=[];
-for(var i=0;i<10;i++){
-    album[i]=new Image();
-     album[i].src="view/img/banners/banner"+i+".png";//(i=0?"gif":"png")
+var album = [];
+for (var i = 0; i < 10; i++) {
+	album[i] = new Image();
+	album[i].src = "view/img/banners/banner" + i + ".png";//(i=0?"gif":"png")
 }
- var interval=setInterval(slideshow,2000);
-index=0;
-function slideshow(){
-    index++;
-    if(index>9){
-        index=1;
-    }
-    document.getElementById("banner").src=album[index].src;
+var interval = setInterval(slideshow, 2000);
+index = 0;
+function slideshow() {
+	index++;
+	if (index > 9) {
+		index = 1;
+	}
+	document.getElementById("banner").src = album[index].src;
 }
 
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
-  }
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
 
 // Get the button:
 let mybutton = document.getElementById("goto-top-page");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		mybutton.style.display = "block";
+	} else {
+		mybutton.style.display = "none";
+	}
 }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	document.body.scrollTop = 0; // For Safari
+	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
 // Get the modal
@@ -69,24 +69,24 @@ function topFunction() {
 //   }
 // }
 
-(function(){
-    //Login/Signup modal window - by CodyHouse.co
-	function ModalSignin( element ) {
+(function () {
+	//Login/Signup modal window - by CodyHouse.co
+	function ModalSignin(element) {
 		this.element = element;
 		this.blocks = this.element.getElementsByClassName('js-signin-modal-block');
-		this.switchers = this.element.getElementsByTagName('a'); 
+		this.switchers = this.element.getElementsByTagName('a');
 		this.triggers = document.getElementsByClassName('js-signin-modal-trigger');
 		this.hidePassword = this.element.getElementsByClassName('js-hide-password');
 		this.init();
 	};
 
-	ModalSignin.prototype.init = function() {
+	ModalSignin.prototype.init = function () {
 		var self = this;
 		//open modal/switch form
-		for(var i =0; i < this.triggers.length; i++) {
-			(function(i){
-				self.triggers[i].addEventListener('click', function(event){
-					if( event.target.hasAttribute('data-signin') ) {
+		for (var i = 0; i < this.triggers.length; i++) {
+			(function (i) {
+				self.triggers[i].addEventListener('click', function (event) {
+					if (event.target.hasAttribute('data-signin')) {
 						event.preventDefault();
 						self.showSigninForm(event.target.getAttribute('data-signin'));
 					}
@@ -95,8 +95,8 @@ function topFunction() {
 		}
 
 		//close modal
-		this.element.addEventListener('click', function(event){
-			if( hasClass(event.target, 'js-signin-modal') || hasClass(event.target, 'js-close') ) {
+		this.element.addEventListener('click', function (event) {
+			if (hasClass(event.target, 'js-signin-modal') || hasClass(event.target, 'js-close')) {
 				event.preventDefault();
 				removeClass(self.element, 'cd-signin-modal--is-visible');
 			}
@@ -107,13 +107,13 @@ function topFunction() {
 		// });
 
 		//hide/show password
-		for(var i =0; i < this.hidePassword.length; i++) {
-			(function(i){
-				self.hidePassword[i].addEventListener('click', function(event){
+		for (var i = 0; i < this.hidePassword.length; i++) {
+			(function (i) {
+				self.hidePassword[i].addEventListener('click', function (event) {
 					self.togglePassword(self.hidePassword[i]);
 				});
 			})(i);
-		} 
+		}
 
 		//IMPORTANT - REMOVE THIS - it's just to show/hide error messages in the demo
 		// this.blocks[0].getElementsByTagName('form')[0].addEventListener('submit', function(event){
@@ -126,25 +126,25 @@ function topFunction() {
 		// });
 	};
 
-	ModalSignin.prototype.togglePassword = function(target) {
+	ModalSignin.prototype.togglePassword = function (target) {
 		var password = target.previousElementSibling;
-		( 'password' == password.getAttribute('type') ) ? password.setAttribute('type', 'text') : password.setAttribute('type', 'password');
-		target.textContent = ( 'Hide' == target.textContent ) ? 'Show' : 'Hide';
+		('password' == password.getAttribute('type')) ? password.setAttribute('type', 'text') : password.setAttribute('type', 'password');
+		target.textContent = ('Hide' == target.textContent) ? 'Show' : 'Hide';
 		putCursorAtEnd(password);
 	}
 
-	ModalSignin.prototype.showSigninForm = function(type) {
+	ModalSignin.prototype.showSigninForm = function (type) {
 		// show modal if not visible
 		!hasClass(this.element, 'cd-signin-modal--is-visible') && addClass(this.element, 'cd-signin-modal--is-visible');
 		// show selected form
-		for( var i=0; i < this.blocks.length; i++ ) {
+		for (var i = 0; i < this.blocks.length; i++) {
 			this.blocks[i].getAttribute('data-type') == type ? addClass(this.blocks[i], 'cd-signin-modal__block--is-selected') : removeClass(this.blocks[i], 'cd-signin-modal__block--is-selected');
 		}
 		//update switcher appearance
 		var switcherType = (type == 'signup') ? 'signup' : 'login';
-		for( var i=0; i < this.switchers.length; i++ ) {
+		for (var i = 0; i < this.switchers.length; i++) {
 			this.switchers[i].getAttribute('data-type') == switcherType ? addClass(this.switchers[i], 'cd-selected') : removeClass(this.switchers[i], 'cd-selected');
-		} 
+		}
 	};
 
 	// ModalSignin.prototype.toggleError = function(input, bool) {
@@ -154,7 +154,7 @@ function topFunction() {
 	// }
 
 	var signinModal = document.getElementsByClassName("js-signin-modal")[0];
-	if( signinModal ) {
+	if (signinModal) {
 		new ModalSignin(signinModal);
 	}
 
@@ -168,26 +168,26 @@ function topFunction() {
 	// 		} 
 	// 	});
 	// }
-	
+
 	//class manipulations - needed if classList is not supported
 	function hasClass(el, className) {
-	  	if (el.classList) return el.classList.contains(className);
-	  	// else return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
+		if (el.classList) return el.classList.contains(className);
+		// else return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
 	}
 	function addClass(el, className) {
 		var classList = className.split(' ');
-	 	if (el.classList) el.classList.add(classList[0]);
-	 	// else if (!hasClass(el, classList[0])) el.className += " " + classList[0];
-	 	// if (classList.length > 1) addClass(el, classList.slice(1).join(' '));
+		if (el.classList) el.classList.add(classList[0]);
+		// else if (!hasClass(el, classList[0])) el.className += " " + classList[0];
+		// if (classList.length > 1) addClass(el, classList.slice(1).join(' '));
 	}
 	function removeClass(el, className) {
 		var classList = className.split(' ');
-	  	if (el.classList) el.classList.remove(classList[0]);	
-	  	// else if(hasClass(el, classList[0])) {
-	  	// 	var reg = new RegExp('(\\s|^)' + classList[0] + '(\\s|$)');
-	  	// 	el.className=el.className.replace(reg, ' ');
-	  	// }
-	  	// if (classList.length > 1) removeClass(el, classList.slice(1).join(' '));
+		if (el.classList) el.classList.remove(classList[0]);
+		// else if(hasClass(el, classList[0])) {
+		// 	var reg = new RegExp('(\\s|^)' + classList[0] + '(\\s|$)');
+		// 	el.className=el.className.replace(reg, ' ');
+		// }
+		// if (classList.length > 1) removeClass(el, classList.slice(1).join(' '));
 	}
 	// function toggleClass(el, className, bool) {
 	// 	if(bool) addClass(el, className);
@@ -196,13 +196,13 @@ function topFunction() {
 
 	//credits http://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/
 	// function putCursorAtEnd(el) {
-    // 	if (el.setSelectionRange) {
-    //   		var len = el.value.length * 2;
-    //   		el.focus();
-    //   		el.setSelectionRange(len, len);
-    // 	} else {
-    //   		el.value = el.value;
-    // 	}
+	// 	if (el.setSelectionRange) {
+	//   		var len = el.value.length * 2;
+	//   		el.focus();
+	//   		el.setSelectionRange(len, len);
+	// 	} else {
+	//   		el.value = el.value;
+	// 	}
 	// };
 })();
 

@@ -1,10 +1,10 @@
 <div class="banner">
-            <div class="owl-carousel owl-theme">
-                <img id="banner" src="view/img/banners/banner1.png" alt="">
-            </div>
-        </div>
+    <div class="owl-carousel owl-theme">
+        <img id="banner" src="view/img/banners/banner1.png" alt="">
+    </div>
+</div>
 
-        <!-- <div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button"
+<!-- <div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button"
                 class="owl-dot"><span></span></button><button role="button"
                 class="owl-dot"><span></span></button><button role="button"
                 class="owl-dot active"><span></span></button><button role="button"
@@ -14,10 +14,10 @@
                 class="owl-dot"><span></span></button><button role="button"
                 class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
         </div> -->
-        <img src="view/img/banners/blackFriday.gif" alt="" style="width: 100%;">
-        <br>
-        <div class="companyMenu group flexContain">
-            <!-- <a href="index.html?company=Apple"><img src="view/img/company/Apple.jpg"></a><a
+<img src="view/img/banners/blackFriday.gif" alt="" style="width: 100%;">
+<br>
+<div class="companyMenu group flexContain">
+    <!-- <a href="index.html?company=Apple"><img src="view/img/company/Apple.jpg"></a><a
                 href="index.html?company=Samsung"><img src="view/img/company/Samsung.jpg"></a><a
                 href="index.html?company=Oppo"><img src="view/img/company/Oppo.jpg"></a><a
                 href="index.html?company=Nokia"><img src="view/img/company/Nokia.jpg"></a><a
@@ -33,90 +33,90 @@
                 href="index.html?company=HTC"><img src="view/img/company/HTC.jpg"></a><a
                 href="index.html?company=Motorola"><img src="view/img/company/Motorola.jpg"></a> -->
 
-            <?php
-            foreach ($dsdm as $dm) {
-                extract($dm);
-                $hinh = $img_path . $img;
-                $linkdm = "index.php?act=dssanpham&iddm=" . $id;
-                echo ' <a href="' . $linkdm . '"><img src="' . $hinh . '"></a>';
-            }
-            ?>
+    <?php
+    foreach ($dsdm as $dm) {
+        extract($dm);
+        $hinh = $img_path . $img;
+        $linkdm = "index.php?act=dssanpham&iddm=" . $id;
+        echo ' <a href="' . $linkdm . '"><img src="' . $hinh . '"></a>';
+    }
+    ?>
+</div>
+
+
+<div class="flexContain" id="myTopnav">
+
+    <div class="pricesRangeFilter dropdown">
+        <button class="dropbtn">Giá tiền</button>
+        <div class="dropdown-content">
+            <a href="#">Dưới 2 triệu</a>
+            <a href="#">Từ 2 - 4 triệu</a>
+            <a href="#">Từ 4 - 7 triệu</a>
+            <a href="#">Từ 7 - 13 triệu</a>
+            <a href="#">Trên 13 triệu</a>
         </div>
+    </div>
 
-
-        <div class="flexContain" id="myTopnav">
-
-            <div class="pricesRangeFilter dropdown">
-                <button class="dropbtn">Giá tiền</button>
-                <div class="dropdown-content">
-                    <a href="#">Dưới 2 triệu</a>
-                    <a href="#">Từ 2 - 4 triệu</a>
-                    <a href="#">Từ 4 - 7 triệu</a>
-                    <a href="#">Từ 7 - 13 triệu</a>
-                    <a href="#">Trên 13 triệu</a>
-                </div>
-            </div>
-
-            <div class="promosFilter dropdown">
-                <button class="dropbtn">Khuyến mãi</button>
-                <div class="dropdown-content">
-                    <a href="#">Giảm giá</a>
-                    <a href="#">Trả góp</a>
-                    <a href="#">Mới ra mắt</a>
-                    <a href="#">Giá rẻ online</a>
-                </div>
-            </div>
-
-            <div class="starFilter dropdown">
-                <button class="dropbtn">Số lượng sao</button>
-                <div class="dropdown-content">
-                    <a href="#">Trên 2 sao</a>
-                    <a href="#">Trên 3 sao</a>
-                    <a href="#">Trên 4 sao</a>
-                </div>
-            </div>
-
-            <div class="sortFilter dropdown">
-                <button class="dropbtn">Sắp xếp</button>
-                <div class="dropdown-content">
-                    <a href="#">Giá tăng dần</a>    
-                    <a href="#">Giá giảm dần</a>    
-                    <a href="#">Sao tăng dần</a>
-                    <a href="#">Sao giảm dần</a>    
-                    <a href="#">Đánh giá tăng dần</a>   
-                    <a href="#">Đánh giá giảm dần</a>   
-                    <a href="#">Từ A-Z</a>  
-                    <a href="#">Từ Z-A</a>
-                </div>
-            </div>
-
-        </div> <!-- End khung chọn bộ lọc -->
-
-        <div class="choosedFilter flexContain">
-            <a id="deleteAllFilter" style="display: none;">
-                <h3>Xóa bộ lọc</h3>
-            </a>
-        </div> <!-- Những bộ lọc đã chọn -->
-        <hr>
-
-        <!-- Mặc định mới vào trang sẽ ẩn đi, nế có filter thì mới hiện lên -->
-        <div class="contain-products" style="display:none">
-            <div class="filterName">
-                <input type="text" placeholder="Lọc trong trang theo tên...">
-            </div> <!-- End FilterName -->
-
-            <ul id="products" class="homeproduct group flexContain">
-                <div id="khongCoSanPham">
-                    <i class="fa fa-times-circle"></i>
-                    Không có sản phẩm nào
-                </div> <!-- End Khong co san pham -->
-            </ul><!-- End products -->
-
-            <div class="pagination"></div>
+    <div class="promosFilter dropdown">
+        <button class="dropbtn">Khuyến mãi</button>
+        <div class="dropdown-content">
+            <a href="#">Giảm giá</a>
+            <a href="#">Trả góp</a>
+            <a href="#">Mới ra mắt</a>
+            <a href="#">Giá rẻ online</a>
         </div>
+    </div>
 
-        <!-- Div hiển thị khung sp hot, khuyến mãi, mới ra mắt ... -->
-        <div class="contain-khungSanPham">
+    <div class="starFilter dropdown">
+        <button class="dropbtn">Số lượng sao</button>
+        <div class="dropdown-content">
+            <a href="#">Trên 2 sao</a>
+            <a href="#">Trên 3 sao</a>
+            <a href="#">Trên 4 sao</a>
+        </div>
+    </div>
+
+    <div class="sortFilter dropdown">
+        <button class="dropbtn">Sắp xếp</button>
+        <div class="dropdown-content">
+            <a href="#">Giá tăng dần</a>
+            <a href="#">Giá giảm dần</a>
+            <a href="#">Sao tăng dần</a>
+            <a href="#">Sao giảm dần</a>
+            <a href="#">Đánh giá tăng dần</a>
+            <a href="#">Đánh giá giảm dần</a>
+            <a href="#">Từ A-Z</a>
+            <a href="#">Từ Z-A</a>
+        </div>
+    </div>
+
+</div> <!-- End khung chọn bộ lọc -->
+
+<div class="choosedFilter flexContain">
+    <a id="deleteAllFilter" style="display: none;">
+        <h3>Xóa bộ lọc</h3>
+    </a>
+</div> <!-- Những bộ lọc đã chọn -->
+<hr>
+
+<!-- Mặc định mới vào trang sẽ ẩn đi, nế có filter thì mới hiện lên -->
+<div class="contain-products" style="display:none">
+    <div class="filterName">
+        <input type="text" placeholder="Lọc trong trang theo tên...">
+    </div> <!-- End FilterName -->
+
+    <ul id="products" class="homeproduct group flexContain">
+        <div id="khongCoSanPham">
+            <i class="fa fa-times-circle"></i>
+            Không có sản phẩm nào
+        </div> <!-- End Khong co san pham -->
+    </ul><!-- End products -->
+
+    <div class="pagination"></div>
+</div>
+
+<!-- Div hiển thị khung sp hot, khuyến mãi, mới ra mắt ... -->
+<div class="contain-khungSanPham">
     <div class="khungSanPham" style="border-color: #ff9c00">
         <h3 class="tenKhung" style="background-image: linear-gradient(120deg, #ff9c00 0%, #ec1f1f 50%, #ff9c00 100%);">*
             NỔI BẬT
@@ -149,8 +149,6 @@
     </div>
 </a>
 </li>';
-
-
             }
             ?>
 

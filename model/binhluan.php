@@ -8,5 +8,3 @@ function loadall_binhluan($idpro)
     $listbl = pdo_query($sql);
     return $listbl;
 }
-
-?>

@@ -43,4 +43,3 @@ function load_tendm($iddm)
         return "";
     }
 }
-?>

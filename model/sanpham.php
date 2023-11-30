@@ -58,21 +58,21 @@ function insert_sanpham($tensp, $giasp, $hinh, $soluong, $iddm, $danhgia, $manhi
     values('$tensp','$giasp','$hinh','$soluong','$iddm','$danhgia','$manhinh','$hedieuhanh','$camerasau','$cameratruoc','$cpu','$ram','$memory','$pin','$idsale','$idcolor','$giatrikhuyenmai')";
     pdo_execute($sql);
 }
-function loadall_sanpham($kyw = "",$iddm=0)
+function loadall_sanpham($kyw = "", $iddm = 0)
 {
     $sql = "select * from sanpham where 1";
     if ($kyw != "") {
-        $sql .=" and name like '%" . $kyw . "%'";
+        $sql .= " and name like '%" . $kyw . "%'";
     }
     if ($iddm > 0) {
-        $sql .=" and iddm = '" . $iddm . "'";
+        $sql .= " and iddm = '" . $iddm . "'";
     }
-    $sql .=" order by id desc";
+    $sql .= " order by id desc";
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
 
-function update_sanpham($id,$tensp, $giasp, $hinh, $iddm, $soluong, $danhgia,$manhinh,$hedieuhanh,$camerasau,$cameratruoc,$cpu,$ram,$memory,$pin,$idsale,$idcolor,$giatrikhuyenmai)
+function update_sanpham($id, $tensp, $giasp, $hinh, $iddm, $soluong, $danhgia, $manhinh, $hedieuhanh, $camerasau, $cameratruoc, $cpu, $ram, $memory, $pin, $idsale, $idcolor, $giatrikhuyenmai)
 {
     if ($hinh != "") {
         $sql = "update sanpham set iddm='" . $iddm . "', name='" . $tensp . "', price='" . $giasp . "', so_luong='" . $soluong . "', danh_gia='" . $danhgia . "', idkm='" . $idsale . "', idmau='" . $idcolor . "', gia_tri_khuyen_mai='" . $giatrikhuyenmai . "', man_hinh='" . $manhinh . "', he_dieu_hanh='" . $hedieuhanh . "', camera_truoc='" . $cameratruoc . "', camera_sau='" . $camerasau . "',cpu='" . $cpu . "', ram='" . $ram . "', memory='" . $memory . "', pin='" . $pin . "' img='" . $hinh . "' where id=" . $id;
@@ -84,4 +84,3 @@ function update_sanpham($id,$tensp, $giasp, $hinh, $iddm, $soluong, $danhgia,$ma
 
     pdo_execute($sql);
 }
-?>

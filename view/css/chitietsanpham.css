@@ -291,15 +291,16 @@
     margin: 3px 0;
     border: none;
 }
-.buy_now + i {
+
+.buy_now+i {
     position: absolute;
     top: 91%;
     right: 70%;
     transform: translateY(-50%);
     font-weight: 900;
     cursor: pointer;
-   
-  }
+
+}
 
 
 
