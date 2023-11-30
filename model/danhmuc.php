@@ -27,9 +27,9 @@ function loadone_danhmuc($id)
     $dm = pdo_query_one($sql);
     return $dm;
 }
-function update_danhmuc($id, $tenloai)
+function update_danhmuc($id, $tenloai, $img)
 {
-    $sql = "update danhmuc set name='" . $tenloai . "' where id=" . $id;
+    $sql = "update danhmuc set name='" . $tenloai . "' ,img ='" . $img . "' where id=" . $id;
     pdo_execute($sql);
 }
 function load_tendm($iddm)

@@ -39,7 +39,7 @@
     </div>
     <div class="table-footer">
         <button>
-            <a href="#">Xem biểu đồ</a>
+            <a href="index.php?act=bieudo">Xem biểu đồ</a>
         </button>
     </div>
     </form>

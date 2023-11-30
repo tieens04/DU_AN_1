@@ -101,7 +101,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $sp_giareonline = loadall_sanpham_home_giare();
             include "view/spgiareonline.php";
             break;
-    
         case 'spgiatangdan':
             include "view/dungchung.php";
             include "view/boloc.php";
