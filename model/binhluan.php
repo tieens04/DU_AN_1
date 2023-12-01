@@ -1,10 +1,24 @@
 <?php
+function insert_binhluan($iduser, $idpro, $noidung, $ngaybinhluan)
+{
+    // Thêm JOIN vào câu truy vấn để lấy thông tin user từ bảng taikhoan dựa trên iduser
+    $sql = "INSERT INTO binhluan(iduser, idpro, noidung, ngaybinhluan)
+            VALUES('$iduser', '$idpro', '$noidung', '$ngaybinhluan')";
+    pdo_execute($sql);
+}
+
 function loadall_binhluan($idpro)
 {
-    $sql = "select * from comment where 1";
-    if ($idpro > 0)
-        $sql .= " AND idpro='" . $idpro . "'";
-    $sql .= " order by id desc";
-    $listbl = pdo_query($sql);
-    return $listbl;
+    $sql = "SELECT binhluan.*, taikhoan.user AS username
+            FROM binhluan
+            INNER JOIN taikhoan ON binhluan.iduser = taikhoan.id
+            WHERE binhluan.idpro = '$idpro'
+            ORDER BY binhluan.id DESC";
+    return pdo_query($sql);
+}
+
+function delete_binhluan($id)
+{
+    $sql = "DELETE FROM binhluan WHERE id = " . $id;
+    pdo_execute($sql);
 }

@@ -278,6 +278,8 @@
     background: -webkit-linear-gradient(top, #f59000, #fd6e1d);
     text-decoration: none;
     cursor: pointer;
+    border: 1px;
+    font-weight: 600;
 }
 
 .area_order .buy_now:hover {
@@ -294,8 +296,8 @@
 
 .buy_now+i {
     position: absolute;
-    top: 91%;
-    right: 70%;
+    top: 93.5%;
+    right: 68%;
     transform: translateY(-50%);
     font-weight: 900;
     cursor: pointer;
@@ -385,4 +387,31 @@
     float: left;
     margin: 5px 0;
     color: #333;
+}
+
+/* Sản phẩm biến thể */
+.box03__item {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    color: #333;
+    display: inline-block;
+    font-size: 13px;
+    min-width: 67px;
+    padding: 0 15px;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-right: 2px;
+    vertical-align: top;
+    height: 36px;
+    line-height: 36px;
+    position: relative;
+}
+
+.box03__item.act {
+    border-color: #2f80ed;
+    color: #2f80ed;
+}
+
+.box03 {
+    margin-bottom: 10px;
 }

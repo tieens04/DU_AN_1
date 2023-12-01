@@ -9,7 +9,7 @@
         <form action="index.php?act=mybill" method="POST">
             <div class="row2 mb10 formds_loai">
                 <table class="listSanPham">
-
+                <thead class="thead">
                     <tr style="font-size: 20;">
                         <th>Mã đơn hàng</th>
                         <th>Ngày đặt</th>
@@ -17,6 +17,8 @@
                         <th>Tổng giá trị đơn hàng</th>
                         <th>Tình trạng đơn hàng</th>
                     </tr>
+                </thead>
+                <tbody class="tbody">
                     <?php 
                     if (is_array($listbill) && (isset($_SESSION['user']))) {
                         foreach ($listbill as $bill) {
@@ -34,8 +36,10 @@
                             <td><?php echo $ttdh; ?></td>
                         </tr>
                     
-                    <?php }  }?>
-                    <tr></tr>
+                    <?php } ?>
+                    </tbody>
+                    <tr style="background-color: #99B898;color:aliceblue;"><td colspan="5">Cảm ơn quý khách</td></tr>
+                    <?php } ?>
                 </table>
             </div>
             

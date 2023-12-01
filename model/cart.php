@@ -37,12 +37,12 @@ function viewcart($del)
                 <td>' . ($i + 1) . '</td>
                 <td><img src="' . $hinh . '" alt="" height="80px"></td>
                 <td>' . $cart[1] . '</td>
-                <td>' . $cart[3] . '</td>
+                <td>' . number_format($cart[3], 0, ".", ".") . '₫</td>
                 <td>' . $cart[4] . '</td>
-                <td>' . $cart[5] . '</td>
-                <td>' . $ttien . '</td>
+                <td>' . number_format($cart[5], 0, ".", ".") . '₫</td>
+                <td>' . number_format($ttien, 0, ".", ".") . '₫</td>
                 ' . $xoasp_td . '
-                </tr>';
+            </tr>';
         $i++;
     }
     if ($del == 1) {
@@ -53,7 +53,7 @@ function viewcart($del)
     }
     echo '<tr>
             <td colspan="6">Tổng đơn hàng</td>
-            <td colspan="1">' . $tong . '</td>
+            <td colspan="1">' . number_format($tong, 0, ".", ".") . '</td>
             ' . $xoasp_tc . '
             </tr>';
 }
@@ -79,7 +79,7 @@ function bill_chi_tiet($listbill)
         echo '<tr>  
         <td><img src="' . $hinh . '" alt="" height="80px"></td>
         <td>' . $cart['name'] . '</td>
-        <td>' . $cart['price'] . '</td>
+        <td>' . number_format($cart['price'], 0, ".", ".") . '</td>
         <td>' . $cart['soluong'] . '</td>
         <td>' . $cart['thanhtien'] . '</td>
         </tr>';

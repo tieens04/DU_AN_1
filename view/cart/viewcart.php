@@ -1,12 +1,12 @@
-<section style="min-height: 85vh">
+<section style="min-height: 85vh;">
     <form action="index.php?act=viewcart" method="POST">
         <table class="listSanPham">
             <?php
             if (isset($_SESSION['mycart']) && count($_SESSION['mycart']) > 0) {
                 viewcart(1);
                 echo '
-            
-            <input type="submit" value="TIẾP TỤC ĐẶT HÀNG" name="bill">';
+            <div class="boxright">
+            <input type="submit" value="TIẾP TỤC ĐẶT HÀNG" name="bill"></div>';
             } else {
                 echo ' <tr>
             <th>STT</th>

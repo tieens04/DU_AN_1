@@ -97,8 +97,10 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 if (isset($_SESSION['user'])) {
 
                     header('Location:index.php?act=bill');
+                    exit(); // Đảm bảo kết thúc kịch bản sau khi chuyển hướng
                 } else {
                     $thongbao = "Vui lòng đăng nhập để tiếp tục thanh toán";
+                    
                 }
             }
             include "view/dungchung.php";
@@ -150,8 +152,122 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
         case 'sanpham':
             include "view/dungchung.php";
+            include "view/boloc.php";
             $allsp = loadall_dssanpham();
             include "view/sanpham.php";
+            break;
+        case 'sanphamct':
+            if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
+                $onesp = loadone_sanpham($id);
+                extract($onesp);
+                $sp_cung_loai = load_sanpham_cungloai($id, $iddm);
+                include "../view/sanphamct.php";
+            } else {
+                include "../view/home.php";
+            }
+
+            break;
+        case 'sanphamduoi2tr':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_duoi2tr = loadall_sanpham_duoi2tr();
+            include "view/spduoi2tr.php";
+            break;
+        case 'sanphamtu2den4':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tu2_4 = loadall_sanpham_tu_2_4();
+            include "view/sptu2den4.php";
+            break;
+        case 'sanphamtu4den7':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tu4_7 = loadall_sanpham_tu_4_7();
+            include "view/sptu4den7.php";
+            break;
+        case 'sanphamtu7den13':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tu7_13 = loadall_sanpham_tu_7_13();
+            include "view/sptu7den13.php";
+            break;
+        case 'sanphamtren13':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tren_13 = loadall_sanpham_tren_13();
+            include "view/sptren13.php";
+            break;
+        case 'spgiamgia':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_giamgia = loadall_sanpham_home_giamgialon();
+            include "view/spgiamgia.php";
+            break;
+        case 'sptragop':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_tragop = loadall_sanpham_home_tragop();
+            include "view/sptragop.php";
+            break;
+        case 'spmoiramat':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_moiramat = loadall_sanpham_home_sanphammoi();
+            include "view/spmoiramat.php";
+            break;
+        case 'spgiareonline':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_giareonline = loadall_sanpham_home_giare();
+            include "view/spgiareonline.php";
+            break;
+        case 'spmau':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            if (isset($_GET['idmau']) && ($_GET['idmau'] > 0)) {
+                $idmau = $_GET['idmau'];
+                $tenmau = load_tenmau($idmau);
+                $sp_mau = loadall_sanpham_mauxanh($idmau);
+                include "view/spmau.php";
+            } else {
+                include "view/home.php";
+            }
+            break;
+        case 'spgiatangdan':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_giatangdan = loadall_sanpham_gia_tangdan();
+            include "view/spgiatangdan.php";
+            break;
+        case 'spgiagiamdan':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_giagiamdan = loadall_sanpham_gia_giamdan();
+            include "view/spgiagiamdan.php";
+            break;
+        case 'spdanhgiatang':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_danhgiatang = loadall_sanpham_danhgia_tang();
+            include "view/spdanhgiatang.php";
+            break;
+        case 'spdanhgiagiam':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_danhgiagiam = loadall_sanpham_danhgia_giam();
+            include "view/spdanhgiagiam.php";
+            break;
+        case 'spa_z':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_adenz = loadall_sanpham_adenz();
+            include "view/spadenz.php";
+            break;
+        case 'spz_a':
+            include "view/dungchung.php";
+            include "view/boloc.php";
+            $sp_zdena = loadall_sanpham_zdena();
+            include "view/spzdena.php";
             break;
         case 'timkiem':
             if (isset($_POST['timkiem']) && ($_POST['timkiem'])) {
@@ -167,9 +283,9 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
-                $sp_cungloai = loadall_sanpham_cungloai($id);
                 $onesp = loadone_sanpham($id);
                 extract($onesp);
+                $sp_cungloai = loadall_sanpham_cungloai($id, $iddm);
                 include "view/dungchung.php";
                 include "view/chitietsanpham.php";
             } else {

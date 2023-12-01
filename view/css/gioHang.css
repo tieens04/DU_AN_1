@@ -3,7 +3,7 @@
     margin: auto;
     border-collapse: collapse;
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
 }
 
 /* thêm border và padding cho th */
@@ -164,20 +164,39 @@
 
 .boxleft {
     width: 70%;
-    height: 500px;
-    overflow-x: hidden;
-    overflow-y: auto;
     border-right: 1.5px #eee solid;
 }
-
 .boxright {
     width: 30%;
     margin-left: 5px;
-    height: 500px;
-    overflow-x: hidden;
-    overflow-y: auto;
+   
+    
     border-right: 1.5px #eee solid;
 }
+table {
+  table-layout: fixed;
+}
+.thead {
+  background: #f9f9f9;
+  display: table;
+  width: 100%;
+  width: calc(100% - 10px);
+}
+
+.tbody {
+  height: 400px;
+  overflow: auto;
+  display: block;
+  width: 100%;
+}
+
+tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+
 
 /* The container */
 .container {

@@ -1,27 +1,27 @@
 <?php
-function insert_color($tenmau)
+function insert_mau($tenmau)
 {
     $sql = "INSERT INTO mau(name) values('$tenmau')";
     pdo_execute($sql);
 }
-function delete_color($id)
+function delete_mau($id)
 {
     $sql = "delete from mau where id=" . $id;
     pdo_execute($sql);
 }
-function loadall_color()
+function loadall_mau()
 {
     $sql = "select * from mau order by id desc";
-    $listcolor = pdo_query($sql);
-    return $listcolor;
+    $listmau = pdo_query($sql);
+    return $listmau;
 }
-function loadone_color($id)
+function loadone_mau($id)
 {
     $sql = "select * from mau where id=" . $id;
-    $color = pdo_query_one($sql);
-    return $color;
+    $mau = pdo_query_one($sql);
+    return $mau;
 }
-function update_color($id, $tenmau)
+function update_mau($id, $tenmau)
 {
     $sql = "update mau set name='" . $tenmau . "' where id=" . $id;
     pdo_execute($sql);

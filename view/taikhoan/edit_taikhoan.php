@@ -10,7 +10,7 @@
         </div>
         <div class="boxright">
             <div class="boxtitle">CẬP NHẬT TÀI KHOẢN</div>
-            <div class="row boxcontent formtaikhoan">
+            <div class="boxcontent formtaikhoan">
                 <?php
                 if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
                     extract($_SESSION['user']);
