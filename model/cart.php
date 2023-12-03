@@ -47,7 +47,7 @@ function viewcart($del)
     }
     if ($del == 1) {
         $xoasp_tc = '<td><a href="index.php?act=delcart"> 
-        <button type="button" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa hết</button> </a></td>';
+        <i class="fa fa-trash-o" aria-hidden="true"></i> Xóa hết </a></td>';
     } else {
         $xoasp_tc = '';
     }
@@ -59,6 +59,7 @@ function viewcart($del)
 }
 
 //////
+
 function bill_chi_tiet($listbill)
 {
     global $img_path;

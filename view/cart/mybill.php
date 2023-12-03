@@ -15,6 +15,7 @@
                         <th>Ngày đặt</th>
                         <th>Số lượng</th>
                         <th>Tổng giá trị đơn hàng</th>
+                        <th>Phương thức thanh toán</th>
                         <th>Tình trạng đơn hàng</th>
                     </tr>
                 </thead>
@@ -25,6 +26,7 @@
                             extract($bill);
                             $ttdh = get_ttdh($bill['bill_status']);
                             $countsp = loadall_cart_count($bill['id']);
+                            $pttt = get_pttt($bill['bill_pttt']);
                             
                     ?>
                      
@@ -33,6 +35,7 @@
                             <td><?php echo $bill['ngaydathang']; ?></td>
                             <td><?php echo $countsp; ?></td>
                             <td><?php echo $bill['total']; ?></td>
+                            <td><?php echo $pttt; ?></td>
                             <td><?php echo $ttdh; ?></td>
                         </tr>
                     

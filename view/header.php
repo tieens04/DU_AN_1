@@ -33,9 +33,14 @@
     <link rel="stylesheet" href="view/css/nguoidung.css">
     <link rel="stylesheet" href="view/css/reset.css">
     <!-- js -->
-
-
-
+    <!-- ẩn thông tin tt -->
+    <style>
+        #panel {
+            padding: 10px;
+            display: none;
+        }
+    </style>
+    <!--  -->
     <style>
         .input-search input[type="text"] {
             float: left;

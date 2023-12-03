@@ -1,12 +1,12 @@
-<section style="min-height: 85vh;">
+<section style="min-height: 60vh">
     <form action="index.php?act=viewcart" method="POST">
-        <table class="listSanPham">
+        <table class="listSanPham catalog mb">
             <?php
             if (isset($_SESSION['mycart']) && count($_SESSION['mycart']) > 0) {
                 viewcart(1);
                 echo '
-            <div class="boxright">
-            <input type="submit" value="TIẾP TỤC ĐẶT HÀNG" name="bill"></div>';
+            <a href="index.php"><input style="margin:10px" type="button" class="btn btn-primary" value="Về trang chủ"></a>
+            <div style="position: absolute;top: 135px;right:50px"><input style="width:100px" type="submit" class="btn btn-primary" value="Đặt hàng" name="bill"></div>';
             } else {
                 echo ' <tr>
             <th>STT</th>
@@ -26,9 +26,8 @@
                 </td>
             </tr>
             <div >
-        <h2>Bạn muốn <a style="color:red; font-weight: 700;" href="index.php?act=sanpham">đặt hàng</a> không?</h2>
-        <a href="index.php">
-            <input type="button" value="Về trang chủ"></a></div> ';
+        <h2 style="position: absolute;top: 300px">Bạn muốn <a style="color:red; font-weight: 700;" href="index.php?act=sanpham">đặt hàng</a> không?</h2>
+        <a href="index.php"><input style="margin:10px" type="button" class="btn btn-primary" value="Về trang chủ"></a></div> ';
             }
             ?>
         </table>

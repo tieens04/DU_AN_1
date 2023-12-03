@@ -1,3 +1,4 @@
+            
 <br>
 <main class="catalog  mb ">
     <div class="boxleft">
@@ -42,8 +43,7 @@
                 </div>
 
             </div><br>
-
-            <div class="">
+          
                 <div class="boxtitle">Đơn hàng của bạn</div>
                 <div>
                     <table class="listSanPham">
@@ -52,32 +52,32 @@
                         ?>
                     </table>
                 </div>
-            </div>
+            
 
     </div>
-    <div class="boxright">
-        <div class="items">
+    <div class="boxright1 items">
+        <div class="">
             <div class="boxtitle1">Phương thức thanh toán</div>
 
-
-            <!-- <label class="container" for=""><input type="radio" value="1" name="pttt" checked><i class="fa fa-money" aria-hidden="true"></i>Trả tiền khi nhận hàng</label> <br>
-                        <label class="container" for=""><input type="radio" value="2" name="pttt" checked>Chuyển khản ngân hàng</label> <br>
-                        <label class="container" for=""><input type="radio" value="3" name="pttt" checked>Thanh toán online</label> <br> -->
-            <label class="container"><i class="fa fa-money" aria-hidden="true"></i> Trả tiền khi nhận hàng
+            <label id="flip1" class="container"><i class="fa fa-money" aria-hidden="true"></i> Trả tiền khi nhận hàng
                 <input type="radio" value="1" name="pttt" checked="checked">
                 <span class="checkmark"></span>
                 <hr>
                 <span class="span">Trả tiền khi nhận hàng</span>
             </label>
-
-            <label class="container"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Chuyển khản ngân hàng
+            
+            <label id="flip" class="container" ><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Chuyển khản ngân hàng
                 <input type="radio" value="2" name="pttt">
                 <span class="checkmark"></span>
                 <hr>
                 <span class="span">Chuyển khoản ngân hàng</span>
             </label>
-
-            <label class="container"><i class="fa fa-credit-card" aria-hidden="true"></i> Thanh toán online
+            <div id="panel">
+                <p class="span1">Ghi rõ nội dung: Tên đăng nhập-Email-SĐT</p>
+                <img src="view/img/maqr.jpg" alt="">
+                <p class="span1" style="text-align: center;">NGO QUOC TIEN</p>
+            </div>
+            <label id="flip2" class="container"><i class="fa fa-credit-card" aria-hidden="true"></i> Thanh toán online
                 <input type="radio" value="3" name="pttt">
                 <span class="checkmark"></span>
                 <hr>
@@ -91,3 +91,15 @@
         </form>
     </div>
 </main>
+<script> 
+
+$("#flip").click(function(){
+  $("#panel").slideDown();
+});
+$("#flip1").click(function(){
+  $("#panel").slideUp();
+});
+$("#flip2").click(function(){
+  $("#panel").slideUp();
+});
+</script>

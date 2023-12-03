@@ -95,13 +95,12 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
         case 'viewcart':
             if (isset($_POST['bill']) && ($_POST['bill'])) {
                 if (isset($_SESSION['user'])) {
-
                     header('Location:index.php?act=bill');
                     exit(); // Đảm bảo kết thúc kịch bản sau khi chuyển hướng
                 } else {
-                    $thongbao = "Vui lòng đăng nhập để tiếp tục thanh toán";
-                    
+                    $thongbao = "Vui lòng đăng nhập để tiếp tục thanh toán";  
                 }
+                
             }
             include "view/dungchung.php";
             include "view/cart/viewcart.php";
@@ -135,15 +134,17 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 foreach ($_SESSION['mycart'] as $cart) {
                     insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[6], $idbill);
                 }
-                $_SESSION['cart'] = []; //xóa session cart
-                if ($pttt == 1) {
-                } else {
+                
+                if ($pttt == 3) {
                     check_out();
                 }
+                $_SESSION['mycart'] = []; //xóa session cart
                 $bill = loadone_bill($idbill);
                 $bill_ct = loadall_cart($idbill);
+                
                 include "view/dungchung.php";
                 include "view/cart/billcomfirm.php";
+               
             }
             //show
 
@@ -347,13 +348,14 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
         case 'edit_taikhoan':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
-                $email = $_POST['email'];
                 $address = $_POST['address'];
                 $tel = $_POST['tel'];
                 $id = $_POST['id'];
-
+                $checkuser = checkuser($user, $pass);
                 update_taikhoan($id, $user, $pass, $email, $address, $tel);
                 $_SESSION['user'] = checkuser($user, $pass);
                 header('Location: index.php?act=edit_taikhoan');
