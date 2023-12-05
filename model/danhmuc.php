@@ -9,17 +9,16 @@ function delete_danhmuc($id)
     $sql = "delete from danhmuc where id=" . $id;
     pdo_execute($sql);
 }
-function loadall_danhmuc($kyw = "",$id=0)
-{   
-    ;
+function loadall_danhmuc($kyw = "", $id = 0)
+{;
     $sql = "select * from danhmuc where 1";
     if ($kyw != "") {
-        $sql .=" and name like '%" . $kyw . "%'";
+        $sql .= " and name like '%" . $kyw . "%'";
     }
     if ($id > 0) {
-        $sql .=" and id = '" . $id . "'";
+        $sql .= " and id = '" . $id . "'";
     }
-    $sql .=" order by id desc ";
+    $sql .= " order by id desc ";
     $listdanhmuc = pdo_query($sql);
     return $listdanhmuc;
 }
@@ -62,4 +61,3 @@ function load_tenmau($idmau)
         return "";
     }
 }
-?>

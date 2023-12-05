@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Click để hiện thông tin</title>
+<style>
+.slide-down {
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<label id="flip" class="container" onclick="document.getElementById('panel').style.display = 'block';">
+  <i class="fa fa-credit-card-alt" aria-hidden="true"></i> Chuyển khoản ngân hàng
+  <input type="radio" value="2" name="pttt">
+  <span class="checkmark"></span>
+  <hr>
+  <span class="span">Chuyển khoản ngân hàng</span>
+</label>
+
+<div id="panel" class="slide-down">
+  <p>Hello world!</p>
+</div>
+
+</body>
+</html>

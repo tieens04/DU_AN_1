@@ -102,7 +102,7 @@ header h2 {
 
 .main>div {
     /* Mặc định ẩn mọi thứ trong main */
-    display: none;
+
 }
 
 /* ===================== HOME ================== */
@@ -154,6 +154,34 @@ header h2 {
 .table-outline {
     width: 100%;
     border: 1px solid #23282c;
+}
+/* CSS cho nút 'Cập nhật trạng thái' */
+.update-status-button {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #63c2de;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.update-status-button:hover {
+    background-color: #4fa7c1;
+}
+
+/* CSS cho nút 'Hủy đơn hàng' */
+.cancel-order-button {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #f86c6b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.cancel-order-button:hover {
+    background-color: #e55756;
 }
 
 /* phần chứa header (th) */

@@ -58,7 +58,9 @@
     session_start(); 
     include "../model/pdo.php";
     include "../model/binhluan.php";
-    $idpro = $_REQUEST['idpro'];
+    $idpro = isset($_REQUEST['idpro']) ? $_REQUEST['idpro'] : 0;
+// Hoặc nếu chỉ cần kiểm tra GET thì có thể dùng:
+// $idpro = isset($_GET['idpro']) ? $_GET['idpro'] : 0;
     if (isset($_GET['idpro'])) {
         $idpro = $_GET['idpro'];
     }

@@ -1,4 +1,3 @@
-
 <div class="body-tuyendung">
     <div class="tuyendung-header">Tuyển dụng</div>
     <div class="tuyendung-info">
@@ -52,8 +51,7 @@
         <b>6.LIÊN HỆ</b>
         <ul class="tuyendung-noidung">
             <li>Ứng viên điền thông tin theo link:
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNjF8wP7v7ocBDVRUFGqRCHrV0lNPky33Sn3GXVgSVYe7dMA/viewform"
-                    target="_blank">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNjF8wP7v7ocBDVRUFGqRCHrV0lNPky33Sn3GXVgSVYe7dMA/viewform" target="_blank">
                     <span>Tuyển dụng</span>
                 </a>
             </li>

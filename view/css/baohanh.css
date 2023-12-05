@@ -10,7 +10,7 @@ td a {
 	display: block;
 	margin-left: 5px;
 	padding: 10px 0;
-	transition-duration: .2s; 
+	transition-duration: .2s;
 }
 
 td a:hover {
@@ -20,7 +20,9 @@ td a:hover {
 }
 
 /* những tr chẵn sẽ có màu khác */
-tr:nth-of-type(even) {background-color: #e6e4e4;}
+tr:nth-of-type(even) {
+	background-color: #e6e4e4;
+}
 
 .header-table marquee {
 	height: 60px;

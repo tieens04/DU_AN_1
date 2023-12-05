@@ -33,7 +33,9 @@
                 </label>
             </div>
             <div class="area_promo">
-                <strong>Khuyến mãi</strong>
+                <strong>Khuyến mãi
+                
+                </strong>
                 <div class="promo">
                     <img src="view/img/chitietsanpham/icon-tick.png">
                     <div>Khuyến mãi siêu lớn</div>
@@ -76,9 +78,10 @@
             <input type = "hidden" name ="img" value="' . $img . '">
             <input type = "hidden" name ="price" value="' . $price . '">
             <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
-            <div class="area_order">
+            <div class="area_order" style="color:white;">
 
             <input class="buy_now" type="submit" name="addtocart" value="Thêm vào giỏ hàng">
+            <i class="fa fa-cart-plus" onclick="document.querySelector(&quot;.buy_now&quot;).click()"></i>
             </div></form>';?>
         </div>
         <div class="info_product">
@@ -87,7 +90,7 @@
             <ul class="info">
                 <li>
                     <p>Màn hình</p>
-                    <div>
+                    <div>   
                         <?= $man_hinh?>
                     </div>
                 </li>
@@ -124,7 +127,14 @@
                 <li>
                     <p>Bộ nhớ trong</p>
                     <div>
-                        <?= $idbonho ?>
+                    <?php
+                        include "view/cart/dbcon.php";
+                        $sql = "select * from bonho where id=" . $idbonho;
+                        $result = mysqli_query($conn, $sql);
+                        while ($row = mysqli_fetch_array($result)) {
+                            echo $row['name'];
+                        }
+                        ?>
                     </div>
                 </li>
                 <li>
@@ -165,6 +175,7 @@
                     <i class="fa fa-bolt"> </i>
                     '.$gia_tri_khuyen_mai.' đ
                     </label>
+                    
                         <form action="index.php?act=addtocart" method="POST">
                         <input type = "hidden" name ="id" value="' . $id . '">
                         <input type = "hidden" name ="name" value="' . $name . '">

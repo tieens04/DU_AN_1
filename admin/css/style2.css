@@ -100,6 +100,10 @@ header h2 {
     /* 150px la width cua aside */
 }
 
+.main>div {
+    /* Mặc định ẩn mọi thứ trong main */
+
+}
 
 /* ===================== HOME ================== */
 .home .canvasContainer {
@@ -150,6 +154,45 @@ header h2 {
 .table-outline {
     width: 100%;
     border: 1px solid #23282c;
+}
+.table-outline tr td a{
+    width: 140px;
+
+
+}
+/* CSS cho nút 'Cập nhật trạng thái' */
+.update-status-button {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #007cdc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 5px;
+    
+}
+
+.update-status-button:hover {
+    color: black;
+    background-color: #4fa7c1;
+    
+}
+
+/* CSS cho nút 'Hủy đơn hàng' */
+.cancel-order-button {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    background-color: #e00200;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.cancel-order-button:hover {
+    color: black;
+    background-color: #e55756;
+    
 }
 
 /* phần chứa header (th) */
@@ -248,27 +291,18 @@ header h2 {
 .table-footer select {
     padding: 5px 10px;
     border: 3px solid transparent;
-    color: #e4e7ea;
-    background-color: #23282c;
+    background-color: #cccece;
 }
 
 /* Nút bấm ở footer */
-.table-footer input,
 .table-footer button {
     cursor: pointer;
     background-color: #23282c;
-    
+    color: #e4e7ea;
     transition-duration: .2s;
 }
-.table-footer input,
-.table-footer button a {
-    color: #e4e7ea;
-}
+
 .table-footer button:hover {
-    background-color: #7a879486;
-    border-color: #73818f;
-}
-.table-footer input:hover{
     background-color: #7a879486;
     border-color: #73818f;
 }

@@ -8,30 +8,39 @@
 
     <title>Thế giới điện thoại</title>
     <link rel="shortcut icon" href="view/img/favicon.ico" />
-
+    <link rel="stylesheet" href="view/css/bootstrap-3.3.6/bootstrap-3.3.6/docs/dist/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- Load font awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="view/css/stylee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="view/css/style.css">
     <link rel="stylesheet" href="view/css/topnav.css">
-    <link rel="stylesheet" href="view/css/headerr.css">
+    <link rel="stylesheet" href="view/css/header.css">
     <link rel="stylesheet" href="view/css/banner.css">
     <link rel="stylesheet" href="view/css/taikhoan.css">
     <link rel="stylesheet" href="view/css/trangchu.css">
-    <link rel="stylesheet" href="view/css/home_sanpham.css">
-    <link rel="stylesheet" href="view/css/pagination_phantrangg.css">
+    <link rel="stylesheet" href="view/css/home_products.css">
+    <link rel="stylesheet" href="view/css/pagination_phantrang.css">
     <link rel="stylesheet" href="view/css/footer.css">
     <link rel="stylesheet" href="view/css/tuyendung.css">
     <link rel="stylesheet" href="view/css/baohanh.css">
     <link rel="stylesheet" href="view/css/lienhe.css">
     <link rel="stylesheet" href="view/css/gioithieu.css">
     <link rel="stylesheet" href="view/css/tintuc.css">
-    <link rel="stylesheet" href="view/css/cart.css">
-    <link rel="stylesheet" href="view/css/chitietsanphammm.css">
+    <link rel="stylesheet" href="view/css/gioHang.css">
+    <link rel="stylesheet" href="view/css/chitietsanpham.css">
     <link rel="stylesheet" href="view/css/nguoidung.css">
     <link rel="stylesheet" href="view/css/reset.css">
-
+    <!-- js -->
+    <!-- ẩn thông tin tt -->
+    <style>
+        #panel {
+            padding: 10px;
+            display: none;
+        }
+    </style>
+    <!--  -->
     <style>
         .input-search input[type="text"] {
             float: left;
@@ -66,10 +75,10 @@
     <div class="top-nav group">
         <section>
             <div class="social-top-nav">
-                <a class="fa fa-facebook"></a>
-                <a class="fa fa-twitter"></a>
-                <a class="fa fa-google"></a>
-                <a class="fa fa-youtube"></a>
+                <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+                <a href="https://www.twitter.com/" class="fa fa-twitter"></a>
+                <a href="https://www.google.com/" class="fa fa-google"></a>
+                <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
             </div> <!-- End Social Topnav -->
 
             <ul class="top-nav-quicklink flexContain">
@@ -80,5 +89,5 @@
                 <li><a href="index.php?act=baohanh"><i class="fa fa-wrench"></i> Bảo hành</a></li>
                 <li><a href="index.php?act=lienhe"><i class="fa fa-phone"></i> Liên hệ</a></li>
             </ul> <!-- End Quick link -->
-        </section>
+        </section><!-- End Section -->
     </div>
