@@ -3,36 +3,9 @@
         <img id="banner" src="view/img/banners/banner1.png" alt="">
     </div>
 </div>
-
-<!-- <div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button"
-                class="owl-dot"><span></span></button><button role="button"
-                class="owl-dot"><span></span></button><button role="button"
-                class="owl-dot active"><span></span></button><button role="button"
-                class="owl-dot"><span></span></button><button role="button"
-                class="owl-dot"><span></span></button><button role="button"
-                class="owl-dot"><span></span></button><button role="button"
-                class="owl-dot"><span></span></button><button role="button"
-                class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
-        </div> -->
 <img src="view/img/banners/blackFriday.gif" alt="" style="width: 100%;">
 <br>
 <div class="companyMenu group flexContain">
-    <!-- <a href="index.html?company=Apple"><img src="view/img/company/Apple.jpg"></a><a
-                href="index.html?company=Samsung"><img src="view/img/company/Samsung.jpg"></a><a
-                href="index.html?company=Oppo"><img src="view/img/company/Oppo.jpg"></a><a
-                href="index.html?company=Nokia"><img src="view/img/company/Nokia.jpg"></a><a
-                href="index.html?company=Huawei"><img src="view/img/company/Huawei.jpg"></a><a
-                href="index.html?company=Xiaomi"><img src="view/img/company/Xiaomi.png"></a><a
-                href="index.html?company=Realme"><img src="view/img/company/Realme.png"></a><a
-                href="index.html?company=Vivo"><img src="view/img/company/Vivo.jpg"></a><a
-                href="index.html?company=Philips"><img src="view/img/company/Philips.jpg"></a><a
-                href="index.html?company=Mobell"><img src="view/img/company/Mobell.jpg"></a><a
-                href="index.html?company=Mobiistar"><img src="view/img/company/Mobiistar.jpg"></a><a
-                href="index.html?company=Itel"><img src="view/img/company/Itel.jpg"></a><a
-                href="index.html?company=Coolpad"><img src="view/img/company/Coolpad.png"></a><a
-                href="index.html?company=HTC"><img src="view/img/company/HTC.jpg"></a><a
-                href="index.html?company=Motorola"><img src="view/img/company/Motorola.jpg"></a> -->
-
     <?php
     foreach ($dsdm as $dm) {
         extract($dm);

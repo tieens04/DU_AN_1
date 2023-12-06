@@ -27,9 +27,12 @@
                 <strong>
                 <?= number_format($price, 0, ".", ".") ?> ₫
                 </strong>
+                <?php
+                    $gia_khuyen_mai = $price * $gia_tri_khuyen_mai / 100; 
+                ?>
                 <label class="giamgia">
                     <i class="fa fa-bolt"> </i>
-                    <?= number_format($gia_tri_khuyen_mai, 0, ".", ".") ?> đ
+                    <?= number_format($gia_khuyen_mai, 0, ".", ".") ?> ₫
                 </label>
             </div>
             <div class="area_promo">

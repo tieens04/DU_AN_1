@@ -1,5 +1,3 @@
-
-</body>
 <script>
 function validateForm() {
     var tensp = document.forms["myForm"]["tensp"].value;
@@ -14,20 +12,59 @@ function validateForm() {
         return false;
     }
 
-    if (isNaN(giasp) || isNaN(soluong) || isNaN(danhgia) || isNaN(giatrikm) || isNaN(ram)) {
-        alert("Giá sản phẩm, số lượng, đánh giá, giá trị khuyến mãi và RAM phải là giá trị số.");
+    if (isNaN(giasp)) {
+        alert("Giá sản phẩm phải là giá trị số.");
         return false;
     }
 
-    if (giasp < 0 || soluong < 0 || danhgia < 0 || giatrikm < 0 || ram < 0) {
-        alert("Giá sản phẩm, số lượng, đánh giá, giá trị khuyến mãi và RAM không được âm.");
+    if (isNaN(soluong)) {
+        alert("Số lượng sản phẩm phải là giá trị số.");
         return false;
     }
 
-    if (parseFloat(giatrikm) > parseFloat(giasp)) {
-        alert("Giá trị khuyến mãi không được lớn hơn giá sản phẩm.");
+    if (isNaN(danhgia)) {
+        alert("Đánh giá sản phẩm phải là giá trị số.");
+        return false;
+    }
+
+    if (isNaN(giatrikm)) {
+        alert("Giá trị khuyến mãi phải là giá trị số.");
+        return false;
+    }
+
+    if (isNaN(ram)) {
+        alert("RAM phải là giá trị số.");
+        return false;
+    }
+
+    if (giasp < 0) {
+        alert("Giá sản phẩm không được âm.");
+        return false;
+    }
+
+    if (soluong < 0) {
+        alert("Số lượng sản phẩm không được âm.");
+        return false;
+    }
+
+    if (danhgia < 0) {
+        alert("Đánh giá sản phẩm không được âm.");
+        return false;
+    }
+
+    if (giatrikm < 0) {
+        alert("Giá trị khuyến mãi không được âm.");
+        return false;
+    }
+
+    if (ram < 0) {
+        alert("RAM không được âm.");
+        return false;
+    }
+
+    if (parseFloat(giatrikm) < 0 || parseFloat(giatrikm) > 100) {
+        alert("Giá trị khuyến mãi phải nằm trong khoảng từ 0 đến 100.");
         return false;
     }
 }
 </script>
-</html>

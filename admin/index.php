@@ -343,9 +343,6 @@ if (isset($_GET['act'])) {
             $listbill = loadall_bill($kyw, 0);
             include "bill/listbill.php";
             break;
-        // index.php
-
-        // ... (Các phần code trước đó)
 
         case 'trangthai':
             include "bill/trangthai.php";
@@ -354,7 +351,6 @@ if (isset($_GET['act'])) {
                 if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                     $id_donhang = $_POST['id'];
                     $trangthai_moi = $_POST['trangthai'];
-            
                     // Sử dụng prepared statement để cập nhật trạng thái đơn hàng
                     update_bill_status($id_donhang, $trangthai_moi);
             
@@ -364,14 +360,15 @@ if (isset($_GET['act'])) {
                 $listbill = loadall_bill(0);
                 include "bill/listbill.php";
                 break;
-        case 'huydonhang':
-                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                    delete_bill($_GET['id']);
-                }
-                $listbill = loadall_bill(0);
-                include "bill/listbill.php";
-                break;
-
+                case 'huydonhang':
+                    if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                        // Cập nhật trạng thái đơn hàng thành trạng thái hủy (ví dụ: 4 là trạng thái hủy)
+                        update_bill_status($_GET['id'], 4);
+                    }
+                    $listbill = loadall_bill(0);
+                    include "bill/listbill.php";
+                    break;
+                
         case 'dsbl':
             $listbinhluan = loadall_binhluan(0); //load tất cả thì cho số 0
             include "binhluan/list.php";

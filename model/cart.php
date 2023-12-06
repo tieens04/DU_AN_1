@@ -22,8 +22,10 @@ function viewcart($del)
             </tr>';
     foreach ($_SESSION['mycart'] as $cart) {
         $hinh = $img_path . $cart[2];
-        $ttien = $cart[3] * $cart[4] - $cart[5];
-        $tong += $ttien;
+
+        $gia_tri_don_hang = $cart[3] * $cart[4] * ((100 - $cart[5]) / 100);
+        $tong += $gia_tri_don_hang;
+
         if ($del == 1) {
             $xoasp_td = '<td>
             <a href="index.php?act=delcart&idcart=' . $i . '">
@@ -39,8 +41,8 @@ function viewcart($del)
                 <td>' . $cart[1] . '</td>
                 <td>' . number_format($cart[3], 0, ".", ".") . '₫</td>
                 <td>' . $cart[4] . '</td>
-                <td>' . number_format($cart[5], 0, ".", ".") . '₫</td>
-                <td>' . number_format($ttien, 0, ".", ".") . '₫</td>
+                <td>' . number_format($cart[3] * ((100 - $cart[5]) / 100), 0, ".", ".") . '₫</td>
+                <td>' . number_format($gia_tri_don_hang, 0, ".", ".") . '₫</td>
                 ' . $xoasp_td . '
             </tr>';
         $i++;
@@ -53,10 +55,11 @@ function viewcart($del)
     }
     echo '<tr>
             <td colspan="6">Tổng đơn hàng</td>
-            <td colspan="1">' . number_format($tong, 0, ".", ".") . '</td>
+            <td colspan="1">' . number_format($tong, 0, ".", ".") . '₫</td>
             ' . $xoasp_tc . '
             </tr>';
 }
+
 
 //////
 
@@ -71,32 +74,36 @@ function bill_chi_tiet($listbill)
             <th>Sản phẩm</th>
             <th>Đơn giá</th>
             <th>Số lượng</th>
+            <th>Khuyến mãi</th>
             <th>Thành tiền</th> 
             </tr>';
     foreach ($listbill as $cart) {
         $hinh = $img_path . $cart['img'];
-
         $tong += $cart['thanhtien'];
         echo '<tr>  
         <td><img src="' . $hinh . '" alt="" height="80px"></td>
         <td>' . $cart['name'] . '</td>
-        <td>' . number_format($cart['price'], 0, ".", ".") . '</td>
+        <td>' . number_format($cart['price'], 0, ".", ".") . '₫</td>
         <td>' . $cart['soluong'] . '</td>
-        <td>' . $cart['thanhtien'] . '</td>
+        <td>' . number_format($cart['khuyenmai'], 0, ".", ".") . '₫</td>
+        <td>' . number_format($cart['thanhtien'], 0, ".", ".") . '₫</td>
         </tr>';
         $i += 1;
     }
     echo '<tr style="height: 50px;">
-<td colspan="4">Tổng đơn hàng</td>
-<td>' . $tong . '</td>
-</tr>';
+            <td colspan="4">Tổng đơn hàng</td>
+            <td></td>
+            <td>' . number_format($tong, 0, ".", ".") . '₫</td>
+          </tr>';
 }
+
+
 function tongdonhang()
 {
     $tong = 0;
 
     foreach ($_SESSION['mycart'] as $cart) {
-        $ttien = $cart[3] * $cart[4] - $cart[5];
+        $ttien = $cart[3] * $cart[4] - ((100 - $cart[5]) / 100);
         $tong += $ttien;
     }
     return $tong;
@@ -107,9 +114,9 @@ function insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang
     $sql = "INSERT INTO bill(iduser,bill_name,bill_email,bill_address,bill_tel,bill_pttt,ngaydathang,total) values('$iduser','$name','$email','$address','$tel','$pttt','$ngaydathang','$tongdonhang')";
     return pdo_execute_return_lastInsertId($sql);
 }
-function insert_cart($iduser, $idpro, $img, $name, $price, $soluong, $thanhtien, $idbill)
+function insert_cart($iduser, $idpro, $img, $name, $price, $soluong,$khuyenmai ,$thanhtien, $idbill)
 {
-    $sql = "INSERT INTO cart(iduser,idpro,img,name,price,soluong,thanhtien,idbill) values('$iduser','$idpro','$img','$name','$price','$soluong','$thanhtien','$idbill')";
+    $sql = "INSERT INTO cart(iduser,idpro,img,name,price,soluong,khuyenmai,thanhtien,idbill) values('$iduser','$idpro','$img','$name','$price','$soluong','$khuyenmai','$thanhtien','$idbill')";
     return pdo_execute($sql);
 }
 function loadone_bill($id)
@@ -143,16 +150,18 @@ function delete_bill($id){
     // Kiểm tra trạng thái của đơn hàng trước khi xóa
     $bill_status = pdo_query_value("SELECT bill_status FROM bill WHERE id = ?", [$id]);
 
-    // Chỉ cho phép xóa đơn hàng ở trạng thái mới (ví dụ: trạng thái 1 là trạng thái mới)
-    if ($bill_status == 1) {
-        $sql = "DELETE FROM bill WHERE id = ?";
+    // Chỉ cho phép cập nhật trạng thái nếu đơn hàng ở trạng thái mới (0 hoặc 1)
+    if ($bill_status == 0 || $bill_status == 1) {
+        // Thay đổi trạng thái của đơn hàng thành trạng thái đã hủy (ví dụ: 4 là trạng thái đã hủy)
+        $sql = "UPDATE bill SET bill_status = 4 WHERE id = ?";
         pdo_execute($sql, [$id]);
     } else {
-        // Nếu không ở trạng thái mới, không cho phép xóa
+        // Nếu không ở trạng thái mới, không cho phép cập nhật trạng thái
         // Có thể cung cấp thông báo hoặc xử lý tùy thuộc vào yêu cầu của bạn
-        echo "Không thể xóa đơn hàng ở trạng thái này.";
+        echo "Không thể cập nhật trạng thái của đơn hàng này.";
     }
 }
+
 function get_ttdh($n)
 {
     switch ($n) {
@@ -168,7 +177,9 @@ function get_ttdh($n)
         case '3':
             $tt = "Hoàn tất";
             break;
-
+        case '4':
+            $tt = "Đã hủy";
+            break;
         default:
             $tt = "Đơn hàng mới";
             break;

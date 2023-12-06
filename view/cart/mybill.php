@@ -5,53 +5,69 @@
         <div class="">
             <div class="boxtitle">ĐƠN HÀNG CỦA BẠN</div>
         </div>
-        
+
         <form action="index.php?act=mybill" method="POST">
             <div class="row2 mb10 formds_loai">
                 <table class="listSanPham">
-                <thead class="thead">
-                    <tr style="font-size: 20;">
-                        <th>Mã đơn hàng</th>
-                        <th>Ngày đặt</th>
-                        <th>Số lượng</th>
-                        <th>Tổng giá trị đơn hàng</th>
-                        <th>Phương thức thanh toán</th>
-                        <th>Tình trạng đơn hàng</th>
-                    </tr>
-                </thead>
-                <tbody class="tbody">
-                    <?php 
-                    if (is_array($listbill) && (isset($_SESSION['user']))) {
-                        foreach ($listbill as $bill) {
-                            extract($bill);
-                            $ttdh = get_ttdh($bill['bill_status']);
-                            $countsp = loadall_cart_count($bill['id']);
-                            $pttt = get_pttt($bill['bill_pttt']);
-                            
-                    ?>
-                     
-                        <tr style="cursor: pointer;" data-id='<?php echo $bill['id']; ?>' class="userinfo">
-                            <td><?php echo 'DAM-'.$bill['id'] ?></td>
-                            <td><?php echo $bill['ngaydathang']; ?></td>
-                            <td><?php echo $countsp; ?></td>
-                            <td><?php echo $bill['total']; ?></td>
-                            <td><?php echo $pttt; ?></td>
-                            <td><?php echo $ttdh; ?></td>
+                    <thead class="thead">
+                        <tr style="font-size: 20;">
+                            <th>Mã đơn hàng</th>
+                            <th>Ngày đặt</th>
+                            <th>Số lượng</th>
+                            <th>Tổng giá trị đơn hàng</th>
+                            <th>Phương thức thanh toán</th>
+                            <th>Tình trạng đơn hàng</th>
                         </tr>
-                    
-                    <?php } ?>
-                    </tbody>
-                    <tr style="background-color: #99B898;color:aliceblue;"><td colspan="5">Cảm ơn quý khách</td></tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <?php
+                        if (is_array($listbill) && (isset($_SESSION['user']))) {
+                            foreach ($listbill as $bill) {
+                                extract($bill);
+                                $ttdh = get_ttdh($bill['bill_status']);
+                                $countsp = loadall_cart_count($bill['id']);
+                                $pttt = get_pttt($bill['bill_pttt']);
+
+                                // Hiển thị đơn hàng chỉ nếu nó không ở trạng thái đã hủy (ví dụ: trạng thái 4 là đã hủy)
+                                if ($bill['bill_status'] != 4) {
+                                    ?>
+                                    <tr style="cursor: pointer;" data-id='<?php echo $bill['id']; ?>' class="userinfo">
+                                        <td>
+                                            <?php echo 'DAM-' . $bill['id'] ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $bill['ngaydathang']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $countsp; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo number_format($bill['total'], 0, ".", "."); ?>₫
+                                        </td>
+                                        <td>
+                                            <?php echo $pttt; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $ttdh; ?>
+                                        </td>
+                                    </tr>
+
+                                <?php }
+                            } ?>
+                        </tbody>
+                        <tr style="background-color: #99B898;color:aliceblue;">
+                            <td colspan="5">Cảm ơn quý khách</td>
+                        </tr>
                     <?php } ?>
                 </table>
             </div>
-            
+
         </form>
 
     </div>
     <script type='text/javascript'>
-        $(document).ready(function() {
-            $('.userinfo').click(function() {
+        $(document).ready(function () {
+            $('.userinfo').click(function () {
                 var userid = $(this).data('id');
                 $.ajax({
                     url: 'view/cart/ajaxfile.php',
@@ -59,7 +75,7 @@
                     data: {
                         userid: userid
                     },
-                    success: function(response) {
+                    success: function (response) {
                         $('.modal-body').html(response);
                         $('#exampleModal').modal('show');
                     }

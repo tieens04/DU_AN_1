@@ -46,7 +46,7 @@
             </td>
         </tr>
         <tr>
-            <td>Giá trị khuyến mãi</td>
+            <td>Giá trị khuyến mãi (theo phần trăm) </td>
             <td><input type="text" name="giatrikhuyenmai" placeholder="nhập vào giá trị khuyến mãi"></td>
         </tr>
         <tr>

@@ -131,7 +131,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $idbill = insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang);
                 // nhập cart
                 foreach ($_SESSION['mycart'] as $cart) {
-                    insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[6], $idbill);
+                    insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4],$cart[5], $cart[6], $idbill);
                 }
                 
                 if ($pttt == 3) {
