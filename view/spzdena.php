@@ -26,6 +26,7 @@
                 extract($row);
                 $linksp = "index.php?act=chitietsanpham&idsp=" . $id;
                 $hinh = $img_path . $img;
+                $gia_khuyen_mai = $price * $gia_tri_khuyen_mai / 100;
                 // Hiển thị sản phẩm
                 echo '<li class="sanPham">
                 <a href="' . $linksp . '">
@@ -39,7 +40,7 @@
                 <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
                 </div>
                 <label class="giamgia">
-                <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_khuyen_mai, 0, ".", ".") . '₫
                 </label>
                 <form action="index.php?act=addtocart" method="POST">
                 <input type = "hidden" name ="id" value="' . $id . '">

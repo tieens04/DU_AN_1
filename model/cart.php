@@ -164,11 +164,13 @@ function loadall_cart_count($idbill)
     $bill = pdo_query($sql);
     return sizeof($bill);
 }
-function loadall_bill($iduser)
+function loadall_bill($kyw,$iduser=0)
 {
     $sql = "SELECT * FROM bill WHERE 1";
     if ($iduser > 0)
-        $sql .= " AND iduser=" . $iduser;
+    $sql .= " AND iduser=" . $iduser;
+    if($kyw!="")
+    $sql .= " AND id like '%".$kyw."%'";
     $sql .= " ORDER BY id DESC";
     $listbill = pdo_query($sql);
     return $listbill;
@@ -240,21 +242,37 @@ function get_pttt($a)
 }
 function loadall_thongke()
 {
-    // Lấy tổng doanh thu và sản phẩm bán chạy nhất
-    $sql = "SELECT SUM(cart.thanhtien) AS total_revenue, 
-                   cart.idpro AS idsp, 
-                   sanpham.name AS tensp, 
-                   SUM(cart.soluong) AS sold_quantity
-            FROM cart
-            INNER JOIN sanpham ON cart.idpro = sanpham.id
-            GROUP BY cart.idpro
-            ORDER BY total_revenue DESC
-            LIMIT 1";
+    // Lấy tổng doanh thu
+    $sql_revenue = "SELECT SUM(cart.thanhtien) AS total_revenue
+                    FROM cart";
+    $total_revenue = pdo_query_value($sql_revenue);
 
-    $thongke = pdo_query_one($sql); // Thay thế hàm pdo_query_one() bằng hàm tương ứng để thực hiện truy vấn
+    // Lấy sản phẩm bán chạy nhất
+    $sql_top_product = "SELECT cart.idpro AS idsp,
+                               sanpham.name AS tensp,
+                               SUM(cart.soluong) AS sold_quantity
+                        FROM cart
+                        INNER JOIN sanpham ON cart.idpro = sanpham.id
+                        GROUP BY cart.idpro
+                        ORDER BY sold_quantity DESC
+                        LIMIT 1"; // Chỉ lấy 1 sản phẩm đầu tiên
+    $top_product = pdo_query_one($sql_top_product);
+
+    // Tính tổng số lượng sản phẩm đã bán
+    $sql_total_sold = "SELECT SUM(soluong) AS total_sold
+                       FROM cart";
+    $total_sold = pdo_query_value($sql_total_sold);
+
+    $thongke = [
+        'total_revenue' => $total_revenue,
+        'top_product' => $top_product,
+        'total_sold_quantity' => $total_sold // Thêm thông tin tổng số lượng sản phẩm đã bán vào mảng kết quả
+    ];
 
     return $thongke;
 }
+
+
 
 
 

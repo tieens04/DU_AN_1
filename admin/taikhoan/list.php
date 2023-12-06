@@ -17,9 +17,10 @@
             <?php
             foreach ($listtaikhoan as $taikhoan) {
                 extract($taikhoan);
-                $xoatk="index.php?act=xoatk&id=".$id;
+                $xoatk = "index.php?act=xoatk&id=" . $id;
+                $role_display = ($role == 0) ? 'User' : 'Admin'; // Hiển thị User nếu vai trò là 0, hiển thị Admin nếu vai trò là 1
                 echo '
-                        <table class="table-outline">
+                    <table class="table-outline">
                         <tbody>
                             <tr>
                                 <td style="width: 5%">' . $id . '</td>   
@@ -28,21 +29,18 @@
                                 <td style="width: 15%">' . $email . '</td>
                                 <td style="width: 20%">' . $address . '</td>
                                 <td style="width: 10%">' . $tel . '</td>
-                                <td style="width: 10%">' . $role . '</td>
-                            </td>
+                                <td style="width: 10%">' . $role_display . '</td>
                             </tr>
-                            </tbody>
-                            </table>
-                    ';
+                        </tbody>
+                    </table>
+                ';
             }
+            
             ?>
     </div>
     <div class="table-footer">
-        <select name="kieuTimSanPham">
-            <option value="ma">Tìm theo mã</option>
-            <option value="ten">Tìm theo tên</option>
-        </select>
-        <input type="text" placeholder="Tìm kiếm...">
+        <input type="text" name="kyw" placeholder="Tìm kiếm...">
+        <input type="submit" name="listok" value="OK">
     </div>
     </form>
 </div>

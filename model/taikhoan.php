@@ -21,9 +21,12 @@ function checkemail($email, $tel)
     $sp = pdo_query_one($sql);
     return $sp;
 }
-function loadall_taikhoan()
+function loadall_taikhoan($kyw, $id = 0)
 {
-    $sql = "select * from taikhoan order by id desc";
+    $sql = "SELECT * FROM taikhoan WHERE 1";
+    if ($id > 0) $sql .= " AND id=" . $id;
+    if ($kyw != "") $sql .= " AND id like '%".$kyw."%'";
+    $sql .= " ORDER BY id DESC";
     $listtaikhoan = pdo_query($sql);
     return $listtaikhoan;
 }

@@ -328,7 +328,12 @@ if (isset($_GET['act'])) {
 
         /* Controller danh sách khách hàng */
         case 'dskh':
-            $listtaikhoan = loadall_taikhoan();
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";
+            }
+            $listtaikhoan = loadall_taikhoan($kyw,0);
             include "taikhoan/list.php";
             break;
         /* Controller tài khoản */
@@ -340,7 +345,7 @@ if (isset($_GET['act'])) {
             } else {
                 $kyw = "";
             }
-            $listbill = loadall_bill($kyw, 0);
+            $listbill = loadall_bill($kyw,0);
             include "bill/listbill.php";
             break;
 

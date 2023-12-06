@@ -7,10 +7,17 @@ function loadall_sanpham_home_sanphammoi()
 }
 function loadall_sanpham_home_noibatnhat()
 {
-    $sql = "select * from sanpham where danh_gia > 300 order by id desc limit 0,5";
+    $sql = "SELECT sanpham.*, SUM(cart.soluong) AS total_sold_quantity
+            FROM sanpham
+            INNER JOIN cart ON sanpham.id = cart.idpro
+            GROUP BY sanpham.id
+            ORDER BY total_sold_quantity DESC
+            LIMIT 0, 5";
+
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
+
 function loadall_sanpham_home_tragop()
 {
     $sql = "select * from sanpham where so_luong <= 50 order by id desc limit 0,5";
