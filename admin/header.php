@@ -9,8 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Admin - Thế giới điện thoại</title>
-    <link rel="shortcut icon" href="../img/favicon.icon"/>
-
+    <link rel="shortcut icon" href="../view/img/favicon.ico"/>
+    <link rel="stylesheet" href="../view/css/bootstrap-3.3.6/bootstrap-3.3.6/docs/dist/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- Load font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous">

@@ -125,7 +125,7 @@
                     <a href="index.php?act=viewcart">
                         <i class="fa fa-shopping-cart"></i>
                         <span>Giỏ hàng</span>
-                        <span class="cart-number"></span>
+                        <span class="cart-number"><?= !empty($_SESSION['mycart']) ? count($_SESSION['mycart']) : 0 ?></span>
                     </a>
                 </div> <!-- End Cart -->
 

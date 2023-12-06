@@ -22,6 +22,7 @@
 </div>
 <i class="fa fa-arrow-up" id="goto-top-page" onclick="topFunction()"></i>
 </body>
-<script src="view/main.js"></script>
+<script src="view/js/main.js"></script>
+<script src="view/js/soluong.js"></script>
 
 </html>

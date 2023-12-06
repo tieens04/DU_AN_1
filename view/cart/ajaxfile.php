@@ -10,7 +10,7 @@ while( $row = mysqli_fetch_array($result) ){
 ?>
 <table border='0' width='100%'>
 <tr>
-    <td width="250"><img src="img/<?php echo $row['img']; ?>" height="140px">
+    <td width="250"><img src="<?php echo '../upload/'.$row['img']; ?>" height="140px">
     <td style="padding:20px;">
     <p>Tên : <?php echo $row['name']; ?></p>
     <p>Giá : <?php echo $row['price']; ?></p>

@@ -1,4 +1,5 @@
 <?php
+
 function loadall_sanpham_home_sanphammoi()
 {
     $sql = "select * from sanpham where 1 order by id desc limit 0,5";

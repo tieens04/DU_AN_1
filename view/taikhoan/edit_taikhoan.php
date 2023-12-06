@@ -16,7 +16,7 @@
                     extract($_SESSION['user']);
                 }
                 ?>
-                <form action="index.php?act=edit_taikhoan" method="post" oninput='up2.setCustomValidity(up2.value != up.value ? "Mật khẩu không trùng." : "")'>
+                <form action="index.php?act=edit_taikhoan" method="post" oninput='up2.setCustomValidity(up2.value != up.value ? "Mật khẩu không trùng khớp." : "")'>
                     <div class="mb">
                         Email
                         <input type="email" name="email" id="" value="<?= $email ?>" disabled>

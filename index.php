@@ -1,16 +1,20 @@
 <?php
 ob_start();
 session_start();
-if (!isset($_SESSION['mycart'])) // nếu session này tồn tại 
-    $_SESSION['mycart'] = array();
+
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 include "model/pdo.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
 include "model/taikhoan.php";
 include "model/cart.php";
+include "model/bonho.php";
+include "model/mau.php";
 include "view/header.php";
 include "view/global.php";
+if (!isset($_SESSION['mycart']))
+    $_SESSION['mycart'] = [];
+
 $spnb = loadall_sanpham_home_noibatnhat();
 $spmoi = loadall_sanpham_home_sanphammoi();
 $sptragop = loadall_sanpham_home_tragop();
@@ -55,7 +59,6 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $giatrikhuyenmai = $_POST['gia_tri_khuyen_mai'];
                 $fg = 0;
                 $ttien = $soluong * $price - $giatrikhuyenmai;
-
                 if (isset($_SESSION['mycart']) && (count($_SESSION['mycart']) > 0)) {
                     $i = 0;
                     foreach ($_SESSION['mycart'] as $cart) {
@@ -73,7 +76,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 //khi số lượng ban đầu không thay đổi thì thêm mới sp vào giỏ hàng
                 if ($fg == 0) {
                     $spadd = [$id, $name, $img, $price, $soluong, $giatrikhuyenmai, $ttien];
-                    $_SESSION['mycart'][] = $spadd;
+                    array_push($_SESSION['mycart'], $spadd);
                 }
                 header('location: index.php?act=viewcart');
             }
@@ -98,9 +101,8 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     header('Location:index.php?act=bill');
                     exit(); // Đảm bảo kết thúc kịch bản sau khi chuyển hướng
                 } else {
-                    $thongbao = "Vui lòng đăng nhập để tiếp tục thanh toán";  
+                    $thongbao = "Vui lòng đăng nhập để tiếp tục thanh toán";
                 }
-                
             }
             include "view/dungchung.php";
             include "view/cart/viewcart.php";
@@ -111,7 +113,15 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             include "view/dungchung.php";
             include "view/cart/bill.php";
             break;
-
+            
+        case 'delete':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_bill($_GET['id']);
+            }
+            $listbill = loadall_bill(0);
+            include "view/dungchung.php";
+            include "view/taikhoan/edit_taikhoan.php";
+            break;
         case 'billcomfirm':
             if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
                 if (isset($_SESSION['user'])) {
@@ -134,17 +144,16 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 foreach ($_SESSION['mycart'] as $cart) {
                     insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[6], $idbill);
                 }
-                
+
                 if ($pttt == 3) {
                     check_out();
                 }
                 $_SESSION['mycart'] = []; //xóa session cart
                 $bill = loadone_bill($idbill);
                 $bill_ct = loadall_cart($idbill);
-                
+
                 include "view/dungchung.php";
                 include "view/cart/billcomfirm.php";
-               
             }
             //show
 
@@ -292,6 +301,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             } else {
                 include "view/home.php";
             }
+
             break;
         case 'dssanpham':
             include "view/dungchung.php";
@@ -360,6 +370,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $_SESSION['user'] = checkuser($user, $pass);
                 header('Location: index.php?act=edit_taikhoan');
             }
+            
             $listbill = loadall_bill($_SESSION['user']['id']);
             include "view/dungchung.php";
             include "view/taikhoan/edit_taikhoan.php";

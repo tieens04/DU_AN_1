@@ -11,9 +11,14 @@ function loadall_binhluan($idpro)
 {
     $sql = "SELECT binhluan.*, taikhoan.user AS username
             FROM binhluan
-            INNER JOIN taikhoan ON binhluan.iduser = taikhoan.id
-            WHERE binhluan.idpro = '$idpro'
-            ORDER BY binhluan.id DESC";
+            INNER JOIN taikhoan ON binhluan.iduser = taikhoan.id";
+
+    if ($idpro > 0) {
+        $sql .= " WHERE binhluan.idpro = '$idpro'";
+    }
+    
+    $sql .= " ORDER BY binhluan.id DESC";
+    
     return pdo_query($sql);
 }
 
@@ -22,3 +27,4 @@ function delete_binhluan($id)
     $sql = "DELETE FROM binhluan WHERE id = " . $id;
     pdo_execute($sql);
 }
+?>

@@ -24,12 +24,15 @@
 .bg-info {
     background-color: #63c2de;
 }
+
 .bg-danger {
     background-color: #f86c6b;
 }
+
 .bg-success {
     background-color: #4dbd74;
 }
+
 .bg-warning {
     background-color: #ffc107;
 }

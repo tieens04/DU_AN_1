@@ -1,5 +1,6 @@
 
 <?php
+
 function viewcart($del)
 {
     global $img_path;
@@ -22,7 +23,7 @@ function viewcart($del)
             </tr>';
     foreach ($_SESSION['mycart'] as $cart) {
         $hinh = $img_path . $cart[2];
-        $ttien = $cart[3] * $cart[4] - $cart[5];
+        $ttien = ($cart[3] - $cart[5]) * $cart[4];
         $tong += $ttien;
         if ($del == 1) {
             $xoasp_td = '<td>
@@ -33,29 +34,32 @@ function viewcart($del)
         } else {
             $xoasp_td = '';
         }
-        echo '<tr>
+        echo '<tbody id="giohang">
+            <tr>
+                <td style="display: none;">' . $cart[0] . '</td>
                 <td>' . ($i + 1) . '</td>
                 <td><img src="' . $hinh . '" alt="" height="80px"></td>
                 <td>' . $cart[1] . '</td>
-                <td>' . number_format($cart[3], 0, ".", ".") . '₫</td>
-                <td>' . $cart[4] . '</td>
-                <td>' . number_format($cart[5], 0, ".", ".") . '₫</td>
+                <td>' . $cart[3] . '₫</td>
+                <td class="sl"> <a onclick="giam(this)"> - </a><span id="soluong">' . $cart[4] . '</span><a onclick="tang(this)"> + </a><input type="hidden" name="'.$i.'"></td>
+                <td>' . $cart[5] . '₫</td>
                 <td>' . number_format($ttien, 0, ".", ".") . '₫</td>
                 ' . $xoasp_td . '
-            </tr>';
-        $i++;
-    }
+            </tr>
+            </tbody>';
+        $i+=1;
+    } 
     if ($del == 1) {
-        $xoasp_tc = '<td><a href="index.php?act=delcart"> 
+        $xoasp_tc = '<td><a href="index.php?act=delcart" style="text-decoration: none;"> 
         <i class="fa fa-trash-o" aria-hidden="true"></i> Xóa hết </a></td>';
     } else {
         $xoasp_tc = '';
     }
-    echo '<tr>
+    echo '<tbody id="tong"><tr>
             <td colspan="6">Tổng đơn hàng</td>
             <td colspan="1">' . number_format($tong, 0, ".", ".") . '</td>
             ' . $xoasp_tc . '
-            </tr>';
+            </tr></tbody>';
 }
 
 //////
@@ -96,7 +100,7 @@ function tongdonhang()
     $tong = 0;
 
     foreach ($_SESSION['mycart'] as $cart) {
-        $ttien = $cart[3] * $cart[4] - $cart[5];
+        $ttien = ($cart[3] - $cart[5]) * $cart[4];
         $tong += $ttien;
     }
     return $tong;
@@ -162,6 +166,11 @@ function get_ttdh($n)
     }
     return $tt;
 }
+function update_bill_status($id_donhang, $trangthai_moi) {
+    $sql = "UPDATE bill SET bill_status = :trangthai_moi WHERE id = :id_donhang";
+    $params = array(':trangthai_moi' => $trangthai_moi, ':id_donhang' => $id_donhang);
+    return pdo_execute($sql, $params);
+}
 
 function get_pttt($a)
 {
@@ -194,11 +203,25 @@ function loadall_thongke()
     $listtk = pdo_query($sql);
     return $listtk;
 }
-
-function delete_bill($id)
+function xoa_bill($id)
 {
     $sql = "delete from bill where id=" . $id;
     pdo_execute($sql);
+}
+
+function delete_bill($id){
+    // Kiểm tra trạng thái của đơn hàng trước khi xóa
+    $bill_status = pdo_query_value("SELECT bill_status FROM bill WHERE id = ?", [$id]);
+
+    // Chỉ cho phép xóa đơn hàng ở trạng thái mới (ví dụ: trạng thái 1 là trạng thái mới)
+    if ($bill_status == 0 || $bill_status == 1) {
+        $sql = "DELETE FROM bill WHERE id = ?";
+        pdo_execute($sql, [$id]);
+    } else {
+        // Nếu không ở trạng thái mới, không cho phép xóa
+        // Có thể cung cấp thông báo hoặc xử lý tùy thuộc vào yêu cầu của bạn
+        echo "<script>alert('Không thể xóa đơn hàng ở trạng thái này.');</script>";
+    }
 }
 function check_out()
 {

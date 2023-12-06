@@ -1,4 +1,4 @@
-<form action="index.php?act=addsp" method="POST" enctype="multipart/form-data">
+<form name="myForm" action="index.php?act=addsp" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
     <table class=" table-outline table-content table-header">
         <tr>
             <th colspan="2">Thêm Sản Phẩm</th>
@@ -109,10 +109,9 @@
         </tr>
         <tr>
             <td colspan="2" class="table-footer">
-                <input class="button" type="submit" name="themmoi" value="THÊM MỚI">
-                <button class="button" type="reset">NHẬP LẠI</button>
-                <button class="button" type="button" onclick="window.location.href='index.php?act=listsp'">DANH SÁCH</button>
-                    
+            <input class="button" type="submit" name="themmoi" value="THÊM MỚI">
+            <input class="button" type="reset" value="NHẬP LẠI">
+            <button class="button" type="button" onclick="window.location.href='index.php?act=listsp'">DANH SÁCH</button>
             </td>
         </tr>
         </div>
