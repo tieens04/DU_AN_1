@@ -5,6 +5,8 @@ function viewcart($del)
     global $img_path;
     $tong = 0;
     $i = 0;
+    $tong_thanh_tien = 0; // Tổng thành tiền của các sản phẩm trong giỏ hàng
+
     if ($del == 1) {
         $xoasp_th = '<th>Thao tác</th>';
     } else {
@@ -23,8 +25,15 @@ function viewcart($del)
     foreach ($_SESSION['mycart'] as $cart) {
         $hinh = $img_path . $cart[2];
 
-        $gia_tri_don_hang = $cart[3] * $cart[4] * ((100 - $cart[5]) / 100);
-        $tong += $gia_tri_don_hang;
+        $gia_giam = $cart[3] * $cart[5] / 100; // Tính giá giảm theo phần trăm khuyến mãi
+        $gia_sau_giam = $cart[3] - $gia_giam; // Giá sau khi đã giảm giá
+        $thanh_tien = $gia_sau_giam * $cart[4] ; // Thành tiền của từng sản phẩm trong giỏ hàng
+
+        $gia_giam_format = number_format($gia_giam, 0, ".", ".") . '₫';
+        $gia_sau_giam_format = number_format($gia_sau_giam, 0, ".", ".") . '₫';
+        $thanh_tien_format = number_format($thanh_tien, 0, ".", ".") . '₫';
+
+        $tong_thanh_tien += $thanh_tien; // Cộng vào tổng thành tiền
 
         if ($del == 1) {
             $xoasp_td = '<td>
@@ -41,24 +50,29 @@ function viewcart($del)
                 <td>' . $cart[1] . '</td>
                 <td>' . number_format($cart[3], 0, ".", ".") . '₫</td>
                 <td>' . $cart[4] . '</td>
-                <td>' . number_format($cart[3] * ((100 - $cart[5]) / 100), 0, ".", ".") . '₫</td>
-                <td>' . number_format($gia_tri_don_hang, 0, ".", ".") . '₫</td>
+                <td>' . $gia_giam_format . '</td>
+                <td>' . $thanh_tien_format . '</td>
                 ' . $xoasp_td . '
             </tr>';
         $i++;
     }
+    $tong_thanh_tien_format = number_format($tong_thanh_tien, 0, ".", ".") . '₫'; // Format lại tổng thành tiền
+
     if ($del == 1) {
         $xoasp_tc = '<td><a href="index.php?act=delcart"> 
         <i class="fa fa-trash-o" aria-hidden="true"></i> Xóa hết </a></td>';
     } else {
         $xoasp_tc = '';
     }
+
+    // Hiển thị tổng thành tiền của giỏ hàng
     echo '<tr>
             <td colspan="6">Tổng đơn hàng</td>
-            <td colspan="1">' . number_format($tong, 0, ".", ".") . '₫</td>
+            <td colspan="1">' . $tong_thanh_tien_format . '</td>
             ' . $xoasp_tc . '
             </tr>';
 }
+
 
 
 //////
@@ -68,7 +82,7 @@ function bill_chi_tiet($listbill)
     global $img_path;
     $tong = 0;
     $i = 0;
-
+    
     echo '<tr>
             <th>Hình</th>
             <th>Sản phẩm</th>
@@ -79,17 +93,26 @@ function bill_chi_tiet($listbill)
             </tr>';
     foreach ($listbill as $cart) {
         $hinh = $img_path . $cart['img'];
-        $tong += $cart['thanhtien'];
+        $gia_giam = $cart['price'] * $cart['khuyenmai'] / 100; // Tính giá giảm theo phần trăm khuyến mãi
+        $gia_sau_giam = $cart['price'] - $gia_giam; // Giá sau khi đã giảm giá
+        $gia_giam_format = number_format($gia_giam, 0, ".", ".") . '₫';
+        $gia_sau_giam_format = number_format($gia_sau_giam, 0, ".", ".") . '₫';
+        
+        // Tính tổng giá trị đơn hàng
+        $tong += $gia_sau_giam;
+
         echo '<tr>  
         <td><img src="' . $hinh . '" alt="" height="80px"></td>
         <td>' . $cart['name'] . '</td>
         <td>' . number_format($cart['price'], 0, ".", ".") . '₫</td>
         <td>' . $cart['soluong'] . '</td>
-        <td>' . number_format($cart['khuyenmai'], 0, ".", ".") . '₫</td>
-        <td>' . number_format($cart['thanhtien'], 0, ".", ".") . '₫</td>
+        <td>' . $gia_giam_format . '</td>
+        <td>' . $gia_sau_giam_format . '</td>
         </tr>';
         $i += 1;
     }
+    
+    // Hiển thị tổng giá trị đơn hàng
     echo '<tr style="height: 50px;">
             <td colspan="4">Tổng đơn hàng</td>
             <td></td>
@@ -98,14 +121,18 @@ function bill_chi_tiet($listbill)
 }
 
 
+
 function tongdonhang()
 {
     $tong = 0;
 
     foreach ($_SESSION['mycart'] as $cart) {
-        $ttien = $cart[3] * $cart[4] - ((100 - $cart[5]) / 100);
-        $tong += $ttien;
+        $gia_giam = $cart[3] * $cart[5] / 100; // Tính giá giảm theo phần trăm khuyến mãi
+        $gia_sau_giam = $cart[3] - $gia_giam; // Giá sau khi đã giảm giá
+        $ttien = $gia_sau_giam * $cart[4]; // Thành tiền của mỗi sản phẩm với số lượng
+        $tong += $ttien; // Cộng vào tổng đơn hàng
     }
+
     return $tong;
 }
 
@@ -213,17 +240,24 @@ function get_pttt($a)
 }
 function loadall_thongke()
 {
-    $sql = "SELECT danhmuc.id as madm, danhmuc.name as tendm, 
-            COUNT(sanpham.id) as countsp, 
-            MIN(sanpham.price) as minprice, 
-            MAX(sanpham.price) as maxprice, 
-            AVG(sanpham.price) as avgprice ";
-    $sql .= "FROM sanpham LEFT JOIN danhmuc ON danhmuc.id = sanpham.iddm ";
-    $sql .= "GROUP BY danhmuc.id ORDER BY danhmuc.id DESC";
+    // Lấy tổng doanh thu và sản phẩm bán chạy nhất
+    $sql = "SELECT SUM(cart.thanhtien) AS total_revenue, 
+                   cart.idpro AS idsp, 
+                   sanpham.name AS tensp, 
+                   SUM(cart.soluong) AS sold_quantity
+            FROM cart
+            INNER JOIN sanpham ON cart.idpro = sanpham.id
+            GROUP BY cart.idpro
+            ORDER BY total_revenue DESC
+            LIMIT 1";
 
-    $listtk = pdo_query($sql);
-    return $listtk;
+    $thongke = pdo_query_one($sql); // Thay thế hàm pdo_query_one() bằng hàm tương ứng để thực hiện truy vấn
+
+    return $thongke;
 }
+
+
+
 
 
 

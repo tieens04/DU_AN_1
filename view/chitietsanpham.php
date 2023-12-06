@@ -58,19 +58,9 @@
                     <p>1 đổi 1 trong 1 tháng nếu lỗi, đổi sản phẩm tại nhà trong 1 ngày.</p>
                 </div>
             </div>
-            <div class="box03 group desk">
-                <a href="#" data-index="0" class="box03__item item act">64GB</a>
-                <a href="#" data-index="1" class="box03__item item ">128GB</a>
-                <a href="#" data-index="2" class="box03__item item ">256GB</a>
-            </div>
             <div class="scrolling_inner scroll-right">
         <div class="box03 color group desk">
-                    <a href="#" class="box03__item item act">Xanh lá</a>
-                    <a href="#" class="box03__item item ">Tím</a>
-                    <a href="#"  class="box03__item item ">Đen</a>
-                    <a href="#" class="box03__item item ">Đỏ</a>
-                    <a href="#"  class="box03__item item ">Trắng</a>
-                    <a href="#" class="box03__item item ">Xanh Dương</a>
+                    
         </div>
     </div>
             <?php
@@ -167,33 +157,35 @@
         foreach ($sp_cungloai as $sp) {
             extract($sp);
             $hinh = $img_path . $img;
+            $gia_khuyen_mai = $price * $gia_tri_khuyen_mai / 100; // Tính giá khuyến mãi
             echo '<li class="sanPham">
-                    <a  href="index.php?act=chitietsanpham&idsp=' . $id . '">
-                    <img src="' . $hinh . '" alt="" style="height: 200px;">
-                    <h3>' . $name . '</h3>
-                    <div class="price">
-                    <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
-                    </div>
-                    <label class="giamgia">
-                    <i class="fa fa-bolt"> </i>
-                    '.$gia_tri_khuyen_mai.' đ
-                    </label>
-                    
-                        <form action="index.php?act=addtocart" method="POST">
-                        <input type = "hidden" name ="id" value="' . $id . '">
-                        <input type = "hidden" name ="name" value="' . $name . '">
-                        <input type = "hidden" name ="img" value="' . $img . '">
-                        <input type = "hidden" name ="price" value="' . $price . '">
-                        <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
-                        <div class="tooltip">
-                        <input class="themvaogio" type="submit" name ="addtocart" value="+">
-                        <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                        </div>
-                        </form>
-                </a>
+            <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
+            <img src="' . $hinh . '" alt="">
+            <h3>' . $name . '</h3>
+            <div class="price">
+            <strong>' . number_format($price, 0, ".", ".") . '₫</strong>
+            </div>
+            <div class="ratingresult">
+            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
+            </div>
+            <label class="giamgia">
+                <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_khuyen_mai, 0, ".", ".") . '₫
+            </label>
+            <form action="index.php?act=addtocart" method="POST">
+            <input type = "hidden" name ="id" value="' . $id . '">
+            <input type = "hidden" name ="name" value="' . $name . '">
+            <input type = "hidden" name ="img" value="' . $img . '">
+            <input type = "hidden" name ="price" value="' . $price . '">
+            <input type = "hidden" name ="gia_tri_khuyen_mai" value="' . $gia_tri_khuyen_mai . '">
+            <div class="tooltip">
+            <input class="themvaogio" type="submit" name ="addtocart" value="+">
+            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+            </div>
+            </form>
+            </a>
             </li>';
         }
         ?>
     </div>
 </div>
-                

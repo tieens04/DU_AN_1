@@ -54,7 +54,7 @@ include "view/boloc.php"
             foreach ($spnb as $sp) {
                 extract($sp);
                 $hinh = $img_path . $img;
-
+                $gia_khuyen_mai = $price * $gia_tri_khuyen_mai / 100; // Tính giá khuyến mãi
                 echo '<li class="sanPham">
                 <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
                 <img src="' . $hinh . '" alt="">
@@ -67,7 +67,7 @@ include "view/boloc.php"
                 <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
                 </div>
                 <label class="giamgia">
-                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_khuyen_mai, 0, ".", ".") . '₫
                 </label>
                 <form action="index.php?act=addtocart" method="POST">
                 <input type = "hidden" name ="id" value="' . $id . '">
@@ -103,6 +103,7 @@ include "view/boloc.php"
             foreach ($spmoi as $sp) {
                 extract($sp);
                 $hinh = $img_path . $img;
+                
                 echo '<li class="sanPham">
                 <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
                 <img src="' . $hinh . '" alt="">
@@ -151,6 +152,7 @@ include "view/boloc.php"
             foreach ($sptragop as $sp) {
                 extract($sp);
                 $hinh = $img_path . $img;
+                $gia_khuyen_mai = $price * $gia_tri_khuyen_mai / 100; // Tính giá khuyến mãi
                 echo '<li class="sanPham">
                 <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
                 <img src="' . $hinh . '" alt="">
@@ -163,7 +165,7 @@ include "view/boloc.php"
                 <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
                 </div>
                 <label class="giamgia">
-                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_khuyen_mai, 0, ".", ".") . '₫
                 </label>
                 <form action="index.php?act=addtocart" method="POST">
                 <input type = "hidden" name ="id" value="' . $id . '">
@@ -197,6 +199,7 @@ include "view/boloc.php"
             foreach ($spgiamgia as $sp) {
                 extract($sp);
                 $hinh = $img_path . $img;
+                $gia_khuyen_mai = $price * $gia_tri_khuyen_mai / 100; // Tính giá khuyến mãi
                 echo '<li class="sanPham">
                 <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
                 <img src="' . $hinh . '" alt="">
@@ -209,7 +212,7 @@ include "view/boloc.php"
                 <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
                 </div>
                 <label class="giamgia">
-                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_khuyen_mai, 0, ".", ".") . '₫
                 </label>
                 <form action="index.php?act=addtocart" method="POST">
                 <input type = "hidden" name ="id" value="' . $id . '">
@@ -243,6 +246,7 @@ include "view/boloc.php"
             foreach ($spgiare as $sp) {
                 extract($sp);
                 $hinh = $img_path . $img;
+                $gia_khuyen_mai = $price * $gia_tri_khuyen_mai / 100; // Tính giá khuyến mãi
                 echo '<li class="sanPham">
                 <a href="index.php?act=chitietsanpham&idsp=' . $id . '">
                 <img src="' . $hinh . '" alt="">
@@ -255,7 +259,7 @@ include "view/boloc.php"
                 <i class="fa fa-star"></i><i class="fa fa-star"></i><span>' . $danh_gia . ' đánh giá</span>
                 </div>
                 <label class="giamgia">
-                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_tri_khuyen_mai, 0, ".", ".") . '₫
+                    <i class="fa fa-bolt"></i> Giảm ' . number_format($gia_khuyen_mai, 0, ".", ".") . '₫
                 </label>
                 <form action="index.php?act=addtocart" method="POST">
                 <input type = "hidden" name ="id" value="' . $id . '">

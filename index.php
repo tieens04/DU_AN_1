@@ -41,45 +41,40 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             include "view/dungchung.php";
             include "view/trungtambaohanh.php";
             break;
-        case 'lienhe':
-            include "view/dungchung.php";
-            include "view/lienhe.php";
-            break;
-        case 'addtocart':
-            if (isset($_POST['addtocart']) && ($_POST['addtocart'])) { // nếu tồn tại và được click thì
-                $id = $_POST['id'];
-                $name = $_POST['name'];
-                $img = $_POST['img'];
-                $price = $_POST['price'];
-                $soluong = 1;
-                $giatrikhuyenmai = $_POST['gia_tri_khuyen_mai'];
-                $fg = 0;
-                $ttien = $soluong * $price - $giatrikhuyenmai;
-
-                if (isset($_SESSION['mycart']) && (count($_SESSION['mycart']) > 0)) {
-                    $i = 0;
-                    foreach ($_SESSION['mycart'] as $cart) {
+            case 'addtocart':
+                if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
+                    $id = $_POST['id'];
+                    $name = $_POST['name'];
+                    $img = $_POST['img'];
+                    $price = $_POST['price'];
+                    $soluong = 1;
+                    $giatrikhuyenmai = $_POST['gia_tri_khuyen_mai'];
+                    $ttien = $soluong * ($price + $giatrikhuyenmai); 
+            
+                    $found = false;
+                    foreach ($_SESSION['mycart'] as $i => $cart) {
                         if ($cart[0] == $id) {
-                            //cập nhật mới số lượng
                             $soluong += $cart[4];
-                            $fg = 1;
-                            //cập nhật số lượng mới vào giỏ hàng
+                            $giatrikhuyenmai += $cart[5]; 
+                            $ttien = $cart[4] * ($cart[3] + $cart[5]); 
                             $_SESSION['mycart'][$i][4] = $soluong;
+                            $_SESSION['mycart'][$i][5] = $giatrikhuyenmai;
+                            $_SESSION['mycart'][$i][6] = $ttien;
+                            $found = true;
                             break;
                         }
-                        $i++;
                     }
+            
+                    if (!$found) {
+                        $spadd = [$id, $name, $img, $price, $soluong, $giatrikhuyenmai, $ttien];
+                        $_SESSION['mycart'][] = $spadd;
+                    }
+            
+                    header('location: index.php?act=viewcart');
                 }
-                //khi số lượng ban đầu không thay đổi thì thêm mới sp vào giỏ hàng
-                if ($fg == 0) {
-                    $spadd = [$id, $name, $img, $price, $soluong, $giatrikhuyenmai, $ttien];
-                    $_SESSION['mycart'][] = $spadd;
-                }
-                header('location: index.php?act=viewcart');
-            }
-            include "view/dungchung.php";
-            //include "view/viewcart.php";
-            break;
+                include "view/dungchung.php";
+                break;
+            
         case 'delcart':
             if (isset($_GET['idcart'])) {
                 $idcart = $_GET['idcart']; //Nếu 'idcart' đã được gửi, giá trị sẽ được lưu vào biến $idcart để sử dụng sau này.

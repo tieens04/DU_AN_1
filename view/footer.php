@@ -4,7 +4,7 @@
             <section>
                 <ul class="flexContain">
                     <li>Giao hàng hỏa tốc trong 1 giờ</li>
-                    <li>Thanh toán linh hoạt: tiền mặt, visa / master, trả góp</li>
+                    <li>Thanh toán linh hoạt: tiền mặt, chuyển khoản, trả góp</li>
                     <li>Trải nghiệm sản phẩm tại nhà</li>
                     <li>Lỗi đổi tại nhà trong 1 ngày</li>
                     <li>Hỗ trợ suốt thời gian sử dụng.
@@ -15,8 +15,8 @@
             </section>
         </div>
 
-        <p><a href="index.php">LDD Phone Store</a> - All rights reserved © 2021 - Designed by
-            <span style="color: #eee; font-weight: bold">group 15th</span>
+        <p><a href="index.php">LDD Phone Store</a> - All rights reserved © 2023 - Designed by
+            <span style="color: #eee; font-weight: bold">Nhóm 4</span>
         </p>
     </div>
 </div>

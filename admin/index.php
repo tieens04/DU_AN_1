@@ -384,10 +384,10 @@ if (isset($_GET['act'])) {
             $listthongke = loadall_thongke();
             include "thongke/list.php";
             break;
-        case 'bieudo':
+        /* case 'bieudo':
             $listthongke = loadall_thongke();
             include "thongke/bieudo.php";
-            break;
+            break; */
     }
 } else {
     include "home.php";

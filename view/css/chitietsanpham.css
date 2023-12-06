@@ -296,15 +296,13 @@
 
 .buy_now+i {
     position: absolute;
-    top: 93.5%;
+    top: 91.5%;
     right: 68%;
     transform: translateY(-50%);
     font-weight: 900;
     cursor: pointer;
 
 }
-
-
 
 .policy {
     display: block;
