@@ -15,15 +15,18 @@ function update_taikhoan($id, $user, $pass, $email, $address, $tel)
     $sql = "update taikhoan set user='" . $user . "', pass='" . $pass . "', email='" . $email . "', address='" . $address . "', tel='" . $tel . "' where id=" . $id;
     pdo_execute($sql);
 }
-function checkemail($email, $tel)
+function checkemail($email, $user)
 {
-    $sql = "select * from taikhoan where email='" . $email . "' AND tel='" . $tel . "'";
+    $sql = "select * from taikhoan where email='" . $email . "' AND user='" . $user . "'";
     $sp = pdo_query_one($sql);
     return $sp;
 }
-function loadall_taikhoan()
+function loadall_taikhoan($kyw, $id=0)
 {
-    $sql = "select * from taikhoan order by id desc";
+    $sql = "select * from taikhoan where 1";
+    if($id > 0) $sql .= " AND id=" . $id;
+    if($kyw != "") $sql .= " AND id like '%".$kyw."%'";
+    $sql .= " ORDER BY id DESC";
     $listtaikhoan = pdo_query($sql);
     return $listtaikhoan;
 }

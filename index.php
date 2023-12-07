@@ -50,39 +50,40 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             include "view/lienhe.php";
             break;
         case 'addtocart':
-            if (isset($_POST['addtocart']) && ($_POST['addtocart'])) { // nếu tồn tại và được click thì
+            if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
                 $id = $_POST['id'];
                 $name = $_POST['name'];
                 $img = $_POST['img'];
                 $price = $_POST['price'];
                 $soluong = 1;
                 $giatrikhuyenmai = $_POST['gia_tri_khuyen_mai'];
-                $fg = 0;
-                $ttien = $soluong * $price - $giatrikhuyenmai;
-                if (isset($_SESSION['mycart']) && (count($_SESSION['mycart']) > 0)) {
-                    $i = 0;
-                    foreach ($_SESSION['mycart'] as $cart) {
-                        if ($cart[0] == $id) {
-                            //cập nhật mới số lượng
-                            $soluong += $cart[4];
-                            $fg = 1;
-                            //cập nhật số lượng mới vào giỏ hàng
-                            $_SESSION['mycart'][$i][4] = $soluong;
-                            break;
-                        }
-                        $i++;
+                $ttien = $soluong * ($price + $giatrikhuyenmai); 
+        
+                $found = false;
+                foreach ($_SESSION['mycart'] as $i => $cart) {
+                    if ($cart[0] == $id) {
+                        $soluong += $cart[4];
+                        $giatrikhuyenmai += $cart[5]; 
+                        $ttien = $cart[4] * ($cart[3] + $cart[5]); 
+                        $_SESSION['mycart'][$i][4] = $soluong;
+                        $_SESSION['mycart'][$i][5] = $giatrikhuyenmai;
+                        $_SESSION['mycart'][$i][6] = $ttien;
+                        $found = true;
+                        break;
                     }
                 }
-                //khi số lượng ban đầu không thay đổi thì thêm mới sp vào giỏ hàng
-                if ($fg == 0) {
+                if (!$found) {
                     $spadd = [$id, $name, $img, $price, $soluong, $giatrikhuyenmai, $ttien];
-                    array_push($_SESSION['mycart'], $spadd);
+                    $_SESSION['mycart'][] = $spadd;
                 }
+        
                 header('location: index.php?act=viewcart');
             }
             include "view/dungchung.php";
-            //include "view/viewcart.php";
             break;
+            
+            
+           
         case 'delcart':
             if (isset($_GET['idcart'])) {
                 $idcart = $_GET['idcart']; //Nếu 'idcart' đã được gửi, giá trị sẽ được lưu vào biến $idcart để sử dụng sau này.
@@ -113,7 +114,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             include "view/dungchung.php";
             include "view/cart/bill.php";
             break;
-            
+
         case 'delete':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 delete_bill($_GET['id']);
@@ -122,6 +123,8 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             include "view/dungchung.php";
             include "view/taikhoan/edit_taikhoan.php";
             break;
+
+        
         case 'billcomfirm':
             if (isset($_POST['dongydathang']) && ($_POST['dongydathang'])) {
                 if (isset($_SESSION['user'])) {
@@ -148,6 +151,14 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 if ($pttt == 3) {
                     check_out();
                 }
+                foreach ($_SESSION['mycart'] as $cart) {
+                    $id_donhang = $cart[0];
+                    $so_luong_can_tru = $cart[4];
+        
+                    // Hàm cập nhật số lượng trong cơ sở dữ liệu, bạn cần thay thế hàm này bằng hàm thực tế của bạn.
+                    update_slsp($id_donhang, $so_luong_can_tru);
+                }
+            
                 $_SESSION['mycart'] = []; //xóa session cart
                 $bill = loadone_bill($idbill);
                 $bill_ct = loadall_cart($idbill);
@@ -370,7 +381,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $_SESSION['user'] = checkuser($user, $pass);
                 header('Location: index.php?act=edit_taikhoan');
             }
-            
+
             $listbill = loadall_bill($_SESSION['user']['id']);
             include "view/dungchung.php";
             include "view/taikhoan/edit_taikhoan.php";
@@ -379,9 +390,9 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
         case 'quenmk':
             if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
                 $email = $_POST['email'];
-                $tel = $_POST['tel'];
+                $user = $_POST['user'];
 
-                $checkemail = checkemail($email, $tel);
+                $checkemail = checkemail($email, $user);
                 if (is_array($checkemail)) {
                     $thongbao = "Mật khẩu của bạn là: " . $checkemail['pass'];
                 } else {

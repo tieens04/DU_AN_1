@@ -1,5 +1,5 @@
 <form name="myForm" action="index.php?act=addsp" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-    <table class=" table-outline table-content table-header">
+<table class="table-outline table-content table-header form-table">
         <tr>
             <th colspan="2">Thêm Sản Phẩm</th>
         </tr>
@@ -46,7 +46,7 @@
             </td>
         </tr>
         <tr>
-            <td>Giá trị khuyến mãi</td>
+            <td>Giá trị khuyến mãi (theo phần trăm) </td>
             <td><input type="text" name="giatrikhuyenmai" placeholder="nhập vào giá trị khuyến mãi"></td>
         </tr>
         <tr>

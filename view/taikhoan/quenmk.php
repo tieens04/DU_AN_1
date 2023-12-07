@@ -13,7 +13,7 @@
 
             <div class="mb">
                 Điện thoại
-                <input type="text" name="tel" id="">
+                <input type="text" name="user" id="">
             </div>
 
             <div class="mb">

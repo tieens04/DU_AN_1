@@ -46,6 +46,9 @@ if (isset($_GET['id'])) {
                         echo 'selected'; ?>>Đang giao hàng</option>
                     <option value="3" <?php if (isset($bill["bill_status"]) && $bill["bill_status"] == 3)
                         echo 'selected'; ?>>Hoàn tất</option>
+                    <option value="4" <?php if (isset($bill["bill_status"]) && $bill["bill_status"] == 4)
+                        echo 'selected'; ?>>Hủy đơn hàng</option>
+
                 </select>
             </td>
         </tr>

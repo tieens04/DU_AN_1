@@ -1,5 +1,15 @@
 <?php
-
+// function checksl(){
+//     $sql = "select so_luong from sanpham where id".$id;
+//     $listsanpham = pdo_query($sql);
+//     return $listsanpham;
+// }
+function update_slsp($id_donhang,$so_luong_can_tru) {
+    
+    $sql = "UPDATE sanpham SET so_luong = so_luong - :so_luong_can_tru WHERE id = :id_donhang";
+    $params = array(':so_luong_can_tru' => $so_luong_can_tru, ':id_donhang' => $id_donhang);
+    return pdo_execute($sql, $params);
+}
 function loadall_sanpham_home_sanphammoi()
 {
     $sql = "select * from sanpham where 1 order by id desc limit 0,5";
@@ -8,7 +18,13 @@ function loadall_sanpham_home_sanphammoi()
 }
 function loadall_sanpham_home_noibatnhat()
 {
-    $sql = "select * from sanpham where danh_gia > 300 order by id desc limit 0,5";
+    $sql = "SELECT sanpham.*, SUM(cart.soluong) AS total_sold_quantity
+            FROM sanpham
+            INNER JOIN cart ON sanpham.id = cart.idpro
+            GROUP BY sanpham.id
+            ORDER BY total_sold_quantity DESC
+            LIMIT 0, 5";
+
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }

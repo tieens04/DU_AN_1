@@ -1,6 +1,7 @@
 
 <form action="index.php?act=addbonho" method="POST">
-    <table class="table-outline table-content table-header">
+    
+<table class="table-outline table-content table-header form-table">
         <tr>
             <th colspan="2">Thêm bộ nhớ sản phẩm</th>
         </tr>

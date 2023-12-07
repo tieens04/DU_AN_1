@@ -1,6 +1,6 @@
 
 <form action="index.php?act=adddm" method="POST" enctype="multipart/form-data">
-    <table class="table-outline table-content table-header">
+<table class="table-outline table-content table-header form-table">
         <tr>
             <th colspan="2">Thêm loại sản phẩm</th>
         </tr>

@@ -23,7 +23,9 @@ function viewcart($del)
             </tr>';
     foreach ($_SESSION['mycart'] as $cart) {
         $hinh = $img_path . $cart[2];
-        $ttien = ($cart[3] - $cart[5]) * $cart[4];
+        $km = $cart[5] * $cart[4];
+        $ttien = $cart[3] * $cart[4]- $km;
+        
         $tong += $ttien;
         if ($del == 1) {
             $xoasp_td = '<td>
@@ -41,8 +43,8 @@ function viewcart($del)
                 <td><img src="' . $hinh . '" alt="" height="80px"></td>
                 <td>' . $cart[1] . '</td>
                 <td>' . $cart[3] . '₫</td>
-                <td class="sl"> <a onclick="giam(this)"> - </a><span id="soluong">' . $cart[4] . '</span><a onclick="tang(this)"> + </a><input type="hidden" name="'.$i.'"></td>
-                <td>' . $cart[5] . '₫</td>
+                <td class="sl">' . $cart[4] . '</td>
+                <td>' . $km . '₫</td>
                 <td>' . number_format($ttien, 0, ".", ".") . '₫</td>
                 ' . $xoasp_td . '
             </tr>
@@ -79,14 +81,15 @@ function bill_chi_tiet($listbill)
             </tr>';
     foreach ($listbill as $cart) {
         $hinh = $img_path . $cart['img'];
-
-        $tong += $cart['thanhtien'];
+        
+        $ttien = $cart['thanhtien']*$cart['soluong'];
+        $tong+=$ttien;
         echo '<tr>  
         <td><img src="' . $hinh . '" alt="" height="80px"></td>
         <td>' . $cart['name'] . '</td>
         <td>' . number_format($cart['price'], 0, ".", ".") . '</td>
         <td>' . $cart['soluong'] . '</td>
-        <td>' . $cart['thanhtien'] . '</td>
+        <td>' . $ttien . '</td>
         </tr>';
         $i += 1;
     }
@@ -100,7 +103,8 @@ function tongdonhang()
     $tong = 0;
 
     foreach ($_SESSION['mycart'] as $cart) {
-        $ttien = ($cart[3] - $cart[5]) * $cart[4];
+        $km = $cart[5] * $cart[4];
+        $ttien = $cart[3] * $cart[4]- $km;
         $tong += $ttien;
     }
     return $tong;
@@ -134,12 +138,14 @@ function loadall_cart_count($idbill)
     $bill = pdo_query($sql);
     return sizeof($bill);
 }
-function loadall_bill($iduser)
+function loadall_bill($kyw,$iduser=0)
 {
     $sql = "SELECT * FROM bill WHERE 1";
     if ($iduser > 0)
         $sql .= " AND iduser=" . $iduser;
-    $sql .= " ORDER BY id DESC";
+    if ($kyw!="")
+        $sql .= " AND id like '%".$kyw."%'";
+        $sql .= " ORDER BY id DESC";
     $listbill = pdo_query($sql);
     return $listbill;
 }
@@ -159,19 +165,35 @@ function get_ttdh($n)
         case '3':
             $tt = "Hoàn tất";
             break;
-
+        case '4':
+            $tt = "Đã hủy";
+            break;
         default:
             $tt = "Đơn hàng mới";
             break;
     }
     return $tt;
 }
+function delete_bill($id){
+    // Kiểm tra trạng thái của đơn hàng trước khi xóa
+    $bill_status = pdo_query_value("SELECT bill_status FROM bill WHERE id = ?", [$id]);
+
+    // Chỉ cho phép cập nhật trạng thái nếu đơn hàng ở trạng thái mới (0 hoặc 1)
+    if ($bill_status == 0 || $bill_status == 1) {
+        // Thay đổi trạng thái của đơn hàng thành trạng thái đã hủy (ví dụ: 4 là trạng thái đã hủy)
+        $sql = "UPDATE bill SET bill_status = 4 WHERE id = ?";
+        pdo_execute($sql, [$id]);
+    } else {
+        // Nếu không ở trạng thái mới, không cho phép cập nhật trạng thái
+        // Có thể cung cấp thông báo hoặc xử lý tùy thuộc vào yêu cầu của bạn
+        echo "Không thể cập nhật trạng thái của đơn hàng này.";
+    }
+}
 function update_bill_status($id_donhang, $trangthai_moi) {
     $sql = "UPDATE bill SET bill_status = :trangthai_moi WHERE id = :id_donhang";
     $params = array(':trangthai_moi' => $trangthai_moi, ':id_donhang' => $id_donhang);
     return pdo_execute($sql, $params);
 }
-
 function get_pttt($a)
 {
     switch ($a) {
@@ -192,37 +214,36 @@ function get_pttt($a)
 }
 function loadall_thongke()
 {
-    $sql = "SELECT danhmuc.id as madm, danhmuc.name as tendm, 
-            COUNT(sanpham.id) as countsp, 
-            MIN(sanpham.price) as minprice, 
-            MAX(sanpham.price) as maxprice, 
-            AVG(sanpham.price) as avgprice ";
-    $sql .= "FROM sanpham LEFT JOIN danhmuc ON danhmuc.id = sanpham.iddm ";
-    $sql .= "GROUP BY danhmuc.id ORDER BY danhmuc.id DESC";
+    // Lấy tổng doanh thu
+    $sql_revenue = "SELECT SUM(cart.thanhtien) AS total_revenue
+                    FROM cart";
+    $total_revenue = pdo_query_value($sql_revenue);
 
-    $listtk = pdo_query($sql);
-    return $listtk;
-}
-function xoa_bill($id)
-{
-    $sql = "delete from bill where id=" . $id;
-    pdo_execute($sql);
+    // Lấy sản phẩm bán chạy nhất
+    $sql_top_product = "SELECT cart.idpro AS idsp,
+                               sanpham.name AS tensp,
+                               SUM(cart.soluong) AS sold_quantity
+                        FROM cart
+                        INNER JOIN sanpham ON cart.idpro = sanpham.id
+                        GROUP BY cart.idpro
+                        ORDER BY sold_quantity DESC
+                        LIMIT 1"; // Chỉ lấy 1 sản phẩm đầu tiên
+    $top_product = pdo_query_one($sql_top_product);
+
+    // Tính tổng số lượng sản phẩm đã bán
+    $sql_total_sold = "SELECT SUM(soluong) AS total_sold
+                       FROM cart";
+    $total_sold = pdo_query_value($sql_total_sold);
+
+    $thongke = [
+        'total_revenue' => $total_revenue,
+        'top_product' => $top_product,
+        'total_sold_quantity' => $total_sold // Thêm thông tin tổng số lượng sản phẩm đã bán vào mảng kết quả
+    ];
+
+    return $thongke;
 }
 
-function delete_bill($id){
-    // Kiểm tra trạng thái của đơn hàng trước khi xóa
-    $bill_status = pdo_query_value("SELECT bill_status FROM bill WHERE id = ?", [$id]);
-
-    // Chỉ cho phép xóa đơn hàng ở trạng thái mới (ví dụ: trạng thái 1 là trạng thái mới)
-    if ($bill_status == 0 || $bill_status == 1) {
-        $sql = "DELETE FROM bill WHERE id = ?";
-        pdo_execute($sql, [$id]);
-    } else {
-        // Nếu không ở trạng thái mới, không cho phép xóa
-        // Có thể cung cấp thông báo hoặc xử lý tùy thuộc vào yêu cầu của bạn
-        echo "<script>alert('Không thể xóa đơn hàng ở trạng thái này.');</script>";
-    }
-}
 function check_out()
 {
 

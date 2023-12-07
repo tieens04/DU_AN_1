@@ -31,6 +31,10 @@
                     <i class="fa fa-bolt"> </i>
                     <?= number_format($gia_tri_khuyen_mai, 0, ".", ".") ?> đ
                 </label>
+                <label class="giamgia">
+                    Số lượng:
+                    <?= $so_luong ?> 
+                </label>
             </div>
             <div class="area_promo">
                 <strong>Khuyến mãi</strong>

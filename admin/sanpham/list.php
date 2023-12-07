@@ -7,8 +7,9 @@
                         <th title="Sắp xếp" style="width: 5%">Mã<i class="fa fa-sort"></i></th>
                         <th title="Sắp xếp" style="width: 10%">Hình<i class="fa fa-sort"></i></th>
                         <th title="Sắp xếp" style="width: 40%">Tên sản phẩm <i class="fa fa-sort"></i></th>
-                        <th title="Sắp xếp" style="width: 15%">Giá <i class="fa fa-sort"></i></th>
-                        <th title="Sắp xếp" style="width: 15%">Số lượng <i class="fa fa-sort"></i></th>
+                        <th title="Sắp xếp" style="width: 10%">Giá <i class="fa fa-sort"></i></th>
+                        <th title="Sắp xếp" style="width: 10%">Số lượng <i class="fa fa-sort"></i></th>
+                        <th title="Sắp xếp" style="width: 10%">Giảm giá <i class="fa fa-sort"></i></th>
                         <th style="width: 15%">Hành động</th>
                     </tr>
                 </table>
@@ -29,8 +30,9 @@
                             <td style="width: 5%">' . $id . '</td>   
                             <td style="width: 10%">' . $hinh . '</td>
                             <td style="width: 40%">' . $name . '</td>
-                            <td style="width: 15%">' . number_format($price, 0, ".", ".") . '₫</td>
-                            <td style="width: 15%">' . number_format($so_luong, 0, ".", ".") . '</td>
+                            <td style="width: 10%">' . number_format($price, 0, ".", ".") . '₫</td>
+                            <td style="width: 10%">' . number_format($so_luong, 0, ".", ".") . '</td>
+                            <td style="width: 10%">' . $gia_tri_khuyen_mai . '%</td>
                             <td style="width: 15%">
                                 <div class="tooltip">
                                     <a href="' . $suasp . '""><i class="fa fa-wrench"></i></a>

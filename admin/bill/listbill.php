@@ -30,7 +30,7 @@
                     
                         <tbody>
                             <tr>
-                                <td style="cursor: pointer;width: 10%" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo 'DAM-' . $bill['id'] ?></td>   
+                                <td style="cursor: pointer;width: 10%" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo 'DA1-' . $bill['id'] ?></td>   
                                 <td style="cursor: pointer;width: 25%" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo $kh ?></td>
                                 <td style="cursor: pointer;width: 10%" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo $countsp ?></td>
                                 <td style="cursor: pointer;width: 10%" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo number_format($bill["total"], 0, ".", ".") ?>₫</td>

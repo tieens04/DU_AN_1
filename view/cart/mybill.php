@@ -29,19 +29,20 @@
                                 $countsp = loadall_cart_count($bill['id']);
                                 $pttt = get_pttt($bill['bill_pttt']);
                                 $huy_don_hang = "index.php?act=delete&id=" . $id;
+                                if ($bill['bill_status'] != 4){
                         ?>
 
                                 <tr>
-                                    <td style="cursor: pointer;" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo 'DAM-' . $bill['id'] ?></td>
+                                    <td style="cursor: pointer;" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo 'DA1-' . $bill['id'] ?></td>
                                     <td style="cursor: pointer;" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo $bill['ngaydathang']; ?></td>
                                     <td style="cursor: pointer;" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo $countsp; ?></td>
                                     <td style="cursor: pointer;" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo $bill['total']; ?></td>
                                     <td style="cursor: pointer;" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo $pttt; ?></td>
                                     <td style="cursor: pointer;" data-id='<?php echo $bill['id']; ?>' class="userinfo"><?php echo $ttdh; ?></td>
-                                    <td><?php echo '<a style="text-decoration: none;" href="' . $huy_don_hang . '">×</a>'; ?></td>
+                                    <td><?php echo '<a style="text-decoration: none;" href="' . $huy_don_hang . '"><i class="fa fa-minus-square-o" aria-hidden="true" style="font-size:20px"></i></a>'; ?></td>
                                 </tr>
 
-                            <?php } ?>
+                            <?php } }?>
                     </tbody>
                     <tr style="background-color: #99B898;color:aliceblue;">
                         <td colspan="5">Cảm ơn quý khách</td>

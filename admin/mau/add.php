@@ -1,6 +1,6 @@
 
 <form action="index.php?act=addmau" method="POST">
-    <table class="table-outline table-content table-header">
+<table class="table-outline table-content table-header form-table">
         <tr>
             <th colspan="2">Thêm loại màu sản phẩm</th>
         </tr>

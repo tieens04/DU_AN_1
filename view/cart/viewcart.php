@@ -41,29 +41,6 @@
 
         </h2>
     </form>
-<script>
-    function sendData(soluongmoi,id) {
-    
-    // Sử dụng fetch để gửi dữ liệu lên server
-    $.ajax({
-            type: 'POST',
-            url: 'view/cart/process.php',
-            data: {
-                id: id,
-                soluong: soluongmoi
-            },
-            success: function(response) {
-                // Sau khi cập nhật thành công
-                $.post('model/cart.php', function(data) {
-                    $('#soluong').html(data);
-                })
-            },
-            error: function(error) {
-                console.log(error);
-            },
-        })
-    
-}
-</script>
+
 </section>
 <!-- End Section -->
