@@ -1,6 +1,6 @@
 
 <form action="index.php?act=addkm" method="POST">
-    <table class="table-outline table-content table-header">
+<table class="table-outline table-content table-header form-table">
         <tr>
             <th colspan="2">Thêm loại khuyến mãi</th>
         </tr>

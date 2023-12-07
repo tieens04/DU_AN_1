@@ -40,9 +40,9 @@
             <li class="nav-item"><a href="index.php?act=dsbl" class="nav-link"><i class="fa fa-file-text-o"></i> Bình luận</a></li>
             <li class="nav-item"><a href="index.php?act=dskh" class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
             <li class="nav-item"><a href="index.php?act=thongke" class="nav-link"><i class="fa fa-address-book-o"></i>Thống kê</a></li>
-            <li class="nav-item">
+<!--             <li class="nav-item">
                 <hr>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a href="../index.php" class="nav-link">
                     <i class="fa fa-arrow-left"></i>
